@@ -1,3 +1,5 @@
+import { aesfYuranja, cattelanExhibition, edVanDerElsken } from '../assets/images.js'
+
 /** Shared editorial imagery from the original layout (architecture / spaces). */
 export const featuredCities = [
   {
@@ -90,31 +92,28 @@ export const topPicks = [
   {
     id: '1',
     title: 'Neue Nationalgalerie',
-    subtitle: 'Mies van der Rohe’s glass temple — modern masters with room to breathe.',
+    subtitle: 'Preis der Nationalgalerie 2026: Maurizio Cattelan',
     rating: 2,
     pulse: 'Trending',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCHklxDJSufccvNsKfCHn_vSRd0fbQrOascHdWZwPa4BYtmqL9iyNHzSED9sJagOTI4ilFPDIvw3lZxd0JwSl7ho6bRv3vSf19IGe7T5U7gwY5Gt5FyRaXe1RabgzmB9IasFO4Vv3sfCbzCoWECFpYXTzBEkHrlMdYRuHfw55JZT8xFME_Sz6Y9YEhr5pzu7t2qZz61JQF_xzKOtSO52BMj_2hIqrEjqTMAc6Yu6Ph9LjtWioBf5-7waruCraX0DrnZqEqtsShEYOs',
+    image: cattelanExhibition,
     href: '/spaces/neue-nationalgalerie',
   },
   {
     id: '2',
-    title: 'Leeum Museum of Art',
-    subtitle: 'Three buildings, one hillside — Korean and international voices in dialogue.',
+    title: 'Auditorium Santa Margherita – Emanuele Severino',
+    subtitle: 'AES+F: Digital Safari — Fables of the Jungle',
     rating: 3,
     pulse: 'Hot',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDL00DqB5U6sLD0R3Vy3NbMCnpnvlbxHJ61xKaI08aTPQ4YH63mg2DKzOYgDi2SeNQRRdJYpxjQfdjWBsNpDhVHLm3Rr_H47PKJiq6CcaT_zdeI-vU8bxjVlEF0USex1zf7j6iXGuawsUYzH9w10ng1K76Hk8N4PJSp00Mu42r19gEcDG4IJj0vZLhJv9nAIpwAt1D-Bokv2wzavjjjZ14wuzYjCIJHo0NMSmgDGOivc8z-KyKbM75vruC8scu8qogpn4NwkUkWSLKg',
+    image: aesfYuranja,
     href: '/spaces/leeum',
   },
   {
     id: '3',
-    title: 'The Whitney Museum',
-    subtitle: 'American art on the Hudson — strong temporary shows and river light.',
+    title: 'Rijksmuseum',
+    subtitle: 'Up Close: Ed van der Elsken',
     rating: 2,
     pulse: 'Ending Soon',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDRX0nSHsbpT96JOXBCh-ksR71bXvIqNnZdK99vom1WtE8ihWFpb5K7RUKGMPId9d5fvnh4N_Yzb3XcrFLGuWoNZuYKuRmBx1AWVINkL5yYBm5rL9E3Mc7zdmyyQc-r2ZimL3s9cnWIBs9eFxNf3f9YGIf0j6N95YcYJGxiHt72Xq7WWOTXoG3URTWTySNct_njK88A7ZzjqAYqJxwqpdxuu0bGTYmHNaCA36r3Pdn9AhBAfpGZU8JJTUppdeWDMdX17N__1TkiK9U',
+    image: edVanDerElsken,
     href: '/spaces/whitney',
   },
 ]

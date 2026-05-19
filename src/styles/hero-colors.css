@@ -1,0 +1,14 @@
+/**
+ * Hero palette — edit these values; saves apply on refresh without Tailwind rebuild.
+ * Used by .hero-title and mirrored into @theme in index.css.
+ */
+:root {
+  --yuranja-hero-fg: #fae2be;
+  --yuranja-hero-subtle: #edf27e;
+  --yuranja-hero-lavender: #f0ebff;
+  --yuranja-hero-orange: #d6de3c;
+}
+
+.hero-title {
+  color: var(--yuranja-hero-fg);
+}

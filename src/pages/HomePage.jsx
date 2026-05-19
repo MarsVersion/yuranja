@@ -3,9 +3,7 @@ import { useState } from 'react'
 import { EditorialLabel } from '../components/EditorialLabel'
 import { featuredCities, topPicks } from '../data/cities'
 import { CityCard, RatingLegend, TopPickCard } from '../components/cards'
-
-const heroImg =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuCaOtmopfa0vVC_8CUBEVoYftCuR79yMT-a1ZbFauPbw3v7gsFSWx-wMJpT4ZP1fwo1cMOL5brPKdrcKFG2jAL1jB-UbAOzkYsqJuQmedE32JkcYVYXgm3lBSea5lLoSD6nFK8ZREAY30SsWnqNlGtjSpZ1G2Kw4idhaqeg_gIOQ6H7OcaCuTCVEdpYFmJseZC_rlvJOalSMs-VJSU5RNAzRHxfNDKQtkyt1uueISV3eUuFnSB-2KkPCbYGCG90pRXaXLgUc-sWkzI'
+import heroImg from '../assets/Midnight dark.jpg'
 
 export function HomePage() {
   const [heroQuery, setHeroQuery] = useState('')
@@ -25,18 +23,18 @@ export function HomePage() {
           <img
             src={heroImg}
             alt=""
-            className="h-full w-full object-cover grayscale"
+            className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/65 to-black/35" />
         </div>
         <div className="relative z-10 mx-auto mb-12 w-full max-w-[1440px] px-6 py-12 md:px-20">
-          <EditorialLabel variant="onDark" className="tracking-[0.35em] text-white/90">
+          <EditorialLabel variant="hero" className="tracking-[0.35em]">
             See what matters.
           </EditorialLabel>
-          <h1 className="mt-4 font-display text-5xl leading-[0.95] tracking-tight text-white md:text-8xl lg:text-[120px]">
+          <h1 className="hero-title mt-4 font-serif text-5xl leading-[0.95] tracking-tight md:text-8xl lg:text-hero-display">
             Yuranja
           </h1>
-          <p className="mt-6 max-w-xl font-body text-lg font-light text-white/90 md:text-xl">
+          <p className="mt-6 max-w-xl font-sans text-lg font-light text-white/90 md:text-xl">
             A guide to art spaces genuinely worth your time.
           </p>
           <form
@@ -46,29 +44,32 @@ export function HomePage() {
             <label className="sr-only" htmlFor="hero-search">
               Search by city, artist, or exhibition
             </label>
-            <div className="flex min-h-[52px] w-full flex-1 items-center gap-3 border border-white/40 bg-white/10 px-4 py-3 backdrop-blur-md">
-              <span className="material-symbols-outlined text-white/80">search</span>
+            <div className="hero-search-field flex min-h-[52px] w-full flex-1 items-center gap-3 border bg-black/60 px-4 py-3 backdrop-blur-md">
+              <span className="material-symbols-outlined">search</span>
               <input
                 id="hero-search"
                 name="q"
-                type="search"
+                type="text"
+                inputMode="search"
+                enterKeyHint="search"
+                role="searchbox"
                 value={heroQuery}
                 onChange={(e) => setHeroQuery(e.target.value)}
                 placeholder="Search by city, artist, or exhibition"
                 autoComplete="off"
-                className="w-full border-0 bg-transparent font-body text-sm text-white outline-none placeholder:text-white/60 focus:ring-0"
+                className="w-full border-0 bg-transparent font-sans text-sm outline-none focus:ring-0"
               />
             </div>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
               <button
                 type="submit"
-                className="inline-flex min-h-[52px] items-center justify-center border border-white/50 bg-white/95 px-8 font-body text-[11px] font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-canvas"
+                className="inline-flex min-h-[52px] items-center justify-center border-2 border-white bg-white px-8 font-sans text-caption font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-white/90"
               >
                 Search
               </button>
               <Link
                 to="/cities"
-                className="inline-flex min-h-[52px] items-center justify-center border border-ink bg-ink px-8 font-body text-[11px] font-semibold uppercase tracking-[0.2em] text-canvas transition-colors hover:bg-canvas hover:text-ink"
+                className="inline-flex min-h-[52px] items-center justify-center border-2 border-white bg-transparent px-8 font-sans text-caption font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-white/10"
               >
                 Explore cities
               </Link>
@@ -81,9 +82,9 @@ export function HomePage() {
         <div className="mb-16 flex flex-col justify-between gap-6 border-b border-line pb-10 md:flex-row md:items-end">
           <div>
             <EditorialLabel>Editors&apos; choice</EditorialLabel>
-            <h2 className="mt-4 font-display text-4xl uppercase md:text-5xl">Top Picks</h2>
+            <h2 className="mt-4 font-serif text-4xl uppercase md:text-5xl">Top Picks</h2>
           </div>
-          <p className="max-w-md font-body text-sm text-muted">
+          <p className="max-w-md font-sans text-sm text-muted">
             Spaces our editors would send a friend to first — museums, galleries, and projects
             with a clear point of view.
           </p>
@@ -103,8 +104,8 @@ export function HomePage() {
         <div className="mx-auto grid max-w-[1440px] gap-16 px-6 md:grid-cols-2 md:px-20 md:gap-24">
           <div>
             <EditorialLabel variant="onDark">How we rank</EditorialLabel>
-            <h2 className="mt-4 font-display text-4xl uppercase md:text-5xl">Rating system</h2>
-            <p className="mt-6 font-body text-base font-light text-white/75">
+            <h2 className="mt-4 font-serif text-4xl uppercase md:text-5xl">Rating system</h2>
+            <p className="mt-6 font-sans text-base font-light text-white/75">
               Three anchors, one pulse. Ratings describe how far we would travel; pulse describes
               what it feels like to visit right now.
             </p>
@@ -116,8 +117,8 @@ export function HomePage() {
       <section className="mx-auto max-w-[1440px] px-6 py-24 md:px-20 md:py-40">
         <div className="mb-16 text-center">
           <EditorialLabel className="mx-auto max-w-xl">The atlas</EditorialLabel>
-          <h2 className="mt-4 font-display text-4xl uppercase md:text-5xl">City guides</h2>
-          <p className="mx-auto mt-4 max-w-2xl font-body text-lg font-light text-muted">
+          <h2 className="mt-4 font-serif text-4xl uppercase md:text-5xl">City guides</h2>
+          <p className="mx-auto mt-4 max-w-2xl font-sans text-lg font-light text-muted">
             Start with a neighborhood, leave with a shortlist you can actually finish in a weekend.
           </p>
         </div>
@@ -145,19 +146,19 @@ export function HomePage() {
           </div>
           <div className="order-1 md:order-2 md:col-span-6 md:col-start-7">
             <EditorialLabel>Featured exhibition</EditorialLabel>
-            <h2 className="mt-4 font-display text-4xl md:text-5xl">Night Rooms</h2>
-            <p className="mt-6 font-body text-lg font-light text-muted">
+            <h2 className="mt-4 font-serif text-4xl md:text-5xl">Night Rooms</h2>
+            <p className="mt-6 font-sans text-lg font-light text-muted">
               A citywide trail of intimate installations — sound, light, and sculpture in spaces
               not built as museums. Yuranja mapped the route so you can visit in one evening.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <span className="font-body text-[11px] font-semibold uppercase tracking-[0.25em]">
+              <span className="font-sans text-caption font-semibold uppercase tracking-[0.25em]">
                 Through Aug 31
               </span>
               <span className="h-px w-12 bg-ink" aria-hidden />
               <Link
                 to="/exhibitions"
-                className="font-body text-[11px] font-semibold uppercase tracking-[0.25em] text-accent-green underline-offset-4 hover:underline"
+                className="font-sans text-caption font-semibold uppercase tracking-[0.25em] text-accent-green underline-offset-4 hover:underline"
               >
                 View trail
               </Link>
@@ -172,17 +173,17 @@ export function HomePage() {
             <EditorialLabel variant="accent" className="mb-6 block">
               Editorial guide
             </EditorialLabel>
-            <h2 className="font-display text-4xl uppercase leading-tight md:text-5xl">
+            <h2 className="font-serif text-4xl uppercase leading-tight md:text-5xl">
               How we choose what makes the list
             </h2>
-            <p className="mt-8 font-body text-lg font-light text-muted">
+            <p className="mt-8 font-sans text-lg font-light text-muted">
               Our editors visit anonymously, return on weekends, and talk to artists and guards
               alike. If a space is here, it earned its place with work you can see on the walls —
               not with catalogue copy alone.
             </p>
             <Link
               to="/about#editorial"
-              className="mt-10 inline-block border border-ink px-8 py-4 font-body text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-canvas"
+              className="mt-10 inline-block border border-ink px-8 py-4 font-sans text-caption font-semibold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-canvas"
             >
               Read the guide
             </Link>
@@ -202,9 +203,9 @@ export function HomePage() {
           <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <EditorialLabel>Visitor information</EditorialLabel>
-              <h2 className="mt-3 font-display text-3xl uppercase md:text-4xl">Plan like a local</h2>
+              <h2 className="mt-3 font-serif text-3xl uppercase md:text-4xl">Plan like a local</h2>
             </div>
-            <p className="max-w-md font-body text-sm text-muted">
+            <p className="max-w-md font-sans text-sm text-muted">
               Hours change, tickets sell out, and the best rooms are sometimes the quiet ones. Each
               Yuranja listing includes what you need before you go.
             </p>
@@ -212,22 +213,22 @@ export function HomePage() {
           <div className="grid gap-10 md:grid-cols-3 md:gap-12">
             <div className="flex flex-col items-start border border-line bg-canvas p-8">
               <span className="material-symbols-outlined text-3xl text-accent-green">location_on</span>
-              <h3 className="mt-6 font-display text-2xl">Neighborhood context</h3>
-              <p className="mt-3 font-body text-sm text-muted">
+              <h3 className="mt-6 font-serif text-2xl">Neighborhood context</h3>
+              <p className="mt-3 font-sans text-sm text-muted">
                 Where to walk before and after — second stops, bookshops, and quiet corners nearby.
               </p>
             </div>
             <div className="flex flex-col items-start border border-line bg-canvas p-8">
               <span className="material-symbols-outlined text-3xl text-accent-orange">event</span>
-              <h3 className="mt-6 font-display text-2xl">Exhibition windows</h3>
-              <p className="mt-3 font-body text-sm text-muted">
+              <h3 className="mt-6 font-serif text-2xl">Exhibition windows</h3>
+              <p className="mt-3 font-sans text-sm text-muted">
                 Closing dates and late openings so you do not arrive on the wrong Tuesday.
               </p>
             </div>
             <div className="flex flex-col items-start border border-line bg-canvas p-8">
               <span className="material-symbols-outlined text-3xl text-ink">museum</span>
-              <h3 className="mt-6 font-display text-2xl">Space types</h3>
-              <p className="mt-3 font-body text-sm text-muted">
+              <h3 className="mt-6 font-serif text-2xl">Space types</h3>
+              <p className="mt-3 font-sans text-sm text-muted">
                 Museums, galleries, project rooms, and private collections — labeled clearly.
               </p>
             </div>

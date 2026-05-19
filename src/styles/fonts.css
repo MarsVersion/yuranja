@@ -1,0 +1,92 @@
+/**
+ * Project typography: @font-face, Tailwind font tokens, and base font utilities.
+ */
+
+@font-face {
+  font-family: 'Melodrama';
+  src: url('/fonts/Melodrama-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Melodrama';
+  src: url('/fonts/Melodrama-Semibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Medium.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-serif: 'Melodrama', Georgia, serif;
+  --font-sans: 'Satoshi', system-ui, sans-serif;
+}
+
+@layer base {
+  .font-serif {
+    font-weight: 600;
+    font-synthesis: none;
+  }
+}
+
+/* Hero search — force true white (avoids warm bleed through translucent borders) */
+@layer components {
+  .hero-search-field {
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+
+  .hero-search-field .material-symbols-outlined {
+    color: #ffffff;
+  }
+
+  .hero-search-field input {
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+    caret-color: #ffffff;
+    appearance: none;
+  }
+
+  .hero-search-field input::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+    opacity: 1;
+  }
+
+  .hero-search-field input::-webkit-search-decoration,
+  .hero-search-field input::-webkit-search-cancel-button {
+    display: none;
+  }
+}

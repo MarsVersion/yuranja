@@ -44,7 +44,7 @@ function ResultMeta({ item }) {
   if (parts.length === 0) return null
 
   return (
-    <p className="mt-4 font-body text-xs tracking-wide text-muted">
+    <p className="mt-4 font-sans text-xs tracking-wide text-muted">
       {parts.map((p, i) => (
         <span key={p.key}>
           {i > 0 ? <span className="mx-2 text-line">·</span> : null}
@@ -61,21 +61,21 @@ function ResultBlock({ item }) {
       to={item.href}
       className="group block border-b border-line py-10 transition-colors first:pt-2 last:border-b-0 hover:bg-surface-muted/30"
     >
-      <h2 className="font-display text-2xl leading-tight transition-colors group-hover:text-accent-green md:text-[1.75rem]">
+      <h2 className="font-serif text-2xl leading-tight transition-colors group-hover:text-accent-green md:text-[1.75rem]">
         {item.title}
       </h2>
       {item.kind === 'exhibition' && item.institutionName ? (
-        <p className="mt-2 font-body text-sm font-light italic text-muted">
+        <p className="mt-2 font-sans text-sm font-light italic text-muted">
           {item.institutionName}
         </p>
       ) : null}
       {item.deck ? (
-        <p className="mt-3 max-w-2xl font-body text-sm font-light leading-relaxed text-muted">
+        <p className="mt-3 max-w-2xl font-sans text-sm font-light leading-relaxed text-muted">
           {item.deck}
         </p>
       ) : null}
       <ResultMeta item={item} />
-      <span className="mt-5 inline-flex items-center gap-1 font-body text-[11px] font-semibold uppercase tracking-[0.2em] text-ink opacity-0 transition-opacity group-hover:opacity-100">
+      <span className="mt-5 inline-flex items-center gap-1 font-sans text-caption font-semibold uppercase tracking-[0.2em] text-ink opacity-0 transition-opacity group-hover:opacity-100">
         Open
         <span className="material-symbols-outlined text-base">north_east</span>
       </span>
@@ -111,10 +111,10 @@ function SearchEmptyIntro() {
   return (
     <div className="mt-16 border border-line bg-surface-muted/30 px-8 py-12 md:mt-20 md:px-12 md:py-16">
       <EditorialLabel>Search the guide</EditorialLabel>
-      <h2 className="mt-4 font-display text-3xl leading-tight md:text-4xl">
+      <h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">
         Find a city, a room, or a show
       </h2>
-      <p className="mt-6 max-w-xl font-body text-base font-light leading-relaxed text-muted">
+      <p className="mt-6 max-w-xl font-sans text-base font-light leading-relaxed text-muted">
         Yuranja indexes the six cities we cover in depth, the spaces we have walked ourselves, and
         the exhibitions on their walls. Type a name — no account, no noise.
       </p>
@@ -129,13 +129,13 @@ function SearchEmptyIntro() {
             value={draft}
             onChange={(e) => setDraft(e.target.value)}
             placeholder="City, institution, artist, exhibition…"
-            className="w-full border-0 bg-transparent font-body text-sm text-ink outline-none placeholder:text-muted/80 focus:ring-0"
+            className="w-full border-0 bg-transparent font-sans text-sm text-ink outline-none placeholder:text-muted/80 focus:ring-0"
             autoComplete="off"
           />
         </div>
         <button
           type="submit"
-          className="min-h-[48px] border border-ink bg-ink px-8 font-body text-[11px] font-semibold uppercase tracking-[0.2em] text-canvas transition-colors hover:bg-canvas hover:text-ink"
+          className="min-h-[48px] border border-ink bg-ink px-8 font-sans text-caption font-semibold uppercase tracking-[0.2em] text-canvas transition-colors hover:bg-canvas hover:text-ink"
         >
           Search
         </button>
@@ -147,7 +147,7 @@ function SearchEmptyIntro() {
             <li key={s.q}>
               <Link
                 to={`/search?q=${encodeURIComponent(s.q)}`}
-                className="inline-block border border-line bg-canvas px-4 py-2 font-body text-[11px] font-semibold uppercase tracking-[0.15em] text-ink transition-colors hover:border-ink"
+                className="inline-block border border-line bg-canvas px-4 py-2 font-sans text-caption font-semibold uppercase tracking-[0.15em] text-ink transition-colors hover:border-ink"
               >
                 {s.label}
               </Link>
@@ -155,7 +155,7 @@ function SearchEmptyIntro() {
           ))}
         </ul>
       </div>
-      <p className="mt-10 font-body text-sm text-muted">
+      <p className="mt-10 font-sans text-sm text-muted">
         Prefer to wander?{' '}
         <Link to="/cities" className="text-accent-green underline-offset-4 hover:underline">
           Open the city index
@@ -174,14 +174,14 @@ function NoMatches({ query }) {
   return (
     <div className="mt-16 border border-line bg-canvas px-8 py-12 md:mt-20 md:px-12">
       <EditorialLabel>No direct match</EditorialLabel>
-      <h2 className="mt-4 font-display text-2xl md:text-3xl">
+      <h2 className="mt-4 font-serif text-2xl md:text-3xl">
         Nothing under that name in this edition
       </h2>
-      <p className="mt-5 max-w-xl font-body text-sm font-light leading-relaxed text-muted">
+      <p className="mt-5 max-w-xl font-sans text-sm font-light leading-relaxed text-muted">
         The index is narrow by design: six cities, three fully written spaces, and the exhibitions
         we last saw on site. Try a shorter phrase, a city name, or one of the suggestions below.
       </p>
-      <p className="mt-2 font-body text-sm text-muted">
+      <p className="mt-2 font-sans text-sm text-muted">
         You searched for <span className="font-medium text-ink">&ldquo;{query}&rdquo;</span>
       </p>
       <ul className="mt-10 flex flex-wrap gap-3">
@@ -189,7 +189,7 @@ function NoMatches({ query }) {
           <li key={s.q}>
             <Link
               to={`/search?q=${encodeURIComponent(s.q)}`}
-              className="inline-block border border-line px-4 py-2 font-body text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors hover:border-ink"
+              className="inline-block border border-line px-4 py-2 font-sans text-caption font-semibold uppercase tracking-[0.15em] transition-colors hover:border-ink"
             >
               {s.label}
             </Link>
@@ -198,7 +198,7 @@ function NoMatches({ query }) {
       </ul>
       <Link
         to="/cities"
-        className="mt-10 inline-block font-body text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-green underline-offset-4 hover:underline"
+        className="mt-10 inline-block font-sans text-caption font-semibold uppercase tracking-[0.2em] text-accent-green underline-offset-4 hover:underline"
       >
         Return to the city index
       </Link>
@@ -215,13 +215,13 @@ export function SearchResultsPage() {
   return (
     <main className="mx-auto max-w-[880px] px-6 py-16 md:py-24">
       <EditorialLabel>The index</EditorialLabel>
-      <h1 className="mt-3 font-display text-4xl md:text-5xl">Search</h1>
+      <h1 className="mt-3 font-serif text-4xl md:text-5xl">Search</h1>
 
       {!q ? (
         <SearchEmptyIntro />
       ) : (
         <>
-          <p className="mt-6 max-w-xl font-body text-sm font-light leading-relaxed text-muted">
+          <p className="mt-6 max-w-xl font-sans text-sm font-light leading-relaxed text-muted">
             Matches for <span className="font-medium text-ink">&ldquo;{q}&rdquo;</span> across
             cities, spaces, and exhibitions.
           </p>

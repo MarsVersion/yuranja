@@ -15,8 +15,8 @@ export function TopPickCard({ title, subtitle, rating, pulse, image, href, large
       </div>
       <div className="flex items-start justify-between gap-4 border-t border-ink pt-4">
         <div>
-          <p className="font-display text-xl uppercase md:text-2xl">{title}</p>
-          <p className="mt-2 max-w-md font-body text-sm text-muted">{subtitle}</p>
+          <p className="font-serif text-xl uppercase md:text-2xl">{title}</p>
+          <p className="mt-2 max-w-md font-sans text-sm text-muted">{subtitle}</p>
           <div className="mt-4 flex flex-wrap items-center gap-3">
             <span className="text-accent-orange">{'★'.repeat(rating)}</span>
             {pulse ? <PulseBadge label={pulse} /> : null}

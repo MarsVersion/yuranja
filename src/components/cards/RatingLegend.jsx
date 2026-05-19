@@ -27,12 +27,12 @@ export function RatingLegend({ className = '', variant = 'default' }) {
         {ratings.map((r) => (
           <li key={r.stars} className="flex flex-wrap items-baseline gap-3">
             <Stars count={r.stars} />
-            <span className={`font-body text-sm tracking-wide ${labelTone}`}>{r.label}</span>
+            <span className={`font-sans text-sm tracking-wide ${labelTone}`}>{r.label}</span>
           </li>
         ))}
       </ul>
       <div className={`mt-10 border-t pt-8 ${dividerTone}`}>
-        <p className={`font-body text-[11px] font-semibold uppercase tracking-[0.2em] ${eyebrowTone}`}>
+        <p className={`font-sans text-caption font-semibold uppercase tracking-[0.2em] ${eyebrowTone}`}>
           Pulse
         </p>
         <ul className="mt-4 flex flex-wrap gap-3">

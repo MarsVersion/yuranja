@@ -1,3 +1,5 @@
+import { cattelanExhibition } from '../assets/images.js'
+
 export const institutionsBySlug = {
   'neue-nationalgalerie': {
     slug: 'neue-nationalgalerie',
@@ -33,8 +35,7 @@ export const institutionsBySlug = {
     instagramHashtagCount: '42k posts · #NeueNationalgalerie',
     heroImage:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuAGb5k3Mtauze4S5dxvN_pva0hwOiYa8mrhQKdoRxyZWvIaYKrkiOYuqUZWxNx_B4l2oC8ENJ-snuwD5XyiME5lYdZesyvbOunGg4q33jIJ36fskhHoSWGdyt_YZwAY84L_fe9eU7wv7bZTeK8Yma5GDgEhD3X-t1vx-6ljX9B0hDhggx-NzZVs6sXoVsFwbiLK5g4TjjJcqLzH5qAWrs3c2ZnQbFLCLAqLFwCmjirbspKx0IWKnGKDroqZ4GNI-_0GvekCOr9MX9E',
-    exhibitionImage:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCHklxDJSufccvNsKfCHn_vSRd0fbQrOascHdWZwPa4BYtmqL9iyNHzSED9sJagOTI4ilFPDIvw3lZxd0JwSl7ho6bRv3vSf19IGe7T5U7gwY5Gt5FyRaXe1RabgzmB9IasFO4Vv3sfCbzCoWECFpYXTzBEkHrlMdYRuHfw55JZT8xFME_Sz6Y9YEhr5pzu7t2qZz61JQF_xzKOtSO52BMj_2hIqrEjqTMAc6Yu6Ph9LjtWioBf5-7waruCraX0DrnZqEqtsShEYOs',
+    exhibitionImage: cattelanExhibition,
   },
   leeum: {
     slug: 'leeum',

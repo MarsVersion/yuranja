@@ -16,7 +16,7 @@ function NavItem({ to, label, end }) {
       end={end}
       className={({ isActive }) =>
         [
-          'font-body text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors',
+          'font-sans text-caption font-semibold uppercase tracking-[0.2em] transition-colors',
           isActive ? 'text-ink' : 'text-muted hover:text-ink',
         ].join(' ')
       }
@@ -34,7 +34,7 @@ export function Header() {
       <nav className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-6 py-5 md:px-20">
         <Link
           to="/"
-          className="font-display shrink-0 text-2xl font-semibold tracking-tight text-ink md:text-3xl"
+          className="font-serif shrink-0 text-2xl font-semibold tracking-tight text-ink md:text-3xl"
         >
           Yuranja
         </Link>

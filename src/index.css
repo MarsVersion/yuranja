@@ -1,9 +1,8 @@
+@import './styles/hero-colors.css';
+@import './styles/fonts.css';
 @import 'tailwindcss';
 
 @theme {
-  --font-display: 'Bodoni Moda', ui-serif, Georgia, serif;
-  --font-body: 'Outfit', system-ui, sans-serif;
-
   --color-ink: #1a1a1a;
   --color-canvas: #ffffff;
   --color-accent-green: #234b3a;
@@ -11,15 +10,26 @@
   --color-muted: #5c5c5c;
   --color-line: #d4d4d4;
   --color-surface-muted: #f5f5f5;
+
+  --color-hero-fg: var(--yuranja-hero-fg);
+  --color-hero-subtle: var(--yuranja-hero-subtle);
+  --color-hero-lavender: var(--yuranja-hero-lavender);
+  --color-hero-orange: var(--yuranja-hero-orange);
+
+  /* Rem-based labels (scale with html 115% — ~15% larger than prior px sizes) */
+  --text-caption: 0.7rem;
+  --text-micro: 0.68rem;
+  --text-hero-display: 7.5rem;
 }
 
 @layer base {
   html {
+    font-size: 115%;
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-canvas text-ink font-body antialiased;
+    @apply bg-canvas text-ink font-sans antialiased;
     -webkit-font-smoothing: antialiased;
   }
 
