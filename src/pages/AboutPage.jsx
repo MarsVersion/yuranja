@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const externalLinkClass =
   'text-ink underline underline-offset-4 transition-colors hover:text-accent-green'
@@ -38,11 +38,7 @@ export function AboutPage() {
           weekends to see how a space feels when it is crowded. Ratings describe how far we would
           travel; pulse captures tempo — what feels electric, calm, or about to close.
         </p>
-        <p className="mt-8 font-sans text-base text-ink">
-          <Link to="/about#initiated-by" className={externalLinkClass}>
-            Initiated by →
-          </Link>
-        </p>
+       
       </section>
 
       <section id="initiated-by" className="mt-24 max-w-3xl scroll-mt-32 border-t border-line pt-16">

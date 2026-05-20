@@ -8,6 +8,7 @@ import { InstitutionPage } from './pages/InstitutionPage'
 import { ExhibitionsPage } from './pages/ExhibitionsPage'
 import { ExhibitionDetailPage } from './pages/ExhibitionDetailPage'
 import { AboutPage } from './pages/AboutPage'
+import { EditorialBoardPage } from './pages/EditorialBoardPage'
 import { LegalPage } from './pages/LegalPage'
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="exhibitions" element={<ExhibitionsPage />} />
           <Route path="exhibitions/:slug" element={<ExhibitionDetailPage />} />
           <Route path="about" element={<AboutPage />} />
+          <Route path="about/editorial-board" element={<EditorialBoardPage />} />
           <Route
             path="privacy"
             element={
