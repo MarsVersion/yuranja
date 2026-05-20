@@ -25,10 +25,13 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-y: scroll;
   }
 
   body {
-    @apply bg-canvas font-sans font-medium text-ink antialiased;
+    @apply min-h-svh bg-canvas font-sans font-medium text-ink antialiased;
+    overflow-x: hidden;
+    overflow-y: visible;
     color: #000000;
     font-weight: 500;
     -webkit-font-smoothing: antialiased;
@@ -69,10 +72,8 @@
     display: none;
   }
 
-  /* Slightly larger main content without layout zoom (zoom clipped long pages in Safari) */
   .site-main {
-    font-size: 1.0625rem;
-    line-height: 1.6;
+    display: block;
     overflow: visible;
   }
 }

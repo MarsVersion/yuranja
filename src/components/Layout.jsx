@@ -4,9 +4,10 @@ import { Footer } from './Footer'
 
 export function Layout() {
   return (
-    <div className="flex min-h-svh flex-col bg-canvas text-ink">
+    <div className="bg-canvas text-ink">
       <Header />
-      <main className="site-main flex-1 pt-[72px]">
+      {/* Do not use flex-1 on main — it clips long pages (e.g. About) below the viewport */}
+      <main className="site-main w-full pt-[72px]">
         <Outlet />
       </main>
       <Footer />
