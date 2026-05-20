@@ -69,9 +69,10 @@
     display: none;
   }
 
-  /* Main content +15% for readability; header/footer stay at root scale */
+  /* Slightly larger main content without layout zoom (zoom clipped long pages in Safari) */
   .site-main {
-    zoom: 1.15;
+    font-size: 1.0625rem;
+    line-height: 1.6;
     overflow: visible;
   }
 }

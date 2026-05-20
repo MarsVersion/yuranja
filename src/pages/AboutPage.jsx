@@ -1,3 +1,12 @@
+const externalLinkClass =
+  'text-ink underline underline-offset-4 transition-colors hover:text-accent-green'
+
+const LINKS = {
+  hybridCurator: 'https://hybridcurator.com',
+  busyMars: 'https://www.busymars.com',
+  discursus: 'https://www.discursus.info/',
+}
+
 export function AboutPage() {
   return (
     <div className="mx-auto max-w-[1440px] px-6 py-16 pb-32 md:px-20 md:py-24 md:pb-40">
@@ -21,14 +30,30 @@ export function AboutPage() {
         <h2 className="font-serif text-3xl md:text-4xl">Initiated by</h2>
         <div className="mt-6 flex flex-col gap-6 font-sans text-base leading-relaxed text-ink">
           <p>
-            Yuranja is developed as an independent editorial practice by Jung Me Chai, a curator,
-            writer, and creative technologist working across contemporary art, technology, and
-            research.
+            Yuranja is developed as an independent editorial practice by{' '}
+            <a
+              href={LINKS.hybridCurator}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={externalLinkClass}
+            >
+              Jung Me Chai
+            </a>
+            , a curator, writer, and creative technologist working across contemporary art,
+            technology, and research.
           </p>
           <p>
-            She is a curator and former director of DISKURS Berlin. Over the past two decades, she
-            has curated exhibitions and collaborated with museums, biennials, and institutions
-            across Europe and Korea.
+            She is a curator and former director of{' '}
+            <a
+              href={LINKS.discursus}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={externalLinkClass}
+            >
+              DISKURS Berlin
+            </a>
+            . Over the past two decades, she has curated exhibitions and collaborated with museums,
+            biennials, and institutions across Europe and Korea.
           </p>
           <p>
             For more than twenty years, she also wrote for a range of art magazines and
@@ -36,8 +61,16 @@ export function AboutPage() {
             communication.
           </p>
           <p>
-            She is also the creator of Busy Mars, an AI-based platform for discovering artists,
-            curators, and cultural practitioners.
+            She is also the creator of{' '}
+            <a
+              href={LINKS.busyMars}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={externalLinkClass}
+            >
+              Busy Mars
+            </a>
+            , an AI-based platform for discovering artists, curators, and cultural practitioners.
           </p>
           <p>
             Yuranja is shaped through a hybrid mode of authorship: a single curatorial perspective,
@@ -52,6 +85,39 @@ export function AboutPage() {
             and make visible.
           </p>
         </div>
+
+        <ul className="mt-10 flex flex-col gap-3 border-t border-line pt-8 font-sans text-base text-ink">
+          <li>
+            <a
+              href={LINKS.hybridCurator}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={externalLinkClass}
+            >
+              HybridCurator
+            </a>
+          </li>
+          <li>
+            <a
+              href={LINKS.busyMars}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={externalLinkClass}
+            >
+              Busy Mars
+            </a>
+          </li>
+          <li>
+            <a
+              href={LINKS.discursus}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={externalLinkClass}
+            >
+              Discursus
+            </a>
+          </li>
+        </ul>
       </section>
     </div>
   )

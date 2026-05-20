@@ -96,11 +96,6 @@
       'opsz' 40;
   }
 
-  /* Counter site-main zoom (1.15) so hero search reads ~15% smaller on screen */
-  .hero-search-wrap {
-    zoom: 0.848;
-  }
-
   .yuranja-search-bar__field {
     transition:
       border-color 0.15s ease,
