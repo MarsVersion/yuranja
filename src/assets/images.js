@@ -1,3 +1,10 @@
 export { default as cattelanExhibition } from './20251030_MaurizioCattelan_CopyrightPeterRigaud_185A8207-4.jpg'
 export { default as edVanDerElsken } from './Ed van der Elsken.png'
 export { default as aesfYuranja } from './AESF Yuranja.png'
+
+export { default as neueNationalgalerieBerlin } from './neue-nationalgalerie-berlin.jpg'
+export { default as artMuseumSeoul } from './art-museum-seoul.jpg'
+export { default as guggenheimMuseumNewYork } from './guggenheim-museum-new-york.jpg'
+export { default as nationalArtCenterTokyo } from './national-art-center-tokyo.jpg'
+export { default as tateModernLondon } from './tate-modern-london.jpg'
+export { default as museoSoumayaMexicoCity } from './museo-soumaya-mexico-city.jpg'

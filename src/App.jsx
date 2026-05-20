@@ -6,7 +6,7 @@ import { CityDetailPage } from './pages/CityDetailPage'
 import { SearchResultsPage } from './pages/SearchResultsPage'
 import { InstitutionPage } from './pages/InstitutionPage'
 import { ExhibitionsPage } from './pages/ExhibitionsPage'
-import { MapPage } from './pages/MapPage'
+import { ExhibitionDetailPage } from './pages/ExhibitionDetailPage'
 import { AboutPage } from './pages/AboutPage'
 import { LegalPage } from './pages/LegalPage'
 
@@ -20,7 +20,7 @@ export default function App() {
           <Route path="cities" element={<CityGuidePage />} />
           <Route path="search" element={<SearchResultsPage />} />
           <Route path="exhibitions" element={<ExhibitionsPage />} />
-          <Route path="map" element={<MapPage />} />
+          <Route path="exhibitions/:slug" element={<ExhibitionDetailPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route
             path="privacy"

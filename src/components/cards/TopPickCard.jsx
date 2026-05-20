@@ -16,13 +16,13 @@ export function TopPickCard({ title, subtitle, rating, pulse, image, href, large
       <div className="flex items-start justify-between gap-4 border-t border-ink pt-4">
         <div>
           <p className="font-serif text-xl uppercase md:text-2xl">{title}</p>
-          <p className="mt-2 max-w-md font-sans text-sm text-muted">{subtitle}</p>
+          <p className="mt-2 max-w-md font-sans text-sm text-ink">{subtitle}</p>
           <div className="mt-4 flex flex-wrap items-center gap-3">
             <span className="text-accent-orange">{'★'.repeat(rating)}</span>
             {pulse ? <PulseBadge label={pulse} /> : null}
           </div>
         </div>
-        <span className="material-symbols-outlined shrink-0 text-muted transition-transform group-hover:translate-x-1">
+        <span className="material-symbols-outlined shrink-0 text-ink transition-transform group-hover:translate-x-1">
           museum
         </span>
       </div>

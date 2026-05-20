@@ -16,7 +16,7 @@ export function CityDetailPage() {
       <main className="mx-auto max-w-[720px] px-6 py-24 text-center">
         <EditorialLabel>City guide</EditorialLabel>
         <h1 className="mt-4 font-serif text-4xl">This city is not in the atlas</h1>
-        <p className="mt-6 font-sans text-sm font-light leading-relaxed text-muted">
+        <p className="mt-6 font-sans text-sm leading-relaxed text-ink">
           The URL may be mistyped, or we have not yet published a guide under that name. The index
           below lists every city in this edition.
         </p>
@@ -41,7 +41,7 @@ export function CityDetailPage() {
           <div className="mx-auto max-w-[1440px] text-white">
             <EditorialLabel variant="onDark">City guide</EditorialLabel>
             <h1 className="mt-4 font-serif text-5xl md:text-7xl">{city.name}</h1>
-            <p className="mt-4 max-w-xl font-sans text-sm font-light text-white/85 md:text-base">
+            <p className="mt-4 max-w-xl font-sans text-sm text-white/85 md:text-base">
               {city.district}
             </p>
           </div>
@@ -51,10 +51,10 @@ export function CityDetailPage() {
       <article className="mx-auto max-w-[1440px] px-6 py-16 md:px-20 md:py-24">
         <section className="max-w-3xl">
           <EditorialLabel>At a glance</EditorialLabel>
-          <p className="mt-5 font-sans text-xl font-light leading-relaxed text-ink md:text-2xl">
+          <p className="mt-5 font-sans text-xl leading-relaxed text-ink md:text-2xl">
             {city.intro}
           </p>
-          <p className="mt-4 font-sans text-sm text-muted">{city.address}</p>
+          <p className="mt-4 font-sans text-sm text-ink">{city.address}</p>
         </section>
 
         <section className="mt-20 max-w-3xl border-t border-line pt-16">
@@ -62,7 +62,7 @@ export function CityDetailPage() {
           <h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">
             A note from the editors
           </h2>
-          <p className="mt-6 font-sans text-base font-light leading-relaxed text-muted md:text-lg">
+          <p className="mt-6 font-sans text-base leading-relaxed text-ink md:text-lg">
             {city.whyItMatters}
           </p>
         </section>
@@ -72,7 +72,7 @@ export function CityDetailPage() {
           <h2 className="mt-4 font-serif text-3xl uppercase md:text-4xl">
             Start with these spaces
           </h2>
-          <p className="mt-4 max-w-2xl font-sans text-sm font-light leading-relaxed text-muted">
+          <p className="mt-4 max-w-2xl font-sans text-sm leading-relaxed text-ink">
             Rooms we have reported from in full. When a city has no starred entries yet, the guide
             still orients you — the shortlist simply stays open.
           </p>
@@ -89,10 +89,10 @@ export function CityDetailPage() {
                       {space.type}
                     </span>
                     <h3 className="mt-4 font-serif text-2xl leading-tight">{space.name}</h3>
-                    <p className="mt-4 line-clamp-4 flex-1 font-sans text-sm font-light leading-relaxed text-muted">
+                    <p className="mt-4 line-clamp-4 flex-1 font-sans text-sm leading-relaxed text-ink">
                       {space.review}
                     </p>
-                    <p className="mt-6 flex flex-wrap items-center gap-2 font-sans text-caption text-muted">
+                    <p className="mt-6 flex flex-wrap items-center gap-2 font-sans text-caption text-ink">
                       <span className="text-accent-orange" aria-hidden>
                         {'★'.repeat(space.rating)}
                       </span>
@@ -114,13 +114,13 @@ export function CityDetailPage() {
           ) : (
             <div className="mt-12 max-w-2xl border border-line bg-surface-muted/25 px-10 py-12">
               <EditorialLabel className="mb-4">In progress</EditorialLabel>
-              <p className="font-sans text-base font-light leading-relaxed text-muted">
+              <p className="font-sans text-base leading-relaxed text-ink">
                 We have not yet filed full reviews under {city.name} in this edition. The atlas entry
                 stays live so you can orient by neighborhood; the shortlist will fill as editors
                 return from the field.
               </p>
-              <p className="mt-5 font-sans text-sm font-light leading-relaxed text-muted">
-                Until then, use the exhibition calendar and the map to plan on foot — the same
+              <p className="mt-5 font-sans text-sm leading-relaxed text-ink">
+                Until then, use the exhibition calendar and city guides to plan on foot — the same
                 standards apply, only the bylines are still in draft.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
@@ -131,15 +131,26 @@ export function CityDetailPage() {
                   Exhibitions
                 </Link>
                 <Link
-                  to="/map"
-                  className="border border-line bg-canvas px-6 py-3 font-sans text-caption font-semibold uppercase tracking-[0.2em] text-muted transition-colors hover:border-ink hover:text-ink"
+                  to="/cities"
+                  className="border border-line bg-canvas px-6 py-3 font-sans text-caption font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:border-ink hover:text-ink"
                 >
-                  Map
+                  City guides
                 </Link>
               </div>
             </div>
           )}
         </section>
+
+        {city.imageCreditTitle ? (
+          <footer className="mt-20 max-w-3xl border-t border-line pt-6">
+            <p className="font-sans text-micro leading-snug text-ink/60">{city.imageCreditTitle}</p>
+            {city.imageCreditPhoto ? (
+              <p className="mt-1 font-sans text-micro leading-snug text-ink/60">
+                {city.imageCreditPhoto}
+              </p>
+            ) : null}
+          </footer>
+        ) : null}
       </article>
     </>
   )

@@ -1,9 +1,18 @@
 import { featuredCities } from './cities'
+import { exhibitions } from './exhibitions'
 import { institutionsBySlug } from './institutions'
 
-function clip(s, max = 130) {
+function clip(s, max = 160) {
   if (!s || s.length <= max) return s
   return `${s.slice(0, max).trim()}…`
+}
+
+function joinHaystack(parts) {
+  return parts
+    .flat()
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase()
 }
 
 function buildItems() {
@@ -13,57 +22,79 @@ function buildItems() {
     items.push({
       id: `city-${city.slug}`,
       kind: 'city',
+      typeLabel: 'City',
       title: city.name,
-      deck: city.intro,
-      city: city.name,
+      excerpt: clip(city.blurb || city.intro),
+      city: null,
       district: city.district,
-      rating: null,
-      pulse: null,
-      ratingLabel: null,
-      endsOn: null,
-      artists: null,
-      institutionName: null,
+      venue: null,
       href: `/cities/${city.slug}`,
-      haystack: `${city.name} ${city.slug} ${city.district} ${city.blurb} ${city.address} ${city.intro} ${city.whyItMatters}`.toLowerCase(),
+      haystack: joinHaystack([
+        city.name,
+        city.slug,
+        city.district,
+        city.blurb,
+        city.address,
+        city.intro,
+        city.whyItMatters,
+      ]),
     })
   }
 
   for (const inst of Object.values(institutionsBySlug)) {
     items.push({
-      id: `space-${inst.slug}`,
-      kind: 'space',
+      id: `institution-${inst.slug}`,
+      kind: 'institution',
+      typeLabel: 'Institution',
       title: inst.name,
-      deck: clip(inst.review),
+      excerpt: clip(inst.review),
       city: inst.city,
       district: null,
-      rating: inst.rating,
-      pulse: inst.pulse,
-      ratingLabel: inst.ratingLabel,
-      endsOn: null,
-      artists: null,
-      institutionName: null,
+      venue: null,
       href: `/spaces/${inst.slug}`,
-      haystack:
-        `${inst.name} ${inst.slug} ${inst.city} ${inst.type} ${inst.review} ${inst.exhibitions.map((e) => `${e.title} ${e.artists}`).join(' ')}`.toLowerCase(),
+      haystack: joinHaystack([
+        inst.name,
+        inst.slug,
+        inst.type,
+        inst.city,
+        inst.ratingLabel,
+        inst.pulse,
+        inst.review,
+        inst.address,
+        inst.hours,
+        inst.entryFee,
+        inst.accessibility,
+        inst.amenities,
+        inst.exhibitions?.map((e) => [e.title, e.artists, e.endsOn]),
+      ]),
     })
-    for (const ex of inst.exhibitions) {
-      items.push({
-        id: `exhibition-${inst.slug}-${ex.title}`,
-        kind: 'exhibition',
-        title: ex.title,
-        deck: ex.artists,
-        city: inst.city,
-        district: null,
-        rating: inst.rating,
-        pulse: inst.pulse,
-        ratingLabel: inst.ratingLabel,
-        endsOn: ex.endsOn,
-        artists: ex.artists,
-        institutionName: inst.name,
-        href: `/spaces/${inst.slug}`,
-        haystack: `${ex.title} ${ex.artists} ${inst.name} ${inst.city}`.toLowerCase(),
-      })
-    }
+  }
+
+  for (const ex of exhibitions) {
+    items.push({
+      id: `exhibition-${ex.slug}`,
+      kind: 'exhibition',
+      typeLabel: 'Exhibition',
+      title: ex.title,
+      excerpt: clip(ex.description),
+      city: ex.city,
+      district: null,
+      venue: ex.venue,
+      href: `/exhibitions/${ex.slug}`,
+      haystack: joinHaystack([
+        ex.title,
+        ex.slug,
+        ex.venue,
+        ex.city,
+        ex.address,
+        ex.description,
+        ex.yuranjaNote,
+        ex.openingHours,
+        ex.artists,
+        ex.curators,
+        ex.tags,
+      ]),
+    })
   }
 
   return items
@@ -75,18 +106,20 @@ function allItems() {
   return cache
 }
 
+/** @param {string} rawQuery */
 export function searchCatalog(rawQuery) {
   const q = rawQuery.trim().toLowerCase()
   if (!q) return []
 
   const tokens = q.split(/\s+/).filter(Boolean)
-  return allItems().filter((item) => tokens.every((t) => item.haystack.includes(t)))
+  return allItems().filter((item) => tokens.every((token) => item.haystack.includes(token)))
 }
 
+/** @param {ReturnType<typeof searchCatalog>} results */
 export function groupResultsByKind(results) {
   return {
     cities: results.filter((r) => r.kind === 'city'),
-    spaces: results.filter((r) => r.kind === 'space'),
+    institutions: results.filter((r) => r.kind === 'institution'),
     exhibitions: results.filter((r) => r.kind === 'exhibition'),
   }
 }

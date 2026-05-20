@@ -18,7 +18,7 @@ function Stars({ count }) {
 
 export function RatingLegend({ className = '', variant = 'default' }) {
   const labelTone = variant === 'onDark' ? 'text-white/90' : 'text-ink'
-  const eyebrowTone = variant === 'onDark' ? 'text-white/60' : 'text-muted'
+  const eyebrowTone = variant === 'onDark' ? 'text-white/60' : 'text-ink'
   const dividerTone = variant === 'onDark' ? 'border-white/20' : 'border-line'
 
   return (

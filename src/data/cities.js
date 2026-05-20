@@ -1,4 +1,14 @@
-import { aesfYuranja, cattelanExhibition, edVanDerElsken } from '../assets/images.js'
+import {
+  aesfYuranja,
+  artMuseumSeoul,
+  cattelanExhibition,
+  edVanDerElsken,
+  guggenheimMuseumNewYork,
+  museoSoumayaMexicoCity,
+  nationalArtCenterTokyo,
+  neueNationalgalerieBerlin,
+  tateModernLondon,
+} from '../assets/images.js'
 
 /** Shared editorial imagery from the original layout (architecture / spaces). */
 export const featuredCities = [
@@ -11,8 +21,9 @@ export const featuredCities = [
       'Berlin treats art as public grammar: long afternoons in stone institutions, then evenings in rooms that did not exist a year ago. The city rewards a loose itinerary and a willingness to walk between scales.',
     whyItMatters:
       'Here the canon and the provisional share the same afternoon. Museum Island anchors the map, while Mitte and Kreuzberg keep the conversation in motion — which is why Berlin remains a benchmark for how a capital can feel alive without shouting.',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCUWdM5X6M9ags-FUFh8aaGrHcV0P2Pi61O9YTbEcWc2F5EK9WiowXjTdgkMeJ7I6ks9n4W4v_oY4sQ7hizRQ80pRk9iteuXSZjJ2NxRttLsF9pvHkoZ3p4rKpRKC7ZB3jPG880TzYA0GhrTB-cnJM-DMiLT3GOW0brxtpwrbzcfjQIEalHJvCb0iPjsiu-grPAI9x4c1_PGVbRXG5NUF3TAzEKuQTYJl1z-TtpFFtbAqe-U9zVzWh3F-E4bBe-Hyo8ba0IFQzPpVQ',
+    image: neueNationalgalerieBerlin,
+    imageCreditTitle: 'Neue Nationalgalerie Berlin',
+    imageCreditPhoto: 'Photo by Birk Enwald on Unsplash',
     address: 'Guide focus · Mitte & Kreuzberg',
   },
   {
@@ -24,8 +35,9 @@ export const featuredCities = [
       'Seoul moves at the pace of its seasons: hillside museums, discreet foundations, and gallery weekends that fill calendars months ahead. The best visits balance architecture, ink tradition, and what is being painted this year.',
     whyItMatters:
       'South Korea’s institutions borrow from global contemporary while insisting on local lineages. For the traveler, that means depth without nostalgia — and a density of serious rooms that justifies a dedicated trip.',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuA6Z5sdL1_aVdmrLPa32jEH3GU_6FbsB_w2rxNFXkn9xBZHjNsx3cMob8WcIwtPD6Etf-ArRTSVUrrWZB1hWIWhQZfIArt6uFIDTP3MkiO3Djx3yMfblc6E-uLckdDAvr0WJ3g-Z2E05wxaTU6PCq9ZYt5C1jswqKHH4HJO_8hVsjJpOc0NzIJ62tOzKVOBPKydAgy2JvMSS1_uD9OYdCTwH8RjCvfXyGNnRmbaH5mq4Rj7JjZAsaIKuzaJYteOCP6qIRlUNuagCzI',
+    image: artMuseumSeoul,
+    imageCreditTitle: 'Art Museum Seoul',
+    imageCreditPhoto: 'Photo by Andrea De Santis on Unsplash',
     address: 'Guide focus · Samcheong-dong',
   },
   {
@@ -37,8 +49,9 @@ export const featuredCities = [
       'New York is still the city where a single block can hold a dozen serious galleries and a world museum sits a short ride away. The rhythm is vertical: uptown weight, downtown velocity, and the river as a compass.',
     whyItMatters:
       'No other American city concentrates curatorial ambition this tightly. If you care about how institutions and dealers shape taste in real time, New York remains unavoidable — not loud, simply dense.',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCfgZvlaMYcXNMxFj9j-VaV1u78KiMZyzkj09XWHQug5Ft3eWvDFOYN5RO5QLRsOjY5D9__Jm-4AOu6shefZeeJdyCWQBGoEYLE5WPxq-2wv0P6eaj9TzHOa1nZbV84tx6NvEwhofN6nnehbe-5GJSjaDDP3ISEseZ93TY0JO81YBeCS9eqdM6KnSmPLe9aCCdMWzf36jhN59fxMzxdhfXj_tDjOhK6SdmdN4sI9j9CFYAkxdFTghhXi5K94co6DKcN_Ygbj-tDFw',
+    image: guggenheimMuseumNewYork,
+    imageCreditTitle: 'Guggenheim Museum New York',
+    imageCreditPhoto: 'Photo by Ashley Penney on Unsplash',
     address: 'Guide focus · Chelsea galleries',
   },
   {
@@ -50,8 +63,9 @@ export const featuredCities = [
       'Tokyo rewards patience: buildings that read as sculpture, exhibitions installed with forensic care, and neighborhoods where a wrong turn still lands you in front of something thoughtful.',
     whyItMatters:
       'Japanese institutions often lead with architecture and material craft before the wall text speaks. For visitors, that discipline produces some of the clearest viewing conditions in the world.',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDkzs2ONQGeKmPDVhRiQPtMLD-GJroqfmE70haN3JlSJUzN0CnZN289kDrj6WoVtexvYcjdbCz7P0-oxFuhrFwO0bYatDvbVBx9PFLR9KW3Ri5RPHvFrG2knd2mW7k_CLIQybw3srlqT87Jz1UxO1n90vbhqyFx8PhrFylVSHudDCDVagXxF8ZAlLgD7mGLKVSZaUF8pzHgdZxIXBC4OHBAfSkIjiTq66Yyb8T172AFGT_1yGm5vI2hX8CdRSmag7cEBjjxLUXpLWA',
+    image: nationalArtCenterTokyo,
+    imageCreditTitle: 'National Art Center Tokyo',
+    imageCreditPhoto: 'Photo by whymahn yap from Pexels',
     address: 'Guide focus · Roppongi Art Triangle',
   },
   {
@@ -63,8 +77,9 @@ export const featuredCities = [
       'London stacks deep time against restless contemporary: national collections that define schoolbooks, then Mayfair rooms where a single wall can reset a conversation. Rain helps; so does a good coat.',
     whyItMatters:
       'The Thames corridor still sets the tempo for how European and Atlantic worlds trade images. You come for the weight of the public collections and stay for the dealers who quietly move the next generation.',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuC2vLbIcUD8fwNdF2jS4n5Ywbg_7oYNx35HQql4bovdRejt0dnQPYxlaLsHwdCVxmo9jNOQEqdXGuOhRRViEjcEWvcSC-YK1HxJlJfyAgeiVN_L2caLpsnnZyd09BEZ2U_GOJQsYQp2jncSgvtg6M7T_NhGEDJcb7ENy9U0x1FaTHFI4ZJm2haJhwPAIRP1n7cOOBwGm2Xe67f5ka9WKIZc69CKMzothhWisM0if-cpeO4pVl5qSQEj07cMZMjgo0uBY2Oa-uSw5do',
+    image: tateModernLondon,
+    imageCreditTitle: 'Tate Modern London',
+    imageCreditPhoto: 'Photo by Leander from Pexels',
     address: 'Guide focus · Mayfair',
   },
   {
@@ -76,8 +91,9 @@ export const featuredCities = [
       'Mexico City stretches exhibitions across seasons that feel human: courtyards, high altitude light, and foundations that treat locality as method rather than decoration.',
     whyItMatters:
       'The dialogue between Mesoamerican depth and international contemporary is written into the architecture here. For readers who want warmth without noise, the capital rewards slow return visits.',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAOFUEsQWnTDdvfidVJcRwZlYRGogRPJizJAFvfytppTI9viA1qLL8VRdyLkyfjurnShF3BKA_xYJgOSBUc5Q9Uv5fGySxFl290jYA81_q8UFitu6wxAcKbi0dTXGCtbUrFf6ab4FjeQWYH5tnvgkpcZiCD3MvJoa5joGrwOIZ9Omxc2PEbyrBKMrgkGPBIIXjxlj0HYc0_SG_0mwrjydvZkwjaoKRIgz-Yw1aMIrLIvM467SoLLyZcIAliCcBRPBPtR2ZVeT1aFOM',
+    image: museoSoumayaMexicoCity,
+    imageCreditTitle: 'Museo Soumaya Mexico City',
+    imageCreditPhoto: 'Photo by Dante Muñoz from Pexels',
     address: 'Guide focus · Polanco',
   },
 ]

@@ -10,7 +10,7 @@ export function EditorialLabel({ children, variant = 'default', className = '' }
         ? 'text-hero-lavender'
         : variant === 'accent'
           ? 'text-accent-green'
-          : 'text-muted'
+          : 'text-ink'
 
   return (
     <p

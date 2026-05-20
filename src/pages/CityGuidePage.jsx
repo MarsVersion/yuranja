@@ -8,7 +8,7 @@ export function CityGuidePage() {
       <section className="mb-24 md:mb-40">
         <EditorialLabel>The atlas</EditorialLabel>
         <h1 className="mt-4 font-serif text-5xl md:text-7xl">Cities</h1>
-        <p className="mt-8 max-w-3xl font-sans text-lg font-light leading-relaxed text-muted">
+        <p className="mt-8 max-w-3xl font-sans text-lg leading-relaxed text-ink">
           Yuranja maps the rooms that reward a flight: museums with restless programs, galleries
           that treat artists like authors, and project spaces that only exist for a season. Choose
           a city to read the full note.

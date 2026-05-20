@@ -3,11 +3,11 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-ink: #1a1a1a;
+  --color-ink: #000000;
   --color-canvas: #ffffff;
   --color-accent-green: #234b3a;
   --color-accent-orange: #c67a3d;
-  --color-muted: #5c5c5c;
+  --color-muted: #000000;
   --color-line: #d4d4d4;
   --color-surface-muted: #f5f5f5;
 
@@ -16,7 +16,7 @@
   --color-hero-lavender: var(--yuranja-hero-lavender);
   --color-hero-orange: var(--yuranja-hero-orange);
 
-  /* Rem-based labels (scale with html 115% — ~15% larger than prior px sizes) */
+  /* Rem-based labels (~15% larger than legacy px when used inside .site-main) */
   --text-caption: 0.7rem;
   --text-micro: 0.68rem;
   --text-hero-display: 7.5rem;
@@ -24,13 +24,30 @@
 
 @layer base {
   html {
-    font-size: 115%;
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-canvas text-ink font-sans antialiased;
+    @apply bg-canvas font-sans font-medium text-ink antialiased;
+    color: #000000;
+    font-weight: 500;
     -webkit-font-smoothing: antialiased;
+  }
+
+  /* Body copy: medium weight; small/secondary sans text one step heavier */
+  p,
+  li,
+  dd,
+  blockquote {
+    color: #000000;
+    font-weight: 500;
+  }
+
+  .font-sans.text-sm,
+  .font-sans.text-xs,
+  .font-sans.text-caption:not(.uppercase),
+  .font-sans.text-micro:not(.uppercase) {
+    font-weight: 600;
   }
 
   .material-symbols-outlined {
@@ -50,5 +67,10 @@
 
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Main content +15% for readability; header/footer stay at root scale */
+  .site-main {
+    zoom: 1.15;
   }
 }

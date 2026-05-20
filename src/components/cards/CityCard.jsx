@@ -21,7 +21,7 @@ export function CityCard({ city, staggerClass = '', variant = 'home' }) {
           north_east
         </span>
       </div>
-      <p className="mt-4 font-sans text-caption font-semibold uppercase tracking-[0.2em] text-muted">
+      <p className="mt-4 font-sans text-caption font-semibold uppercase tracking-[0.2em] text-ink">
         {city.district}
       </p>
     </Link>

@@ -12,7 +12,7 @@ export function InstitutionPage() {
       <main className="mx-auto max-w-[720px] px-6 py-24 text-center">
         <EditorialLabel>Listing</EditorialLabel>
         <h1 className="mt-4 font-serif text-4xl">Space not found</h1>
-        <p className="mt-4 font-sans text-muted">
+        <p className="mt-4 font-sans text-ink">
           We could not find that listing. Browse city guides to discover spaces we cover.
         </p>
         <Link
@@ -48,7 +48,7 @@ export function InstitutionPage() {
             <h1 className="font-serif text-5xl md:text-7xl">{i.name}</h1>
             <div className="mt-2 flex items-center gap-3 text-accent-orange">
               <span aria-hidden>{'★'.repeat(i.rating)}</span>
-              <span className="font-sans text-sm font-light text-white/90">{i.ratingLabel}</span>
+              <span className="font-sans text-sm text-white/90">{i.ratingLabel}</span>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@ export function InstitutionPage() {
           <div className="md:col-span-7">
             <EditorialLabel>The review</EditorialLabel>
             <h2 className="mt-4 font-serif text-3xl md:text-4xl">From the editors</h2>
-            <p className="mt-8 font-sans text-lg font-light leading-relaxed text-muted">
+            <p className="mt-8 font-sans text-lg leading-relaxed text-ink">
               {i.review}
             </p>
           </div>
@@ -96,15 +96,15 @@ export function InstitutionPage() {
             <div className="border border-line bg-canvas p-8">
               <span className="material-symbols-outlined text-3xl text-accent-green">museum</span>
               <h3 className="mt-4 font-serif text-2xl">Entry &amp; tickets</h3>
-              <p className="mt-3 font-sans text-sm text-muted">{i.entryFee}</p>
+              <p className="mt-3 font-sans text-sm text-ink">{i.entryFee}</p>
             </div>
             <div className="border border-line bg-canvas p-8 md:mt-16">
               <span className="material-symbols-outlined text-3xl text-accent-orange">
                 location_on
               </span>
               <h3 className="mt-4 font-serif text-2xl">Accessibility &amp; amenities</h3>
-              <p className="mt-3 font-sans text-sm text-muted">{i.accessibility}</p>
-              <p className="mt-4 font-sans text-sm text-muted">{i.amenities}</p>
+              <p className="mt-3 font-sans text-sm text-ink">{i.accessibility}</p>
+              <p className="mt-4 font-sans text-sm text-ink">{i.amenities}</p>
             </div>
           </div>
           <div className="mt-8 grid gap-6 border border-line bg-canvas p-8 md:grid-cols-2">
@@ -114,7 +114,7 @@ export function InstitutionPage() {
             </div>
             <div>
               <EditorialLabel>Elsewhere</EditorialLabel>
-              <p className="mt-2 font-sans text-sm text-muted">
+              <p className="mt-2 font-sans text-sm text-ink">
                 Open listings often mention this museum around {i.googleRating.toFixed(1)} on
                 aggregate scales. On social channels, {i.instagramHashtagCount}.
               </p>
@@ -135,10 +135,10 @@ export function InstitutionPage() {
           <div className="order-1 md:order-2 md:col-span-6 md:col-start-7">
             <EditorialLabel>On the walls</EditorialLabel>
             <h2 className="mt-4 font-serif text-3xl md:text-4xl">{i.exhibitions[0]?.title}</h2>
-            <p className="mt-4 font-sans text-sm text-muted">
+            <p className="mt-4 font-sans text-sm text-ink">
               {i.exhibitions[0]?.artists}
             </p>
-            <p className="mt-6 font-sans text-lg font-light text-muted">
+            <p className="mt-6 font-sans text-lg text-ink">
               Calendars move; the dates below reflect our last walk-through. Confirm on the
               institution&apos;s site before you travel.
             </p>
@@ -146,7 +146,7 @@ export function InstitutionPage() {
               {i.exhibitions.map((ex) => (
                 <li key={ex.title} className="flex flex-col gap-1 md:flex-row md:justify-between">
                   <span className="font-serif text-xl">{ex.title}</span>
-                  <span className="font-sans text-caption font-semibold uppercase tracking-[0.2em] text-muted">
+                  <span className="font-sans text-caption font-semibold uppercase tracking-[0.2em] text-ink">
                     Ends {ex.endsOn}
                   </span>
                 </li>
@@ -162,7 +162,7 @@ export function InstitutionPage() {
             Practical notes
           </EditorialLabel>
           <h2 className="mt-4 font-serif text-4xl md:text-5xl">Visit information</h2>
-          <p className="mx-auto mt-6 max-w-2xl font-sans text-base font-light text-white/75">
+          <p className="mx-auto mt-6 max-w-2xl font-sans text-base text-white/75">
             Pair this visit with a walk, a second smaller space, or a late opening. Yuranja lists
             are built for real days — not idealized itineraries.
           </p>
@@ -174,10 +174,10 @@ export function InstitutionPage() {
                 See nearby galleries and project rooms in the same afternoon radius.
               </p>
               <Link
-                to="/map"
+                to="/cities"
                 className="mt-6 inline-block font-sans text-caption font-semibold uppercase tracking-[0.25em] underline underline-offset-4"
               >
-                Open map
+                City guides
               </Link>
             </div>
             <div>

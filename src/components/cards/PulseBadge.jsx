@@ -6,7 +6,7 @@ export function PulseBadge({ label }) {
         ? 'bg-accent-green/10 text-accent-green ring-accent-green/25'
         : label === 'Ending Soon'
           ? 'bg-ink/5 text-ink ring-ink/15'
-          : 'bg-muted/10 text-muted ring-muted/25'
+          : 'bg-muted/10 text-ink ring-muted/25'
 
   return (
     <span

@@ -1,21 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { EditorialLabel } from '../components/EditorialLabel'
+import { SearchBar } from '../components/SearchBar'
 import { featuredCities, topPicks } from '../data/cities'
 import { CityCard, RatingLegend, TopPickCard } from '../components/cards'
 import heroImg from '../assets/Midnight dark.jpg'
 
 export function HomePage() {
-  const [heroQuery, setHeroQuery] = useState('')
-  const navigate = useNavigate()
-
-  function handleHeroSearch(e) {
-    e.preventDefault()
-    const trimmed = heroQuery.trim()
-    if (!trimmed) return
-    navigate(`/search?q=${encodeURIComponent(trimmed)}`)
-  }
-
   return (
     <>
       <section className="relative flex min-h-screen flex-col justify-end overflow-hidden pt-24">
@@ -34,47 +24,12 @@ export function HomePage() {
           <h1 className="hero-title mt-4 font-serif text-5xl leading-[0.95] tracking-tight md:text-8xl lg:text-hero-display">
             Yuranja
           </h1>
-          <p className="mt-6 max-w-xl font-sans text-lg font-light text-white/90 md:text-xl">
+          <p className="mt-6 max-w-xl font-sans text-lg text-white/90 md:text-xl">
             A guide to art spaces genuinely worth your time.
           </p>
-          <form
-            onSubmit={handleHeroSearch}
-            className="mt-10 flex max-w-2xl flex-col gap-4 sm:flex-row sm:items-stretch"
-          >
-            <label className="sr-only" htmlFor="hero-search">
-              Search by city, artist, or exhibition
-            </label>
-            <div className="hero-search-field flex min-h-[52px] w-full flex-1 items-center gap-3 border bg-black/60 px-4 py-3 backdrop-blur-md">
-              <span className="material-symbols-outlined">search</span>
-              <input
-                id="hero-search"
-                name="q"
-                type="text"
-                inputMode="search"
-                enterKeyHint="search"
-                role="searchbox"
-                value={heroQuery}
-                onChange={(e) => setHeroQuery(e.target.value)}
-                placeholder="Search by city, artist, or exhibition"
-                autoComplete="off"
-                className="w-full border-0 bg-transparent font-sans text-sm outline-none focus:ring-0"
-              />
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
-              <button
-                type="submit"
-                className="inline-flex min-h-[52px] items-center justify-center border-2 border-white bg-white px-8 font-sans text-caption font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-white/90"
-              >
-                Search
-              </button>
-              <Link
-                to="/cities"
-                className="inline-flex min-h-[52px] items-center justify-center border-2 border-white bg-transparent px-8 font-sans text-caption font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-white/10"
-              >
-                Explore cities
-              </Link>
-            </div>
-          </form>
+          <div className="hero-search-wrap mt-10 w-full max-w-[34.7rem]">
+            <SearchBar variant="hero" inputId="hero-search" ignoreEmptySubmit />
+          </div>
         </div>
       </section>
 
@@ -84,7 +39,7 @@ export function HomePage() {
             <EditorialLabel>Editors&apos; choice</EditorialLabel>
             <h2 className="mt-4 font-serif text-4xl uppercase md:text-5xl">Top Picks</h2>
           </div>
-          <p className="max-w-md font-sans text-sm text-muted">
+          <p className="max-w-md font-sans text-sm text-ink">
             Spaces our editors would send a friend to first — museums, galleries, and projects
             with a clear point of view.
           </p>
@@ -105,7 +60,7 @@ export function HomePage() {
           <div>
             <EditorialLabel variant="onDark">How we rank</EditorialLabel>
             <h2 className="mt-4 font-serif text-4xl uppercase md:text-5xl">Rating system</h2>
-            <p className="mt-6 font-sans text-base font-light text-white/75">
+            <p className="mt-6 font-sans text-base text-white/75">
               Three anchors, one pulse. Ratings describe how far we would travel; pulse describes
               what it feels like to visit right now.
             </p>
@@ -118,7 +73,7 @@ export function HomePage() {
         <div className="mb-16 text-center">
           <EditorialLabel className="mx-auto max-w-xl">The atlas</EditorialLabel>
           <h2 className="mt-4 font-serif text-4xl uppercase md:text-5xl">City guides</h2>
-          <p className="mx-auto mt-4 max-w-2xl font-sans text-lg font-light text-muted">
+          <p className="mx-auto mt-4 max-w-2xl font-sans text-lg text-ink">
             Start with a neighborhood, leave with a shortlist you can actually finish in a weekend.
           </p>
         </div>
@@ -147,7 +102,7 @@ export function HomePage() {
           <div className="order-1 md:order-2 md:col-span-6 md:col-start-7">
             <EditorialLabel>Featured exhibition</EditorialLabel>
             <h2 className="mt-4 font-serif text-4xl md:text-5xl">Night Rooms</h2>
-            <p className="mt-6 font-sans text-lg font-light text-muted">
+            <p className="mt-6 font-sans text-lg text-ink">
               A citywide trail of intimate installations — sound, light, and sculpture in spaces
               not built as museums. Yuranja mapped the route so you can visit in one evening.
             </p>
@@ -157,7 +112,7 @@ export function HomePage() {
               </span>
               <span className="h-px w-12 bg-ink" aria-hidden />
               <Link
-                to="/exhibitions"
+                to="/exhibitions/night-rooms"
                 className="font-sans text-caption font-semibold uppercase tracking-[0.25em] text-accent-green underline-offset-4 hover:underline"
               >
                 View trail
@@ -176,7 +131,7 @@ export function HomePage() {
             <h2 className="font-serif text-4xl uppercase leading-tight md:text-5xl">
               How we choose what makes the list
             </h2>
-            <p className="mt-8 font-sans text-lg font-light text-muted">
+            <p className="mt-8 font-sans text-lg text-ink">
               Our editors visit anonymously, return on weekends, and talk to artists and guards
               alike. If a space is here, it earned its place with work you can see on the walls —
               not with catalogue copy alone.
@@ -205,7 +160,7 @@ export function HomePage() {
               <EditorialLabel>Visitor information</EditorialLabel>
               <h2 className="mt-3 font-serif text-3xl uppercase md:text-4xl">Plan like a local</h2>
             </div>
-            <p className="max-w-md font-sans text-sm text-muted">
+            <p className="max-w-md font-sans text-sm text-ink">
               Hours change, tickets sell out, and the best rooms are sometimes the quiet ones. Each
               Yuranja listing includes what you need before you go.
             </p>
@@ -214,21 +169,21 @@ export function HomePage() {
             <div className="flex flex-col items-start border border-line bg-canvas p-8">
               <span className="material-symbols-outlined text-3xl text-accent-green">location_on</span>
               <h3 className="mt-6 font-serif text-2xl">Neighborhood context</h3>
-              <p className="mt-3 font-sans text-sm text-muted">
+              <p className="mt-3 font-sans text-sm text-ink">
                 Where to walk before and after — second stops, bookshops, and quiet corners nearby.
               </p>
             </div>
             <div className="flex flex-col items-start border border-line bg-canvas p-8">
               <span className="material-symbols-outlined text-3xl text-accent-orange">event</span>
               <h3 className="mt-6 font-serif text-2xl">Exhibition windows</h3>
-              <p className="mt-3 font-sans text-sm text-muted">
+              <p className="mt-3 font-sans text-sm text-ink">
                 Closing dates and late openings so you do not arrive on the wrong Tuesday.
               </p>
             </div>
             <div className="flex flex-col items-start border border-line bg-canvas p-8">
               <span className="material-symbols-outlined text-3xl text-ink">museum</span>
               <h3 className="mt-6 font-serif text-2xl">Space types</h3>
-              <p className="mt-3 font-sans text-sm text-muted">
+              <p className="mt-3 font-sans text-sm text-ink">
                 Museums, galleries, project rooms, and private collections — labeled clearly.
               </p>
             </div>
