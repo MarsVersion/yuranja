@@ -28,6 +28,12 @@ export function Footer() {
                 {l.label}
               </Link>
             ))}
+            <Link
+              to="/about#initiated-by"
+              className="font-sans text-caption font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:text-ink"
+            >
+              Initiated by
+            </Link>
           </div>
         </div>
 

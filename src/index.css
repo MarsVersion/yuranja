@@ -72,5 +72,6 @@
   /* Main content +15% for readability; header/footer stay at root scale */
   .site-main {
     zoom: 1.15;
+    overflow: visible;
   }
 }
