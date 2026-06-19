@@ -3,7 +3,7 @@
  * Used by .hero-title and mirrored into @theme in index.css.
  */
 :root {
-  --yuranja-hero-fg: #fae2be;
+  --yuranja-hero-fg: #9AD9D0;
   --yuranja-hero-subtle: #edf27e;
   --yuranja-hero-lavender: #f0ebff;
   --yuranja-hero-orange: #d6de3c;
@@ -11,4 +11,5 @@
 
 .hero-title {
   color: var(--yuranja-hero-fg);
+  font-weight: 500;
 }

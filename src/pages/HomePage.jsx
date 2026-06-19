@@ -3,7 +3,11 @@ import { EditorialLabel } from '../components/EditorialLabel'
 import { SearchBar } from '../components/SearchBar'
 import { featuredCities, topPicks } from '../data/cities'
 import { CityCard, RatingLegend, TopPickCard } from '../components/cards'
-import heroImg from '../assets/Midnight dark.jpg'
+import heroImg from '../assets/WhitneyParty.jpg'
+import soyoungYoonImg from '../assets/Soyoung Yoon.png'
+
+const heroCaption =
+  'Art Party 2025 at the Whitney Museum of American Art. Photos by Deonté Lee/BFA.com'
 
 export function HomePage() {
   return (
@@ -15,8 +19,11 @@ export function HomePage() {
             alt=""
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/65 to-black/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
         </div>
+        <p className="absolute bottom-4 left-6 z-10 max-w-xl text-left font-sans text-xs text-white/55 md:bottom-6 md:left-20">
+          {heroCaption}
+        </p>
         <div className="relative z-10 mx-auto mb-12 w-full max-w-[1440px] px-6 py-12 md:px-20">
           <EditorialLabel variant="hero" className="tracking-[0.35em]">
             See what matters.
@@ -50,7 +57,15 @@ export function HomePage() {
           </div>
           <div className="flex flex-col gap-24 pt-0 md:col-span-5 md:pt-24">
             <TopPickCard {...topPicks[1]} />
-            <TopPickCard {...topPicks[2]} />
+            <TopPickCard
+              title="Soyoung Yoon"
+              subtitle="Appointed Director of the Whitney Independent Study Program"
+              rating={2}
+              pulse="New"
+              image={soyoungYoonImg}
+              href="/soyoung-yoon-whitney-isp"
+              containImage
+            />
           </div>
         </div>
       </section>

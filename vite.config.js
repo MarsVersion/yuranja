@@ -3,7 +3,8 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/yuranja/' : '/',
   plugins: [react(), tailwindcss()],
   server: {
     // iCloud Drive paths often miss native file events; polling keeps CSS @theme in sync
@@ -12,4 +13,4 @@ export default defineConfig({
       interval: 300,
     },
   },
-})
+}))

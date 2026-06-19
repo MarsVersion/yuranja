@@ -10,10 +10,13 @@ import { ExhibitionDetailPage } from './pages/ExhibitionDetailPage'
 import { AboutPage } from './pages/AboutPage'
 import { EditorialBoardPage } from './pages/EditorialBoardPage'
 import { LegalPage } from './pages/LegalPage'
+import { SoyoungYoonArticle } from './pages/SoyoungYoonArticle'
+
+const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '')
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={routerBasename || undefined}>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
@@ -24,6 +27,7 @@ export default function App() {
           <Route path="exhibitions/:slug" element={<ExhibitionDetailPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="about/editorial-board" element={<EditorialBoardPage />} />
+          <Route path="soyoung-yoon-whitney-isp" element={<SoyoungYoonArticle />} />
           <Route
             path="privacy"
             element={

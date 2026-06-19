@@ -1,17 +1,19 @@
 import { Link } from 'react-router-dom'
 import { PulseBadge } from './PulseBadge'
 
-export function TopPickCard({ title, subtitle, rating, pulse, image, href, large }) {
+export function TopPickCard({ title, subtitle, rating, pulse, image, href, large, containImage }) {
+  const imageContainerClass = containImage
+    ? 'overflow-hidden bg-surface-muted w-full'
+    : `overflow-hidden bg-surface-muted ${large ? 'aspect-[4/5]' : 'aspect-square md:aspect-[3/4]'}`
+
+  const imageClass = containImage
+    ? 'h-auto w-full object-contain grayscale transition-transform duration-700 group-hover:scale-105'
+    : 'h-full w-full object-cover grayscale transition-transform duration-700 group-hover:scale-105'
+
   return (
     <Link to={href} className="group flex flex-col gap-6">
-      <div
-        className={`overflow-hidden bg-surface-muted ${large ? 'aspect-[4/5]' : 'aspect-square md:aspect-[3/4]'}`}
-      >
-        <img
-          src={image}
-          alt=""
-          className="h-full w-full object-cover grayscale transition-transform duration-700 group-hover:scale-105"
-        />
+      <div className={imageContainerClass}>
+        <img src={image} alt="" className={imageClass} />
       </div>
       <div className="flex items-start justify-between gap-4 border-t border-ink pt-4">
         <div>

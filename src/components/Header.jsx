@@ -115,8 +115,14 @@ export function Header() {
       <nav className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-6 py-5 md:gap-6 md:px-20">
         <Link
           to="/"
-          className="font-serif shrink-0 text-2xl font-semibold tracking-tight text-ink md:text-3xl"
+          className="inline-flex shrink-0 items-center gap-2.5 font-serif text-2xl font-semibold tracking-tight text-ink md:gap-3 md:text-3xl"
         >
+          <img
+            src={`${import.meta.env.BASE_URL}favicon/favicon.svg`}
+            alt=""
+            className="h-[30.8px] w-auto md:h-[35.2px]"
+            aria-hidden="true"
+          />
           Yuranja
         </Link>
 
