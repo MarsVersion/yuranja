@@ -111,7 +111,7 @@ export function Header() {
   }
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-line bg-canvas/95 backdrop-blur-sm">
+    <header className="site-header fixed top-0 z-50 w-full backdrop-blur-sm">
       <nav className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-6 py-5 md:gap-6 md:px-20">
         <Link
           to="/"

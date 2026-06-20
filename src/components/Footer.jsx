@@ -11,7 +11,7 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-canvas">
+    <footer className="site-footer">
       <div className="mx-auto flex max-w-[1440px] flex-col items-start justify-between gap-12 px-6 py-24 md:flex-row md:px-20">
         <div>
           <p className="font-serif text-4xl text-ink md:text-5xl">Yuranja</p>

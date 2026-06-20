@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 const externalLinkClass =
-  'text-ink underline underline-offset-4 transition-colors hover:text-accent-green'
+  'page-link underline underline-offset-4 transition-opacity hover:opacity-75'
 
 const LINKS = {
   hybridCurator: 'https://hybridcurator.com',
@@ -23,17 +23,17 @@ export function AboutPage() {
   }, [location.pathname, location.hash])
 
   return (
-    <article className="mx-auto max-w-[1440px] px-6 py-16 pb-32 md:px-20 md:py-24 md:pb-40">
-      <h1 className="font-serif text-5xl text-ink md:text-7xl">About Yuranja</h1>
-      <p className="mt-8 max-w-2xl font-sans text-lg leading-relaxed text-ink">
+    <article className="page-atmosphere mx-auto max-w-[1440px] px-6 py-16 pb-32 md:px-20 md:py-24 md:pb-40">
+      <h1 className="font-serif text-5xl md:text-7xl">About Yuranja</h1>
+      <p className="page-lede mt-8 max-w-2xl font-sans text-lg leading-relaxed">
         Yuranja is an editorial guide to museums, galleries, and exhibitions worth seeing. It
         helps travelers and locals answer a simple question: in this city, which art spaces are
         worth visiting?
       </p>
 
-      <section id="editorial" className="mt-24 max-w-3xl scroll-mt-32 border-t border-line pt-16">
-        <h2 className="font-serif text-3xl text-ink md:text-4xl">Editorial guide</h2>
-        <p className="mt-6 font-sans text-base leading-relaxed text-ink">
+      <section id="editorial" className="page-divider mt-24 max-w-3xl scroll-mt-32 border-t pt-16">
+        <h2 className="font-serif text-3xl md:text-4xl">Editorial guide</h2>
+        <p className="page-lede mt-6 font-sans text-base leading-relaxed">
           Editors visit anonymously, pay for their own tickets when required, and return on
           weekends to see how a space feels when it is crowded. Ratings describe how far we would
           travel; pulse captures tempo — what feels electric, calm, or about to close.
@@ -41,9 +41,9 @@ export function AboutPage() {
        
       </section>
 
-      <section id="initiated-by" className="mt-24 max-w-3xl scroll-mt-32 border-t border-line pt-16">
-        <h2 className="font-serif text-3xl text-ink md:text-4xl">Initiated by</h2>
-        <div className="mt-6 space-y-6 font-sans text-base leading-relaxed text-ink">
+      <section id="initiated-by" className="page-divider mt-24 max-w-3xl scroll-mt-32 border-t pt-16">
+        <h2 className="font-serif text-3xl md:text-4xl">Initiated by</h2>
+        <div className="page-lede mt-6 space-y-6 font-sans text-base leading-relaxed">
           <p>
             Yuranja is developed as an independent editorial practice by{' '}
             <a
@@ -101,11 +101,11 @@ export function AboutPage() {
           </p>
         </div>
 
-        <nav aria-label="Related projects" className="mt-10 border-t border-line pt-8">
-          <p className="font-sans text-caption font-semibold uppercase tracking-[0.2em] text-ink">
+        <nav aria-label="Related projects" className="page-divider mt-10 border-t pt-8">
+          <p className="page-label-accent font-sans text-caption font-semibold uppercase tracking-[0.2em]">
             Links
           </p>
-          <ul className="mt-4 space-y-3 font-sans text-base text-ink">
+          <ul className="page-lede mt-4 space-y-3 font-sans text-base">
             <li>
               <a href={LINKS.hybridCurator} target="_blank" rel="noopener noreferrer" className={externalLinkClass}>
                 HybridCurator

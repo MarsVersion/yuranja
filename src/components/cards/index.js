@@ -1,4 +1,5 @@
 export { CityCard } from './CityCard'
+export { ExhibitionCard } from './ExhibitionCard'
 export { TopPickCard } from './TopPickCard'
 export { ExhibitionRow } from './ExhibitionRow'
 export { RatingLegend } from './RatingLegend'

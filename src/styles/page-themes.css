@@ -1,0 +1,335 @@
+/**
+ * Page atmosphere — maps palette tokens to layout, chrome, and Tailwind theme vars.
+ */
+
+/* —— Default (search, spaces, legal, articles) —— */
+
+.site-shell--default {
+  --color-ink: #000000;
+  --color-canvas: #ffffff;
+  --color-line: #d4d4d4;
+  --color-surface-muted: #f5f5f5;
+  --color-accent-green: #234b3a;
+  --page-bg: #ffffff;
+  --page-text: #000000;
+  --page-body: #333333;
+  --page-label: #666666;
+  --page-accent: #234b3a;
+  --page-strong: #111111;
+  --page-border: #d4d4d4;
+  --page-header-bg: rgb(255 255 255 / 0.95);
+  --page-footer-bg: #ffffff;
+}
+
+.site-shell--default {
+  background: var(--page-bg);
+  color: var(--page-text);
+}
+
+/* —— Home —— */
+
+.site-shell--home {
+  --color-ink: var(--home-text);
+  --color-canvas: var(--home-teal);
+  --color-line: color-mix(in srgb, var(--home-charcoal) 16%, transparent);
+  --color-surface-muted: color-mix(in srgb, var(--home-teal) 65%, var(--home-bg));
+  --color-accent-green: var(--home-burgundy);
+  --page-bg: var(--home-bg);
+  --page-text: var(--home-text);
+  --page-body: var(--home-text);
+  --page-label: var(--home-burgundy);
+  --page-accent: var(--home-burgundy);
+  --page-accent-hover: var(--home-orange);
+  --page-strong: var(--home-charcoal);
+  --page-border: color-mix(in srgb, var(--home-charcoal) 14%, transparent);
+  --page-header-bg: color-mix(in srgb, var(--home-bg) 94%, transparent);
+  --page-footer-bg: var(--home-charcoal);
+}
+
+.site-shell--home {
+  background: var(--home-bg);
+  color: var(--home-text);
+}
+
+.site-shell--home .site-header {
+  border-color: var(--page-border);
+}
+
+.site-shell--home .site-header::before {
+  background: linear-gradient(
+    90deg,
+    var(--home-orange) 0%,
+    color-mix(in srgb, var(--home-orange) 0%, transparent) 100%
+  );
+}
+
+.site-shell--home .site-footer {
+  border-color: color-mix(in srgb, var(--home-footer-text) 28%, transparent);
+  color: var(--home-footer-text);
+}
+
+.site-shell--home .site-footer p,
+.site-shell--home .site-footer small,
+.site-shell--home .site-footer span,
+.site-shell--home .site-footer li,
+.site-shell--home .site-footer a,
+.site-shell--home .site-footer .text-ink,
+.site-shell--home .site-footer .font-serif,
+.site-shell--home .site-footer input,
+.site-shell--home .site-footer button,
+.site-shell--home .site-footer .material-symbols-outlined {
+  color: var(--home-footer-text);
+}
+
+.site-shell--home .site-footer input::placeholder {
+  color: color-mix(in srgb, var(--home-footer-text) 68%, transparent);
+}
+
+.site-shell--home .site-footer .border-ink {
+  border-color: color-mix(in srgb, var(--home-footer-text) 42%, transparent);
+}
+
+.site-shell--home .site-footer a {
+  transition: color 0.2s ease;
+}
+
+.site-shell--home .site-footer a:hover,
+.site-shell--home .site-footer a.hover\:text-ink:hover {
+  color: var(--home-teal);
+}
+
+.site-shell--home .site-main > *:not(.home-mag) p,
+.site-shell--home .site-main > *:not(.home-mag) li {
+  color: inherit;
+}
+
+/* —— Cities —— */
+
+.site-shell--cities {
+  --color-ink: var(--cities-text);
+  --color-canvas: var(--cities-charcoal);
+  --color-line: color-mix(in srgb, var(--cities-gray) 35%, transparent);
+  --color-surface-muted: color-mix(in srgb, var(--cities-charcoal) 65%, var(--cities-bg));
+  --color-accent-green: var(--cities-blue);
+  --page-bg: var(--cities-bg);
+  --page-text: var(--cities-text);
+  --page-body: var(--cities-stone);
+  --page-label: var(--cities-gray);
+  --page-accent: var(--cities-blue);
+  --page-strong: var(--cities-charcoal);
+  --page-border: color-mix(in srgb, var(--cities-gray) 35%, transparent);
+  --page-header-bg: color-mix(in srgb, var(--cities-bg) 92%, transparent);
+  --page-footer-bg: var(--cities-charcoal);
+}
+
+.site-shell--cities {
+  background: var(--cities-bg);
+  color: var(--cities-text);
+}
+
+/* —— Exhibitions —— */
+
+.site-shell--exhibitions {
+  --color-ink: var(--exhibitions-text);
+  --color-canvas: var(--exhibitions-slate);
+  --color-line: color-mix(in srgb, var(--exhibitions-gray) 40%, transparent);
+  --color-surface-muted: color-mix(in srgb, var(--exhibitions-slate) 50%, var(--exhibitions-bg));
+  --color-accent-green: var(--exhibitions-slate);
+  --page-bg: var(--exhibitions-bg);
+  --page-text: var(--exhibitions-text);
+  --page-body: var(--exhibitions-cream);
+  --page-label: var(--exhibitions-stone);
+  --page-accent: var(--exhibitions-slate);
+  --page-strong: var(--exhibitions-slate);
+  --page-border: color-mix(in srgb, var(--exhibitions-gray) 45%, transparent);
+  --page-header-bg: color-mix(in srgb, var(--exhibitions-bg) 92%, transparent);
+  --page-footer-bg: var(--exhibitions-slate);
+}
+
+.site-shell--exhibitions {
+  background: var(--exhibitions-bg);
+  color: var(--exhibitions-text);
+}
+
+/* —— About —— */
+
+.site-shell--about {
+  --color-ink: var(--about-text);
+  --color-canvas: var(--about-navy);
+  --color-line: color-mix(in srgb, var(--about-beige) 35%, transparent);
+  --color-surface-muted: color-mix(in srgb, var(--about-navy) 55%, var(--about-bg));
+  --color-accent-green: var(--about-beige);
+  --page-bg: var(--about-bg);
+  --page-text: var(--about-text);
+  --page-body: var(--about-light);
+  --page-label: var(--about-beige);
+  --page-accent: var(--about-beige);
+  --page-strong: var(--about-navy);
+  --page-border: color-mix(in srgb, var(--about-beige) 30%, transparent);
+  --page-header-bg: color-mix(in srgb, var(--about-bg) 92%, transparent);
+  --page-footer-bg: var(--about-navy);
+}
+
+.site-shell--about {
+  background: var(--about-bg);
+  color: var(--about-text);
+}
+
+/* —— Shared chrome —— */
+
+.site-header {
+  background: var(--page-header-bg);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--page-border);
+}
+
+.site-footer {
+  background: var(--page-footer-bg);
+  border-top: 1px solid var(--page-border);
+  color: var(--page-text);
+}
+
+.site-shell:not(.site-shell--default) .site-header .text-ink,
+.site-shell:not(.site-shell--default) .site-header .font-serif {
+  color: var(--page-text);
+}
+
+.site-shell:not(.site-shell--default) .site-header .text-ink\/50 {
+  color: color-mix(in srgb, var(--page-text) 55%, transparent);
+}
+
+.site-shell:not(.site-shell--default) .site-header .hover\:text-ink:hover {
+  color: var(--page-text);
+}
+
+.site-shell:not(.site-shell--default):not(.site-shell--home) .site-footer .text-ink,
+.site-shell:not(.site-shell--default):not(.site-shell--home) .site-footer .font-serif {
+  color: var(--page-text);
+}
+
+.site-shell:not(.site-shell--default):not(.site-shell--home) .site-footer input {
+  color: var(--page-text);
+}
+
+.site-shell:not(.site-shell--default):not(.site-shell--home) .site-footer input::placeholder {
+  color: color-mix(in srgb, var(--page-text) 45%, transparent);
+}
+
+.site-shell:not(.site-shell--default):not(.site-shell--home) .site-footer .border-ink {
+  border-color: var(--page-border);
+}
+
+/* Themed page prose helpers */
+
+.page-atmosphere {
+  color: var(--page-text);
+}
+
+.page-atmosphere .page-lede {
+  color: var(--page-body);
+}
+
+.page-atmosphere .page-label-accent {
+  color: var(--page-label);
+}
+
+.page-atmosphere a.page-link {
+  color: var(--page-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  transition: opacity 0.2s ease;
+}
+
+.page-atmosphere a.page-link:hover {
+  opacity: 0.75;
+}
+
+.page-atmosphere .page-accent-block {
+  background: var(--page-strong);
+  color: var(--page-text);
+  padding: 1.5rem;
+}
+
+.page-atmosphere .page-divider {
+  border-color: var(--page-border);
+}
+
+/* Header motif — subtle accent strip on themed pages */
+
+.site-shell:not(.site-shell--default) .site-header::before {
+  background: linear-gradient(
+    90deg,
+    var(--page-accent) 0%,
+    color-mix(in srgb, var(--page-accent) 0%, transparent) 100%
+  );
+  content: '';
+  height: 2px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: min(28%, 12rem);
+}
+
+.site-shell:not(.site-shell--default) .site-header {
+  position: relative;
+}
+
+/* Mobile nav on dark themes */
+
+.site-shell:not(.site-shell--default) #mobile-nav,
+.site-shell:not(.site-shell--default) #header-search-panel {
+  background: var(--page-header-bg);
+  border-color: var(--page-border);
+}
+
+.site-shell:not(.site-shell--default) .site-header .border-line {
+  border-color: var(--page-border);
+}
+
+.site-shell:not(.site-shell--default) .site-header .bg-canvas {
+  background-color: var(--color-canvas);
+}
+
+.site-shell:not(.site-shell--default) .site-header .bg-surface-muted\/60,
+.site-shell:not(.site-shell--default) .site-header .hover\:bg-surface-muted\/40:hover {
+  background-color: var(--color-surface-muted);
+}
+
+.page-atmosphere p.font-sans.text-sm {
+  color: var(--page-body);
+}
+
+.page-atmosphere span.font-sans.text-caption.uppercase,
+.page-atmosphere p.font-sans.text-caption.uppercase {
+  color: var(--page-label);
+}
+
+.page-atmosphere .group:hover {
+  opacity: 1;
+}
+
+.page-atmosphere .group .border-ink {
+  border-color: var(--page-border);
+}
+
+.site-shell--cities .site-header a img,
+.site-shell--exhibitions .site-header a img,
+.site-shell--about .site-header a img {
+  filter: brightness(0) invert(0.95);
+}
+
+.site-shell:not(.site-shell--default):not(.site-shell--home) .site-footer .text-sm.tracking-wide {
+  color: var(--page-body);
+}
+
+.site-shell:not(.site-shell--default):not(.site-shell--home) .site-footer .text-micro {
+  color: var(--page-label);
+}
+
+.page-atmosphere article.flex h-full p.font-sans.text-sm {
+  color: var(--page-label);
+}
+
+.page-atmosphere article.flex h-full .space-y-4 p {
+  color: var(--page-body);
+}

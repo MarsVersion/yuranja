@@ -1,0 +1,41 @@
+/**
+ * Yuranja page palettes — editorial guide color system.
+ * Each section defines atmosphere via CSS variables on .site-shell--{theme}.
+ */
+
+:root {
+  --yrj-ivory: #f3eee7;
+
+  /* Home — color comb 5 (light editorial / travel guide) */
+  --home-bg: #c8d6e5;
+  --home-burgundy: #6b071a;
+  --home-charcoal: #22181a;
+  --home-beige: #e3c9b6;
+  --home-teal: #a7cdcf;
+  --home-orange: #c84a00;
+  --home-text: #22181a;
+  --home-footer-text: #d6cfcc;
+
+  /* Cities */
+  --cities-bg: #0a6622;
+  --cities-blue: #244f83;
+  --cities-stone: #c2c2d2;
+  --cities-gray: #9c9ca0;
+  --cities-charcoal: #312a30;
+  --cities-text: #f3eee7;
+
+  /* Exhibitions */
+  --exhibitions-bg: #7b5a1f;
+  --exhibitions-cream: #d8cfb7;
+  --exhibitions-stone: #ab9486;
+  --exhibitions-gray: #96989b;
+  --exhibitions-slate: #3a4050;
+  --exhibitions-text: #f3eee7;
+
+  /* About */
+  --about-bg: #325767;
+  --about-navy: #17202d;
+  --about-beige: #ccb6a9;
+  --about-light: #d7dddc;
+  --about-text: #f3eee7;
+}

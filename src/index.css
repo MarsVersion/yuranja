@@ -1,3 +1,5 @@
+@import './styles/palette.css';
+@import './styles/page-themes.css';
 @import './styles/hero-colors.css';
 @import './styles/fonts.css';
 @import 'tailwindcss';
@@ -32,18 +34,23 @@
     @apply min-h-svh bg-canvas font-sans font-medium text-ink antialiased;
     overflow-x: hidden;
     overflow-y: visible;
-    color: #000000;
     font-weight: 500;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Body copy: medium weight; small/secondary sans text one step heavier */
+  /* Body copy inherits page theme; use .page-lede for secondary tone on themed pages */
   p,
   li,
   dd,
   blockquote {
-    color: #000000;
     font-weight: 500;
+  }
+
+  .site-shell--default p,
+  .site-shell--default li,
+  .site-shell--default dd,
+  .site-shell--default blockquote {
+    color: #000000;
   }
 
   .font-sans.text-sm,

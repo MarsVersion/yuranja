@@ -3,7 +3,7 @@ import { EditorialBoardMemberCard } from '../components/EditorialBoardMemberCard
 import { jungMeChai, placeholder, thomasEller } from '../assets/people/images.js'
 
 const linkClass =
-  'text-ink underline underline-offset-4 transition-colors hover:text-accent-green'
+  'page-link underline underline-offset-4 transition-opacity hover:opacity-75'
 
 const boardMembers = [
   {
@@ -44,16 +44,16 @@ const boardMembers = [
 
 export function EditorialBoardPage() {
   return (
-    <article className="mx-auto max-w-[1440px] px-6 py-16 pb-32 md:px-20 md:py-24 md:pb-40">
-      <p className="font-sans text-caption font-semibold uppercase tracking-[0.2em] text-ink/60">
+    <article className="page-atmosphere mx-auto max-w-[1440px] px-6 py-16 pb-32 md:px-20 md:py-24 md:pb-40">
+      <p className="page-label-accent font-sans text-caption font-semibold uppercase tracking-[0.2em]">
         <Link to="/about" className={`${linkClass} no-underline hover:underline`}>
           About
         </Link>
       </p>
 
-      <h1 className="mt-4 font-serif text-5xl text-ink md:text-7xl">Editorial Board</h1>
+      <h1 className="mt-4 font-serif text-5xl md:text-7xl">Editorial Board</h1>
 
-      <div className="mt-8 max-w-3xl space-y-6 font-sans text-base leading-relaxed text-ink">
+      <div className="page-lede mt-8 max-w-3xl space-y-6 font-sans text-base leading-relaxed">
         <p>
           Yuranja is developed in collaboration with a growing network of curators, writers, and
           art professionals who contribute their expertise and perspectives from different regions
@@ -65,7 +65,7 @@ export function EditorialBoardPage() {
         </p>
       </div>
 
-      <div className="mt-16 max-w-4xl border-t border-line pt-16 md:mt-20 md:pt-20">
+      <div className="page-divider mt-16 max-w-4xl border-t pt-16 md:mt-20 md:pt-20">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-x-12 md:gap-y-20">
           {boardMembers.map((member, index) => (
             <EditorialBoardMemberCard key={`${member.name}-${index}`} {...member} />
