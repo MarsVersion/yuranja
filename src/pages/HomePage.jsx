@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
-import { topPicks } from '../data/cities'
+import { citiesOfTheMonth, topPicks } from '../data/cities'
+import { AESF_DIGITAL_SAFARI_ARTICLE_PATH } from './AesfDigitalSafariArticle'
+import { SOYOUNG_YOON_ARTICLE_PATH } from './SoyoungYoonArticle'
 import { aesfYuranja, cattelanExhibition } from '../assets/images.js'
 import heroImg from '../assets/WhitneyParty.jpg'
 import soyoungYoonImg from '../assets/Soyoung Yoon.png'
@@ -10,34 +12,21 @@ const heroCaption =
 
 const editorialRail = [
   {
-    label: 'News',
-    title: 'Soyoung Yoon appointed Director of ISP',
-    text: 'The Whitney Independent Study Program enters a new chapter under Yoon’s leadership.',
-    href: '/soyoung-yoon-whitney-isp',
-  },
-  {
-    label: "Editor's note",
+    label: 'Conversation',
     title: 'Thomas Eller on Venice',
     text: 'Co-curator of the Mongolian Pavilion at the 2026 Biennale on curating across continents.',
     href: '/about/editorial-board',
   },
   {
-    label: 'Worth seeing',
-    title: 'What to see this week',
+    label: 'This month',
+    title: 'What to see this month',
     text: 'Exhibitions closing soon, late openings, and rooms our editors would revisit.',
     href: '/exhibitions',
   },
 ]
 
-const cities = [
-  { name: 'Berlin', href: '/cities/berlin' },
-  { name: 'Seoul', href: '/cities/seoul' },
-  { name: 'Venice', href: '/exhibitions' },
-  { name: 'New York', href: '/cities/new-york' },
-]
-
 export function HomePage() {
-  const [neueNationalgalerie, auditorium] = topPicks
+  const [neueNationalgalerie] = topPicks
 
   return (
     <div className="home-mag">
@@ -48,7 +37,7 @@ export function HomePage() {
           <div className="hero-overlay">
             <h1 className="home-mag__hero-title">Yuranja</h1>
             <p className="home-mag__hero-lede">
-              A guide to art spaces genuinely worth your time.
+            A guide to art spaces worth the journey.
             </p>
           </div>
         </figure>
@@ -71,40 +60,60 @@ export function HomePage() {
             </Link>
 
             <div className="home-mag__feature-rail">
-              <Link to="/soyoung-yoon-whitney-isp" className="home-mag__fragment">
+              <article className="home-mag__fragment">
                 <p className="home-mag__label">News</p>
-                <div className="home-mag__fragment-image home-mag__fragment-image--contain">
+                <Link
+                  to={SOYOUNG_YOON_ARTICLE_PATH}
+                  className="home-mag__fragment-image home-mag__fragment-image--contain"
+                >
                   <img src={soyoungYoonImg} alt="Soyoung Yoon" />
-                </div>
-                <h3 className="home-mag__fragment-title">
-                  Soyoung Yoon appointed Director of the Independent Study Program
-                </h3>
+                </Link>
+                <Link to={SOYOUNG_YOON_ARTICLE_PATH} className="home-mag__fragment-title-link">
+                  <h3 className="home-mag__fragment-title">
+                    Soyoung Yoon appointed Director of the Independent Study Program
+                  </h3>
+                </Link>
                 <p className="home-mag__fragment-sub">
-                  Yoon returns to the Whitney ISP after serving as fellow and faculty — a new
-                  chapter for one of contemporary art&apos;s most influential study programs.
+                  Nearly twenty years after joining the Whitney Museum&apos;s Independent Study
+                  Program as a fellow, Soyoung Yoon returns to lead one of the most influential
+                  platforms for artists, curators, and writers in contemporary art.
                 </p>
-                <span className="home-mag__link" style={{ marginTop: '0.875rem', display: 'inline-block' }}>
+                <Link
+                  to={SOYOUNG_YOON_ARTICLE_PATH}
+                  className="home-mag__link home-mag__read"
+                >
                   Read →
-                </span>
-              </Link>
+                </Link>
+              </article>
 
               <div className="home-mag__fragment-spacer" aria-hidden />
 
-              <Link
-                to={auditorium.href}
-                className="home-mag__fragment home-mag__fragment--overlap home-mag__fragment--aesf"
-              >
+              <article className="home-mag__fragment home-mag__fragment--overlap home-mag__fragment--aesf">
                 <p className="home-mag__label">Worth seeing</p>
-                <div className="home-mag__fragment-image">
+                <Link
+                  to={AESF_DIGITAL_SAFARI_ARTICLE_PATH}
+                  className="home-mag__fragment-image"
+                >
                   <img src={aesfYuranja} alt="" />
-                </div>
-                <h3 className="home-mag__fragment-title">
-                  Auditorium Santa Margherita — Emanuele Severino
-                </h3>
+                </Link>
+                <Link
+                  to={AESF_DIGITAL_SAFARI_ARTICLE_PATH}
+                  className="home-mag__fragment-title-link"
+                >
+                  <h3 className="home-mag__fragment-title">
+                    Auditorium Santa Margherita — Emanuele Severino
+                  </h3>
+                </Link>
                 <p className="home-mag__fragment-sub">
                   {`AES+F:\nDigital Safari —\nFables of the Jungle`}
                 </p>
-              </Link>
+                <Link
+                  to={AESF_DIGITAL_SAFARI_ARTICLE_PATH}
+                  className="home-mag__link home-mag__read"
+                >
+                  Read →
+                </Link>
+              </article>
             </div>
           </div>
         </div>
@@ -115,7 +124,7 @@ export function HomePage() {
         <div className="home-mag__wrap">
           <div className="home-mag__journal-grid">
             <aside>
-              <h2 className="home-mag__rail-heading">Editorial notes</h2>
+              <h2 className="home-mag__rail-heading">Journal</h2>
               <div className="home-mag__rail-list">
                 {editorialRail.map((item) => (
                   <article key={item.title} className="home-mag__rail-item">
@@ -136,22 +145,13 @@ export function HomePage() {
                 How we choose what makes the list
               </h2>
               <p className="home-mag__journal-main-text">
-                {`Our editors visit anonymously, return on weekends, and speak with artists and guards alike.\n\nIf a place appears here, it earned its position through experience, not catalogue copy.`}
+                Our editors visit anonymously. We pay attention not only to individual exhibitions
+                but also to curatorial vision, quality of presentation, public programs,
+                accessibility, and the broader setting that make a place worth seeking out.
               </p>
               <Link to="/about#editorial" className="home-mag__link" style={{ marginTop: '2rem', display: 'inline-block' }}>
                 Read the guide →
               </Link>
-
-              <article className="home-mag__journal-block">
-                <p className="home-mag__label">Featured exhibition</p>
-                <h3 className="home-mag__journal-block-title">Night Rooms</h3>
-                <p className="home-mag__body" style={{ marginTop: '1rem', maxWidth: '32rem', whiteSpace: 'pre-line' }}>
-                  {`A citywide trail of intimate installations —\nsound, light and sculpture in spaces\nnot built as museums.`}
-                </p>
-                <Link to="/exhibitions/night-rooms" className="home-mag__link" style={{ marginTop: '1.25rem', display: 'inline-block' }}>
-                  View trail →
-                </Link>
-              </article>
             </div>
           </div>
         </div>
@@ -160,8 +160,9 @@ export function HomePage() {
       {/* Section 4 — Cities */}
       <section className="home-mag__section home-mag__cities">
         <div className="home-mag__wrap">
-          {cities.map((city) => (
-            <Link key={city.name} to={city.href} className="home-mag__city">
+          <p className="home-mag__label home-mag__cities-heading">Cities of the Month</p>
+          {citiesOfTheMonth.map((city) => (
+            <Link key={city.slug} to={`/cities/${city.slug}`} className="home-mag__city">
               {city.name}
             </Link>
           ))}

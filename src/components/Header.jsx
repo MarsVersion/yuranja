@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom'
-import { SearchBar } from './SearchBar'
+import { useState } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 
 const nav = [
   { to: '/', label: 'Home', end: true },
@@ -81,29 +80,10 @@ function AboutNavDropdown({ onNavigate }) {
 
 export function Header() {
   const [open, setOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
   const [aboutMobileOpen, setAboutMobileOpen] = useState(false)
-  const location = useLocation()
-  const [params] = useSearchParams()
-  const isHome = location.pathname === '/'
-  const headerQuery = location.pathname === '/search' ? (params.get('q') ?? '') : ''
+  const { pathname } = useLocation()
   const isAboutSection =
-    location.pathname === '/about' || location.pathname.startsWith('/about/')
-
-  useEffect(() => {
-    if (!searchOpen) return
-
-    function handleKeyDown(e) {
-      if (e.key === 'Escape') setSearchOpen(false)
-    }
-
-    document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [searchOpen])
-
-  function closeSearch() {
-    setSearchOpen(false)
-  }
+    pathname === '/about' || pathname.startsWith('/about/')
 
   function closeMobileNav() {
     setOpen(false)
@@ -133,65 +113,16 @@ export function Header() {
           <AboutNavDropdown />
         </div>
 
-        <div className="flex items-center gap-3 md:gap-4">
-          {!isHome ? (
-            <>
-              <div className="hidden md:block">
-                <SearchBar
-                  key={`header-${headerQuery}`}
-                  variant="header"
-                  inputId="header-search-input"
-                  initialQuery={headerQuery}
-                />
-              </div>
-              <button
-                type="button"
-                className="text-ink transition-opacity hover:opacity-70 md:hidden"
-                aria-label="Search"
-                aria-expanded={searchOpen}
-                aria-controls="header-search-panel"
-                onClick={() => setSearchOpen((v) => !v)}
-              >
-                <span className="material-symbols-outlined text-[1.75rem]" aria-hidden>
-                  search
-                </span>
-              </button>
-            </>
-          ) : null}
-          <button
-            type="button"
-            className="lg:hidden"
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span className="material-symbols-outlined">menu</span>
-          </button>
-        </div>
+        <button
+          type="button"
+          className="lg:hidden"
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span className="material-symbols-outlined">menu</span>
+        </button>
       </nav>
-
-      {!isHome && searchOpen ? (
-        <>
-          <button
-            type="button"
-            className="fixed inset-0 z-40 bg-black/15 md:hidden"
-            aria-label="Close search"
-            onClick={closeSearch}
-          />
-          <div
-            id="header-search-panel"
-            className="relative z-50 border-t border-line bg-canvas px-6 py-6 md:hidden"
-          >
-            <SearchBar
-              variant="page"
-              inputId="header-mobile-search-input"
-              initialQuery={headerQuery}
-              autoFocus
-              onSubmit={closeSearch}
-            />
-          </div>
-        </>
-      ) : null}
 
       <div
         id="mobile-nav"

@@ -2,7 +2,7 @@
  * Page atmosphere — maps palette tokens to layout, chrome, and Tailwind theme vars.
  */
 
-/* —— Default (search, spaces, legal, articles) —— */
+/* —— Default (spaces, legal, articles) —— */
 
 .site-shell--default {
   --color-ink: #000000;
@@ -49,10 +49,6 @@
 .site-shell--home {
   background: var(--home-bg);
   color: var(--home-text);
-}
-
-.site-shell--home .site-header {
-  border-color: var(--page-border);
 }
 
 .site-shell--home .site-header::before {
@@ -180,7 +176,6 @@
 .site-header {
   background: var(--page-header-bg);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--page-border);
 }
 
 .site-footer {
@@ -276,8 +271,7 @@
 
 /* Mobile nav on dark themes */
 
-.site-shell:not(.site-shell--default) #mobile-nav,
-.site-shell:not(.site-shell--default) #header-search-panel {
+.site-shell:not(.site-shell--default) #mobile-nav {
   background: var(--page-header-bg);
   border-color: var(--page-border);
 }

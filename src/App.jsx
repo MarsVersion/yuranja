@@ -1,16 +1,22 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { HomePage } from './pages/HomePage'
 import { CityGuidePage } from './pages/CityGuidePage'
 import { CityDetailPage } from './pages/CityDetailPage'
-import { SearchResultsPage } from './pages/SearchResultsPage'
 import { InstitutionPage } from './pages/InstitutionPage'
 import { ExhibitionsPage } from './pages/ExhibitionsPage'
 import { ExhibitionDetailPage } from './pages/ExhibitionDetailPage'
 import { AboutPage } from './pages/AboutPage'
 import { EditorialBoardPage } from './pages/EditorialBoardPage'
 import { LegalPage } from './pages/LegalPage'
-import { SoyoungYoonArticle } from './pages/SoyoungYoonArticle'
+import {
+  AESF_DIGITAL_SAFARI_ARTICLE_PATH,
+  AesfDigitalSafariArticle,
+} from './pages/AesfDigitalSafariArticle'
+import {
+  SOYOUNG_YOON_ARTICLE_PATH,
+  SoyoungYoonArticle,
+} from './pages/SoyoungYoonArticle'
 
 const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '')
 
@@ -22,12 +28,19 @@ export default function App() {
           <Route index element={<HomePage />} />
           <Route path="cities/:slug" element={<CityDetailPage />} />
           <Route path="cities" element={<CityGuidePage />} />
-          <Route path="search" element={<SearchResultsPage />} />
           <Route path="exhibitions" element={<ExhibitionsPage />} />
           <Route path="exhibitions/:slug" element={<ExhibitionDetailPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="about/editorial-board" element={<EditorialBoardPage />} />
-          <Route path="soyoung-yoon-whitney-isp" element={<SoyoungYoonArticle />} />
+          <Route path={SOYOUNG_YOON_ARTICLE_PATH.slice(1)} element={<SoyoungYoonArticle />} />
+          <Route
+            path={AESF_DIGITAL_SAFARI_ARTICLE_PATH.slice(1)}
+            element={<AesfDigitalSafariArticle />}
+          />
+          <Route
+            path="soyoung-yoon-whitney-isp"
+            element={<Navigate to={SOYOUNG_YOON_ARTICLE_PATH} replace />}
+          />
           <Route
             path="privacy"
             element={

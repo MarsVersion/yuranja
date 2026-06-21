@@ -41,6 +41,20 @@ export const featuredCities = [
     address: 'Guide focus · Samcheong-dong',
   },
   {
+    slug: 'venice',
+    name: 'Venice',
+    district: 'Giardini & Arsenale',
+    blurb: 'Biennale seasons, palazzos, and churches turned exhibition rooms.',
+    intro:
+      'Venice asks you to move by foot and by vaporetto: national pavilions in the Giardini, project rooms in the Arsenale, and churches that become temporary galleries without losing their silence.',
+    whyItMatters:
+      'No city stages the argument between history and the present as visibly. When the Biennale is on, the whole lagoon becomes a single itinerary — but Venice rewards return visits in the quieter months too.',
+    image: tateModernLondon,
+    imageCreditTitle: 'Venice · Guide placeholder',
+    imageCreditPhoto: 'Image forthcoming',
+    address: 'Guide focus · Giardini & Dorsoduro',
+  },
+  {
     slug: 'new-york',
     name: 'New York',
     district: 'Chelsea & Uptown',
@@ -103,6 +117,19 @@ export function getCityBySlug(slug) {
   if (!slug) return null
   return featuredCities.find((c) => c.slug === slug) ?? null
 }
+
+/** Homepage — Cities of the Month (ordered) */
+export const citiesOfTheMonth = [
+  'berlin',
+  'seoul',
+  'venice',
+  'new-york',
+  'tokyo',
+  'london',
+  'mexico-city',
+]
+  .map((slug) => getCityBySlug(slug))
+  .filter(Boolean)
 
 export const topPicks = [
   {

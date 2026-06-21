@@ -1,9 +1,20 @@
 import { Link } from 'react-router-dom'
+import { EditorialLabel } from '../components/EditorialLabel'
+import soyoungYoonImg from '../assets/Soyoung Yoon.png'
+
+export const SOYOUNG_YOON_ARTICLE_PATH = '/journal/soyoung-yoon-independent-study-program'
 
 export function SoyoungYoonArticle() {
   return (
-    <article className="mx-auto max-w-[1440px] px-6 py-16 pb-32 md:px-20 md:py-24 md:pb-40">
-      <div className="max-w-3xl space-y-6 font-sans text-base leading-relaxed text-ink md:text-lg">
+    <article className="page-atmosphere mx-auto max-w-[1440px] px-6 py-16 pb-32 md:px-20 md:py-24 md:pb-40">
+      <EditorialLabel>Journal</EditorialLabel>
+      <h1 className="mt-4 max-w-4xl font-serif text-4xl leading-tight md:text-6xl">
+        Soyoung Yoon appointed Director of the Independent Study Program
+      </h1>
+
+
+
+      <div className="page-lede mt-10 max-w-3xl space-y-6 font-sans text-base leading-relaxed md:text-lg">
         <p>
           Soyoung Yoon has been appointed Director of the Independent Study Program (ISP) at the
           Whitney Museum of American Art in New York.
@@ -33,9 +44,9 @@ export function SoyoungYoonArticle() {
 
       <Link
         to="/"
-        className="mt-12 inline-block border border-ink px-8 py-4 font-sans text-caption font-semibold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-canvas"
+        className="page-link mt-12 inline-block font-sans text-caption font-semibold uppercase tracking-[0.2em]"
       >
-        Back to home
+        ← Back to home
       </Link>
     </article>
   )
