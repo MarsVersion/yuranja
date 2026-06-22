@@ -1,4 +1,4 @@
-/* Homepage — editorial magazine layout (Melodrama + Satoshi only) */
+/* Homepage — editorial magazine layout (Cormorant Garamond + Satoshi) */
 
 .home-mag {
   --mag-bg: var(--home-bg);
@@ -11,7 +11,7 @@
   --mag-strong: var(--home-charcoal);
   --mag-card: var(--home-teal);
   --mag-card-warm: var(--home-beige);
-  --mag-serif: 'Melodrama', serif;
+  --mag-serif: 'Cormorant Garamond', Georgia, serif;
   --mag-sans: 'Satoshi', sans-serif;
   --mag-max: 1400px;
   --mag-gutter: clamp(1.25rem, 4vw, 5rem);
@@ -262,10 +262,10 @@
 .home-mag__feature-main-title {
   border-top: 1px solid var(--mag-ink);
   font-family: var(--mag-serif);
-  font-size: clamp(1.75rem, 3vw, 2.3rem);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  line-height: 1;
+  font-size: 2.1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
   margin-top: 1.25rem;
   padding-top: 1rem;
   text-transform: uppercase;
@@ -401,6 +401,22 @@
   padding-block: 1.5rem;
 }
 
+.home-mag__rail-item--link {
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.home-mag__rail-item--link:hover .home-mag__rail-item-title {
+  color: var(--mag-accent);
+}
+
+.home-mag__rail-item--link:hover .home-mag__link {
+  color: var(--mag-accent-hover);
+}
+
 .home-mag__rail-item:first-child {
   border-top: none;
   padding-top: 0;
@@ -408,9 +424,10 @@
 
 .home-mag__rail-item-title {
   font-family: var(--mag-serif);
-  font-size: 1.2rem;
-  font-weight: 400;
-  line-height: 1;
+  font-size: 2.1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
   margin-top: 0.625rem;
 }
 
@@ -424,11 +441,12 @@
 
 .home-mag__journal-main-title {
   font-family: var(--mag-serif);
-  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
-  font-weight: 400;
-  line-height: 0.95;
+  font-size: clamp(2.25rem, 3.5vw, 3.25rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
   margin-top: 1rem;
-  max-width: 14ch;
+  max-width: 22ch;
 }
 
 .home-mag__journal-main-text {
@@ -459,58 +477,160 @@
 /* —— Cities —— */
 
 .home-mag__cities {
-  border-top: 1px solid color-mix(in srgb, var(--home-charcoal) 14%, transparent);
+  overflow: hidden;
 }
 
-.home-mag__cities-heading {
-  margin-bottom: 2rem;
-}
-
-.home-mag__city {
-  color: var(--mag-ink);
-  display: block;
-  font-family: var(--mag-serif);
-  font-size: clamp(2rem, 3vw, 3.75rem);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.05;
-  max-width: 100%;
-  overflow-wrap: break-word;
+.home-mag__cities-collage {
   position: relative;
-  text-decoration: none;
-  transition: color 0.25s ease, transform 0.25s ease;
-  width: fit-content;
 }
 
-.home-mag__city::after {
-  background: var(--home-orange);
-  bottom: 0.08em;
-  content: '';
-  height: 1px;
-  left: 0;
-  position: absolute;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
+.home-mag__cities-label {
+  font-family: var(--mag-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  margin: 0 0 clamp(1.5rem, 3vw, 2.5rem);
+  text-transform: uppercase;
+}
+
+.home-mag__cities-stage {
   width: 100%;
 }
 
-.home-mag__city:hover {
-  color: var(--home-burgundy);
-  transform: translateX(4px);
+.home-mag__cities-typography {
+  min-height: clamp(420px, 52vw, 580px);
+  position: relative;
+  width: 100%;
 }
 
-.home-mag__city:hover::after {
-  transform: scaleX(1);
+.home-mag__city-note {
+  opacity: var(--city-opacity, 1);
+  position: absolute;
+  transition: opacity 0.3s ease;
+  width: fit-content;
+  z-index: 1;
 }
 
-.home-mag__city + .home-mag__city {
-  margin-top: clamp(0.65rem, 1.4vw, 1rem);
+.home-mag__city-note-link {
+  color: inherit;
+  display: block;
+  font-family: var(--mag-serif);
+  font-size: clamp(3.8rem, 7vw, 8rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  text-decoration: none;
+}
+
+.home-mag__city-note-annotation {
+  display: block;
+  font-family: var(--mag-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.45;
+  margin-top: 0.4rem;
+  opacity: 0.65;
+  text-transform: uppercase;
+}
+
+.home-mag__city-note:hover,
+.home-mag__city-note:focus-within {
+  z-index: 6;
+}
+
+.home-mag__city-note--berlin {
+  left: 2%;
+  top: 0;
+}
+
+.home-mag__city-note--seoul {
+  left: 9%;
+  top: 14%;
+}
+
+.home-mag__city-note--venice {
+  left: 38%;
+  top: 26%;
+}
+
+.home-mag__city-note--new-york {
+  left: 56%;
+  top: 38%;
+}
+
+.home-mag__city-note--tokyo {
+  left: 3%;
+  top: 50%;
+}
+
+.home-mag__city-note--london {
+  left: 14%;
+  top: 64%;
+}
+
+.home-mag__city-note--mexico-city {
+  left: 1%;
+  top: 78%;
 }
 
 @media (max-width: 899px) {
   .home-mag {
     --mag-section: 4.5rem;
+  }
+
+  .home-mag__cities-typography {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 0;
+  }
+
+  .home-mag__city-note {
+    left: auto;
+    margin-bottom: clamp(1.25rem, 4vw, 2rem);
+    position: relative;
+    right: auto;
+    top: auto;
+  }
+
+  .home-mag__city-note-link {
+    font-size: clamp(2.75rem, 12vw, 4.25rem);
+  }
+
+  .home-mag__city-note--berlin {
+    order: 1;
+  }
+
+  .home-mag__city-note--seoul {
+    align-self: flex-start;
+    margin-left: 8%;
+    order: 2;
+  }
+
+  .home-mag__city-note--venice {
+    align-self: center;
+    order: 3;
+  }
+
+  .home-mag__city-note--new-york {
+    align-self: flex-end;
+    margin-right: 6%;
+    order: 4;
+  }
+
+  .home-mag__city-note--london {
+    align-self: flex-start;
+    margin-left: 14%;
+    order: 5;
+  }
+
+  .home-mag__city-note--tokyo {
+    order: 6;
+  }
+
+  .home-mag__city-note--mexico-city {
+    order: 7;
   }
 
   .home-mag__fragment--overlap {

@@ -17,6 +17,13 @@ import {
   NEUE_NATIONALGALERIE_ARTICLE_PATH,
   NeueNationalgalerieArticle,
 } from './pages/NeueNationalgalerieArticle'
+import { PEOPLE_PATH, PeoplePage } from './pages/PeoplePage'
+import {
+  THOMAS_ELLER_PAGE_PATH,
+  THOMAS_ELLER_VENICE_CONVERSATION_PATH,
+  ThomasEllerPage,
+} from './pages/ThomasEllerPage'
+import { ThomasEllerVeniceConversation } from './pages/ThomasEllerVeniceConversation'
 import {
   SOYOUNG_YOON_ARTICLE_PATH,
   SoyoungYoonArticle,
@@ -48,6 +55,12 @@ export default function App() {
           <Route
             path={NEUE_NATIONALGALERIE_ARTICLE_PATH.slice(1)}
             element={<NeueNationalgalerieArticle />}
+          />
+          <Route path={PEOPLE_PATH.slice(1)} element={<PeoplePage />} />
+          <Route path={THOMAS_ELLER_PAGE_PATH.slice(1)} element={<ThomasEllerPage />} />
+          <Route
+            path={THOMAS_ELLER_VENICE_CONVERSATION_PATH.slice(1)}
+            element={<ThomasEllerVeniceConversation />}
           />
           <Route
             path="privacy"

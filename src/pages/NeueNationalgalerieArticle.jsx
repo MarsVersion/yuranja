@@ -58,6 +58,17 @@ export function NeueNationalgalerieArticle() {
         </p>
       </div>
 
+      <p className="mt-8 max-w-[730px] font-sans text-base md:text-lg">
+        <a
+          href="https://www.smb.museum/ausstellungen/detail/maurizio-cattelan/"
+          className="page-link underline underline-offset-4 transition-opacity hover:opacity-75"
+          target="_blank"
+          rel="noreferrer"
+        >
+          smb.museum
+        </a>
+      </p>
+
       <Link
         to="/"
         className="page-link mt-12 inline-block font-sans text-caption font-semibold uppercase tracking-[0.2em]"

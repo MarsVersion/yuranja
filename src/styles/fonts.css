@@ -3,16 +3,24 @@
  */
 
 @font-face {
-  font-family: 'Melodrama';
-  src: url('/fonts/Melodrama-Regular.woff2') format('woff2');
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/CormorantGaramond-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/CormorantGaramond-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Melodrama';
-  src: url('/fonts/Melodrama-Semibold.woff') format('woff');
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/CormorantGaramond-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -51,7 +59,7 @@
 }
 
 @theme {
-  --font-serif: 'Melodrama', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Satoshi', system-ui, sans-serif;
 }
 
@@ -62,7 +70,8 @@
   }
 
   .font-serif {
-    font-weight: 600;
+    font-weight: 500;
     font-synthesis: none;
+    letter-spacing: -0.01em;
   }
 }

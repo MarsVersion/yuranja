@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { citiesOfTheMonth } from '../data/cities'
 import { AESF_DIGITAL_SAFARI_ARTICLE_PATH } from './AesfDigitalSafariArticle'
 import { NEUE_NATIONALGALERIE_ARTICLE_PATH } from './NeueNationalgalerieArticle'
+import { THOMAS_ELLER_PAGE_PATH } from './ThomasEllerPage'
 import { SOYOUNG_YOON_ARTICLE_PATH } from './SoyoungYoonArticle'
 import { aesfYuranja, cattelanExhibition } from '../assets/images.js'
 import heroImg from '../assets/WhitneyParty.jpg'
@@ -16,7 +17,8 @@ const editorialRail = [
     label: 'Conversation',
     title: 'Thomas Eller on Venice',
     text: 'Co-curator of the Mongolian Pavilion at the 2026 Biennale on curating across continents.',
-    href: '/about/editorial-board',
+    href: THOMAS_ELLER_PAGE_PATH,
+    fullCard: true,
   },
   {
     label: 'This month',
@@ -25,6 +27,18 @@ const editorialRail = [
     href: '/exhibitions',
   },
 ]
+
+const citiesCollage = [
+  { slug: 'berlin', opacity: 1, subtitle: true },
+  { slug: 'seoul', opacity: 0.18, subtitle: true },
+  { slug: 'venice', opacity: 0.22, subtitle: true },
+  { slug: 'new-york', opacity: 0.1 },
+  { slug: 'tokyo', opacity: 0.18, subtitle: true },
+  { slug: 'london', opacity: 0.1 },
+  { slug: 'mexico-city', opacity: 0.1 },
+]
+
+const cityBySlug = Object.fromEntries(citiesOfTheMonth.map((city) => [city.slug, city]))
 
 export function HomePage() {
   return (
@@ -127,25 +141,49 @@ export function HomePage() {
         <div className="home-mag__wrap">
           <div className="home-mag__journal-grid">
             <aside>
-              <h2 className="home-mag__rail-heading">Journal</h2>
+              <h3 className="home-mag__rail-heading">Journal</h3>
               <div className="home-mag__rail-list">
-                {editorialRail.map((item) => (
-                  <article key={item.title} className="home-mag__rail-item">
-                    <p className="home-mag__label">{item.label}</p>
-                    <h3 className="home-mag__rail-item-title">{item.title}</h3>
-                    <p className="home-mag__rail-item-text">{item.text}</p>
-                    <Link to={item.href} className="home-mag__link" style={{ marginTop: '0.75rem', display: 'inline-block' }}>
-                      Read →
+                {editorialRail.map((item) =>
+                  item.fullCard ? (
+                    <Link
+                      key={item.title}
+                      to={item.href}
+                      className="home-mag__rail-item home-mag__rail-item--link"
+                    >
+                      <p className="home-mag__label">{item.label}</p>
+                      <h4 className="home-mag__rail-item-title">{item.title}</h4>
+                      <p className="home-mag__rail-item-text">{item.text}</p>
+                      <span
+                        className="home-mag__link"
+                        style={{ marginTop: '0.75rem', display: 'inline-block' }}
+                      >
+                        Read →
+                      </span>
                     </Link>
-                  </article>
-                ))}
+                  ) : (
+                    <article key={item.title} className="home-mag__rail-item">
+                      <p className="home-mag__label">{item.label}</p>
+                      <h3 className="home-mag__rail-item-title">{item.title}</h3>
+                      <p className="home-mag__rail-item-text">{item.text}</p>
+                      <Link
+                        to={item.href}
+                        className="home-mag__link"
+                        style={{ marginTop: '0.75rem', display: 'inline-block' }}
+                      >
+                        Read →
+                      </Link>
+                    </article>
+                  ),
+                )}
               </div>
             </aside>
 
             <div>
               <p className="home-mag__label">Editor&apos;s note</p>
               <h2 className="home-mag__journal-main-title">
-                How we choose what makes the list
+                How we choose 
+                <br />
+                what makes the list
               </h2>
               <p className="home-mag__journal-main-text">
                 Our editors visit anonymously. We pay attention not only to individual exhibitions
@@ -162,13 +200,32 @@ export function HomePage() {
 
       {/* Section 4 — Cities */}
       <section className="home-mag__section home-mag__cities">
-        <div className="home-mag__wrap">
-          <p className="home-mag__label home-mag__cities-heading">Cities of the Month</p>
-          {citiesOfTheMonth.map((city) => (
-            <Link key={city.slug} to={`/cities/${city.slug}`} className="home-mag__city">
-              {city.name}
-            </Link>
-          ))}
+        <div className="home-mag__wrap home-mag__cities-collage">
+          <p className="home-mag__cities-label">Cities of the Month</p>
+
+          <div className="home-mag__cities-stage">
+            <div className="home-mag__cities-typography">
+              {citiesCollage.map((entry) => {
+                const city = cityBySlug[entry.slug]
+                if (!city) return null
+
+                return (
+                  <div
+                    key={city.slug}
+                    className={`home-mag__city-note home-mag__city-note--${city.slug}`}
+                    style={{ '--city-opacity': entry.opacity }}
+                  >
+                    <Link to={`/cities/${city.slug}`} className="home-mag__city-note-link">
+                      {city.name}
+                    </Link>
+                    {entry.subtitle ? (
+                      <span className="home-mag__city-note-annotation">{city.district}</span>
+                    ) : null}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </div>
       </section>
     </div>

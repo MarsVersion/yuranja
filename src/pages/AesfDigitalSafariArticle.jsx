@@ -7,7 +7,7 @@ export const AESF_DIGITAL_SAFARI_ARTICLE_PATH = '/journal/aes-f-digital-safari'
 export function AesfDigitalSafariArticle() {
   return (
     <article className="page-atmosphere mx-auto max-w-[1440px] px-6 py-16 pb-32 md:px-20 md:py-24 md:pb-40">
-      <figure className="w-full overflow-hidden bg-surface-muted">
+      <figure className="w-1/2 overflow-hidden bg-surface-muted">
         <img
           src={aesfHeroImg}
           alt="AES+F, Digital Safari: Fables of the Jungle"
@@ -18,7 +18,7 @@ export function AesfDigitalSafariArticle() {
         </figcaption>
       </figure>
 
-      <EditorialLabel className="mt-10">Artist Profile</EditorialLabel>
+      <EditorialLabel className="mt-10">Artists and new work</EditorialLabel>
       <h1 className="mt-4 max-w-4xl font-serif text-4xl leading-tight md:text-6xl">AES+F</h1>
       <h2 className="mt-3 max-w-4xl font-serif text-2xl leading-snug md:text-3xl">
         Digital Safari: Fables of the Jungle
@@ -61,6 +61,17 @@ export function AesfDigitalSafariArticle() {
           the ambiguities of life in an age of digital images and environmental uncertainty.
         </p>
       </div>
+
+      <p className="mt-8 max-w-[730px] font-sans text-base md:text-lg">
+        <a
+          href="https://aesf.art/"
+          className="page-link underline underline-offset-4 transition-opacity hover:opacity-75"
+          target="_blank"
+          rel="noreferrer"
+        >
+          aesf.art
+        </a>
+      </p>
 
       <Link
         to="/"
