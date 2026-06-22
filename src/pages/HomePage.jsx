@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { citiesOfTheMonth, topPicks } from '../data/cities'
+import { citiesOfTheMonth } from '../data/cities'
 import { AESF_DIGITAL_SAFARI_ARTICLE_PATH } from './AesfDigitalSafariArticle'
+import { NEUE_NATIONALGALERIE_ARTICLE_PATH } from './NeueNationalgalerieArticle'
 import { SOYOUNG_YOON_ARTICLE_PATH } from './SoyoungYoonArticle'
 import { aesfYuranja, cattelanExhibition } from '../assets/images.js'
 import heroImg from '../assets/WhitneyParty.jpg'
@@ -26,8 +27,6 @@ const editorialRail = [
 ]
 
 export function HomePage() {
-  const [neueNationalgalerie] = topPicks
-
   return (
     <div className="home-mag">
       {/* Section 1 — Hero */}
@@ -48,14 +47,18 @@ export function HomePage() {
       <section id="featured" className="home-mag__section">
         <div className="home-mag__wrap">
           <div className="home-mag__featured">
-            <Link to={neueNationalgalerie.href} className="home-mag__feature-main">
+            <Link to={NEUE_NATIONALGALERIE_ARTICLE_PATH} className="home-mag__feature-main">
               <p className="home-mag__label">Why go</p>
               <div className="home-mag__feature-main-image">
                 <img src={cattelanExhibition} alt="" />
               </div>
-              <h2 className="home-mag__feature-main-title">Neue Nationalgalerie</h2>
+              <h2 className="home-mag__feature-main-title">
+                Maurizio Cattelan Receives the Preis der Nationalgalerie 2026
+              </h2>
               <p className="home-mag__feature-main-sub">
-                {`Preis der Nationalgalerie 2026:\nMaurizio Cattelan`}
+                Italian artist Maurizio Cattelan has been awarded the Preis der Nationalgalerie 2026
+                and will present his first major solo exhibition in Germany at the Neue
+                Nationalgalerie during Berlin Art Week in September 2026.
               </p>
             </Link>
 

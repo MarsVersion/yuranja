@@ -1,12 +1,24 @@
 import { Link } from 'react-router-dom'
 import { EditorialLabel } from '../components/EditorialLabel'
+import aesfHeroImg from '../assets/AESF Yuranja.png'
 
 export const AESF_DIGITAL_SAFARI_ARTICLE_PATH = '/journal/aes-f-digital-safari'
 
 export function AesfDigitalSafariArticle() {
   return (
     <article className="page-atmosphere mx-auto max-w-[1440px] px-6 py-16 pb-32 md:px-20 md:py-24 md:pb-40">
-      <EditorialLabel>Artist Profile</EditorialLabel>
+      <figure className="w-full overflow-hidden bg-surface-muted">
+        <img
+          src={aesfHeroImg}
+          alt="AES+F, Digital Safari: Fables of the Jungle"
+          className="h-auto w-full object-contain"
+        />
+        <figcaption className="mt-3 font-sans text-sm leading-snug text-ink/70">
+          © AES+F
+        </figcaption>
+      </figure>
+
+      <EditorialLabel className="mt-10">Artist Profile</EditorialLabel>
       <h1 className="mt-4 max-w-4xl font-serif text-4xl leading-tight md:text-6xl">AES+F</h1>
       <h2 className="mt-3 max-w-4xl font-serif text-2xl leading-snug md:text-3xl">
         Digital Safari: Fables of the Jungle

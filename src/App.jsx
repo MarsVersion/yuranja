@@ -14,6 +14,10 @@ import {
   AesfDigitalSafariArticle,
 } from './pages/AesfDigitalSafariArticle'
 import {
+  NEUE_NATIONALGALERIE_ARTICLE_PATH,
+  NeueNationalgalerieArticle,
+} from './pages/NeueNationalgalerieArticle'
+import {
   SOYOUNG_YOON_ARTICLE_PATH,
   SoyoungYoonArticle,
 } from './pages/SoyoungYoonArticle'
@@ -40,6 +44,10 @@ export default function App() {
           <Route
             path="soyoung-yoon-whitney-isp"
             element={<Navigate to={SOYOUNG_YOON_ARTICLE_PATH} replace />}
+          />
+          <Route
+            path={NEUE_NATIONALGALERIE_ARTICLE_PATH.slice(1)}
+            element={<NeueNationalgalerieArticle />}
           />
           <Route
             path="privacy"
