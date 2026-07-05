@@ -13,9 +13,21 @@ function getPageTheme(pathname) {
 export function Layout() {
   const { pathname } = useLocation()
   const theme = getPageTheme(pathname)
+  const isExhibitionsIndex = pathname === '/exhibitions'
+  const isExhibitionDetail = /^\/exhibitions\/[^/]+$/.test(pathname)
 
   return (
-    <div className={`site-shell site-shell--${theme} min-h-svh`}>
+    <div
+      className={[
+        'site-shell',
+        `site-shell--${theme}`,
+        'min-h-svh',
+        isExhibitionsIndex && 'site-shell--exhibitions-index',
+        isExhibitionDetail && 'site-shell--exhibition-detail',
+      ]
+        .filter(Boolean)
+        .join(' ')}
+    >
       <Header />
       {/* Do not use flex-1 on main — it clips long pages (e.g. About) below the viewport */}
       <main className="site-main w-full pt-[72px]">

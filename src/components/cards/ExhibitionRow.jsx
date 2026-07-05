@@ -1,26 +1,37 @@
 import { Link } from 'react-router-dom'
-import { formatExhibitionDates } from '../../data/exhibitions'
+import { formatExhibitionDates, getExhibitionCategory } from '../../data/exhibitions'
 
 export function ExhibitionRow({ exhibition }) {
   const { slug, title, venue, city, dates } = exhibition
   const dateLabel = formatExhibitionDates(dates, 'short')
+  const category = getExhibitionCategory(exhibition)
 
   return (
-    <Link
-      to={`/exhibitions/${slug}`}
-      className="group flex flex-col gap-2 border-b border-line py-8 transition-colors first:pt-0 hover:border-ink md:flex-row md:items-end md:justify-between"
-    >
-      <div>
-        <p className="font-serif text-2xl md:text-3xl">{title}</p>
-        <p className="mt-2 font-sans text-sm text-ink">
-          {venue} · {city}
+    <Link to={`/exhibitions/${slug}`} className="exhibitions-index__row group">
+      <div className="exhibitions-index__row-top">
+        <p className="exhibitions-index__row-category font-sans text-caption font-semibold uppercase">
+          {category}
         </p>
-      </div>
-      <div className="flex items-center gap-4">
-        <span className="font-sans text-caption font-semibold uppercase tracking-[0.25em] text-ink">
+        <time
+          className="exhibitions-index__row-dates font-sans text-caption font-semibold uppercase"
+          dateTime={dates.start}
+        >
           {dateLabel}
+        </time>
+      </div>
+      <div className="exhibitions-index__row-body">
+        <div>
+          <h2 className="exhibitions-index__row-title">{title}</h2>
+          <p className="exhibitions-index__row-venue font-sans">
+            {venue} · {city}
+          </p>
+        </div>
+        <span
+          className="exhibitions-index__row-arrow material-symbols-outlined"
+          aria-hidden="true"
+        >
+          north_east
         </span>
-        <span className="material-symbols-outlined text-ink">event</span>
       </div>
     </Link>
   )

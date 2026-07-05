@@ -5,16 +5,19 @@ import {
   formatList,
   getExhibitionBySlug,
 } from '../data/exhibitions'
+import '../styles/exhibition-detail.css'
 
 function MetaField({ label, value, children }) {
   if (!value && !children) return null
 
   return (
-    <div className="grid gap-2 border-b border-line py-5 md:grid-cols-[9rem_1fr] md:gap-8 md:py-6">
-      <dt className="font-sans text-caption font-semibold uppercase tracking-[0.2em] text-ink/50">
+    <div className="exhibition-detail__meta-row grid gap-2 border-b py-5 md:grid-cols-[9rem_1fr] md:gap-8 md:py-6">
+      <dt className="exhibition-detail__meta-label font-sans text-caption font-semibold uppercase tracking-[0.2em]">
         {label}
       </dt>
-      <dd className="font-sans text-sm leading-relaxed text-ink md:text-base">{children ?? value}</dd>
+      <dd className="exhibition-detail__meta-value font-sans text-sm leading-relaxed md:text-base">
+        {children ?? value}
+      </dd>
     </div>
   )
 }
@@ -25,15 +28,15 @@ export function ExhibitionDetailPage() {
 
   if (!exhibition) {
     return (
-      <main className="mx-auto max-w-[720px] px-6 py-24 text-center">
+      <main className="exhibition-detail exhibition-detail--empty page-atmosphere mx-auto max-w-[720px] px-6 text-center">
         <EditorialLabel>Exhibitions</EditorialLabel>
-        <h1 className="mt-4 font-serif text-4xl">This listing is not in the calendar</h1>
-        <p className="mt-6 font-sans text-sm leading-relaxed text-ink">
+        <h1 className="exhibition-detail__title mt-4 font-serif text-4xl">This listing is not in the calendar</h1>
+        <p className="exhibition-detail__prose mt-6 font-sans text-sm">
           The URL may be mistyped, or the show has moved off our current shortlist.
         </p>
         <Link
           to="/exhibitions"
-          className="mt-10 inline-block border border-ink px-8 py-4 font-sans text-caption font-semibold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-canvas"
+          className="exhibition-detail__cta mt-10 inline-block border px-8 py-4 font-sans text-caption font-semibold uppercase tracking-[0.2em]"
         >
           All exhibitions
         </Link>
@@ -61,12 +64,12 @@ export function ExhibitionDetailPage() {
   const curatorLabel = formatList(curators)
 
   return (
-    <main className="mx-auto max-w-[1440px] px-6 py-16 md:px-20 md:py-24">
+    <main className="exhibition-detail page-atmosphere mx-auto max-w-[1440px] px-6 md:px-20">
       <div className="max-w-3xl">
         <EditorialLabel>Exhibition</EditorialLabel>
-        <h1 className="mt-4 font-serif text-4xl leading-tight md:text-6xl">{title}</h1>
+        <h1 className="exhibition-detail__title font-serif text-4xl leading-tight md:text-6xl">{title}</h1>
 
-        <dl className="mt-12 border-t border-ink">
+        <dl className="exhibition-detail__meta">
           <MetaField label="Artists" value={artistLabel} />
           <MetaField label={curators?.length === 1 ? 'Curator' : 'Curators'} value={curatorLabel} />
           <MetaField label="Venue" value={venue} />
@@ -80,7 +83,7 @@ export function ExhibitionDetailPage() {
                 href={website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-4 transition-colors hover:text-accent-green"
+                className="exhibition-detail__link underline"
               >
                 {website.replace(/^https?:\/\/(www\.)?/, '')}
               </a>
@@ -89,31 +92,27 @@ export function ExhibitionDetailPage() {
         </dl>
 
         {description ? (
-          <section className="mt-12 border-t border-line pt-10">
+          <section className="exhibition-detail__section">
             <EditorialLabel>Description</EditorialLabel>
-            <p className="mt-4 font-sans text-base leading-relaxed text-ink md:text-lg">
-              {description}
-            </p>
+            <p className="exhibition-detail__prose font-sans text-base md:text-lg">{description}</p>
           </section>
         ) : null}
 
         {yuranjaNote ? (
-          <section className="mt-12 border-l-2 border-accent-green pl-6">
+          <section className="exhibition-detail__note">
             <EditorialLabel variant="accent">Yuranja note</EditorialLabel>
-            <p className="mt-3 font-sans text-base leading-relaxed text-ink md:text-lg">
-              {yuranjaNote}
-            </p>
+            <p className="exhibition-detail__prose font-sans text-base md:text-lg">{yuranjaNote}</p>
           </section>
         ) : null}
 
         {tags?.length ? (
-          <section className="mt-12 border-t border-line pt-10">
+          <section className="exhibition-detail__section">
             <EditorialLabel>Tags</EditorialLabel>
             <ul className="mt-4 flex flex-wrap gap-2">
               {tags.map((tag) => (
                 <li
                   key={tag}
-                  className="border border-line px-3 py-1 font-sans text-micro font-semibold uppercase tracking-[0.15em] text-ink"
+                  className="exhibition-detail__tag border px-3 py-1 font-sans text-micro font-semibold uppercase tracking-[0.15em]"
                 >
                   {tag}
                 </li>
@@ -122,10 +121,7 @@ export function ExhibitionDetailPage() {
           </section>
         ) : null}
 
-        <Link
-          to="/exhibitions"
-          className="mt-16 inline-block font-sans text-caption font-semibold uppercase tracking-[0.2em] text-accent-green underline-offset-4 hover:underline"
-        >
+        <Link to="/exhibitions" className="exhibition-detail__back font-sans text-caption font-semibold uppercase">
           ← All exhibitions
         </Link>
       </div>

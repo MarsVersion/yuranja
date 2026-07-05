@@ -1,0 +1,225 @@
+/**
+ * Exhibitions index — full-viewport video atmosphere + editorial list.
+ */
+
+.site-shell--exhibitions-index {
+  --exhibitions-hero-red: #7a2916;
+  --exhibitions-hero-red-deep: #5e1f10;
+  background: var(--exhibitions-hero-red-deep);
+}
+
+.site-shell--exhibitions-index .site-main {
+  padding-top: 0;
+  background: transparent;
+}
+
+/* Header — warm base fading into the video, no hard edge */
+
+.site-shell--exhibitions-index .site-header {
+  background: linear-gradient(
+    180deg,
+    var(--exhibitions-hero-red) 0%,
+    color-mix(in srgb, var(--exhibitions-hero-red) 72%, transparent) 66%,
+    color-mix(in srgb, var(--exhibitions-hero-red) 18%, transparent) 100%,
+    transparent 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.site-shell--exhibitions-index .site-header > nav {
+  padding-top: 1.25rem;
+  padding-bottom: 1.5rem;
+}
+
+.site-shell--exhibitions-index .site-header::before {
+  display: none;
+}
+
+.site-shell--exhibitions-index .site-header #mobile-nav {
+  border-top-color: rgb(243 238 231 / 0.12);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--exhibitions-hero-red) 88%, transparent) 0%,
+    color-mix(in srgb, var(--exhibitions-hero-red) 96%, transparent) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Footer — mirrors the header fade */
+
+.site-shell--exhibitions-index .site-footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 0;
+  border-top: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--exhibitions-hero-red) 22%, transparent) 14%,
+    color-mix(in srgb, var(--exhibitions-hero-red) 68%, transparent) 38%,
+    var(--exhibitions-hero-red) 66%,
+    var(--exhibitions-hero-red-deep) 100%
+  );
+}
+
+.site-shell--exhibitions-index .site-footer > div {
+  padding-top: 7.2rem;
+}
+
+.exhibitions-index {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.exhibitions-index__media {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.exhibitions-index__video {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transform: translateX(-50%);
+  display: block;
+}
+
+.exhibitions-index__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgb(122 41 22 / 0.12) 0%,
+    rgb(18 12 10 / 0.28) 28%,
+    rgb(12 10 8 / 0.38) 55%,
+    rgb(12 10 8 / 0.44) 78%,
+    rgb(94 31 16 / 0.52) 100%
+  );
+}
+
+.exhibitions-index__content {
+  position: relative;
+  z-index: 1;
+  padding-top: calc(72px * 2);
+  padding-bottom: 0;
+}
+
+.exhibitions-index__hero {
+  margin-bottom: 8rem;
+}
+
+@media (min-width: 768px) {
+  .exhibitions-index__hero {
+    margin-bottom: 10rem;
+  }
+}
+
+.exhibitions-index__list {
+  max-width: 56rem;
+}
+
+.exhibitions-index__row {
+  display: grid;
+  gap: 1rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid rgb(243 238 231 / 0.22);
+  color: var(--exhibitions-text);
+  transition:
+    border-color 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.exhibitions-index__row:first-child {
+  border-top: 1px solid rgb(243 238 231 / 0.22);
+}
+
+.exhibitions-index__row:hover {
+  border-color: rgb(243 238 231 / 0.55);
+}
+
+.exhibitions-index__row:focus-visible {
+  outline: 2px solid var(--exhibitions-cream);
+  outline-offset: 4px;
+}
+
+.exhibitions-index__row-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+}
+
+.exhibitions-index__row-category {
+  color: var(--exhibitions-stone);
+  letter-spacing: 0.28em;
+}
+
+.exhibitions-index__row-dates {
+  color: rgb(243 238 231 / 0.82);
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+}
+
+.exhibitions-index__row-body {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+}
+
+.exhibitions-index__row-title {
+  font-family: var(--font-serif, 'Cormorant Garamond', serif);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  line-height: 1.15;
+  transition: opacity 0.35s ease;
+}
+
+.exhibitions-index__row-venue {
+  margin-top: 0.75rem;
+  color: rgb(243 238 231 / 0.78);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.exhibitions-index__row-arrow {
+  flex-shrink: 0;
+  color: rgb(243 238 231 / 0.72);
+  transition: transform 0.35s ease, color 0.35s ease;
+}
+
+.exhibitions-index__row:hover .exhibitions-index__row-arrow {
+  color: var(--exhibitions-text);
+  transform: translate(0.2rem, -0.2rem);
+}
+
+.exhibitions-index__row:hover .exhibitions-index__row-title {
+  opacity: 0.92;
+}
+
+@media (min-width: 768px) {
+  .exhibitions-index__row {
+    padding: 3.25rem 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exhibitions-index__row,
+  .exhibitions-index__row-arrow,
+  .exhibitions-index__row-title {
+    transition: none;
+  }
+}

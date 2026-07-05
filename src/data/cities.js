@@ -1,12 +1,13 @@
 import {
   aesfYuranja,
-  artMuseumSeoul,
   cattelanExhibition,
   edVanDerElsken,
   guggenheimMuseumNewYork,
+  HK,
   museoSoumayaMexicoCity,
   nationalArtCenterTokyo,
   neueNationalgalerieBerlin,
+  TaipeiImg,
   tateModernLondon,
 } from '../assets/images.js'
 
@@ -27,18 +28,19 @@ export const featuredCities = [
     address: 'Guide focus · Mitte & Kreuzberg',
   },
   {
-    slug: 'seoul',
-    name: 'Seoul',
-    district: 'Samcheong & Gangnam',
+    slug: 'hong-kong',
+    name: 'Hong Kong',
+    district: 'Quarry Bay & Wan Chai',
     blurb: 'Private collections and fast-moving gallery weekends.',
     intro:
-      'Seoul moves at the pace of its seasons: hillside museums, discreet foundations, and gallery weekends that fill calendars months ahead. The best visits balance architecture, ink tradition, and what is being painted this year.',
+      'Para Site is an artist-led contemporary art space presenting exhibitions, commissions, residencies, and professional development programs. It fosters emerging practices, connects regional and international artistic dialogues, and supports new ideas.',
     whyItMatters:
-      'South Korea’s institutions borrow from global contemporary while insisting on local lineages. For the traveler, that means depth without nostalgia — and a density of serious rooms that justifies a dedicated trip.',
-    image: artMuseumSeoul,
-    imageCreditTitle: 'Art Museum Seoul',
-    imageCreditPhoto: 'Photo by Andrea De Santis on Unsplash',
-    address: 'Guide focus · Samcheong-dong',
+      'Hong Kong’s institutions borrow from global contemporary practice while insisting on local lineages. For the traveler, that means depth without nostalgia—and a density of serious art spaces that justifies a dedicated trip.',
+    image: HK,
+    imageCreditTitle: 'Para Site',
+    imageCreditPhoto: 'Photo by Pavlo Hromadchuk on Unsplash',
+    address:
+      '22/F, Wing Wah Industrial Building, 677 King’s Road, Quarry Bay, Hong Kong',
   },
   {
     slug: 'venice',
@@ -68,20 +70,7 @@ export const featuredCities = [
     imageCreditPhoto: 'Photo by Ashley Penney on Unsplash',
     address: 'Guide focus · Chelsea galleries',
   },
-  {
-    slug: 'tokyo',
-    name: 'Tokyo',
-    district: 'Roppongi & Omotesando',
-    blurb: 'Architect-led museums and intimate project spaces.',
-    intro:
-      'Tokyo rewards patience: buildings that read as sculpture, exhibitions installed with forensic care, and neighborhoods where a wrong turn still lands you in front of something thoughtful.',
-    whyItMatters:
-      'Japanese institutions often lead with architecture and material craft before the wall text speaks. For visitors, that discipline produces some of the clearest viewing conditions in the world.',
-    image: nationalArtCenterTokyo,
-    imageCreditTitle: 'National Art Center Tokyo',
-    imageCreditPhoto: 'Photo by whymahn yap from Pexels',
-    address: 'Guide focus · Roppongi Art Triangle',
-  },
+  
   {
     slug: 'london',
     name: 'London',
@@ -97,19 +86,21 @@ export const featuredCities = [
     address: 'Guide focus · Mayfair',
   },
   {
-    slug: 'mexico-city',
-    name: 'Mexico City',
-    district: 'Polanco & Roma',
-    blurb: 'Museums, foundations, and courtyard galleries with long seasons.',
+    slug: 'taipei',
+    name: 'Taipei',
+    district: 'Zhongshan District',
+    blurb: 'Museum-led contemporary programming and independent spaces across the city.',
     intro:
-      'Mexico City stretches exhibitions across seasons that feel human: courtyards, high altitude light, and foundations that treat locality as method rather than decoration.',
+      'Taipei Fine Arts Museum is one of Asia’s leading museums of contemporary art. Through exhibitions, commissions, research, and public programs, it has played a pivotal role in shaping Taiwan’s contemporary art discourse while fostering international exchange.',
     whyItMatters:
-      'The dialogue between Mesoamerican depth and international contemporary is written into the architecture here. For readers who want warmth without noise, the capital rewards slow return visits.',
-    image: museoSoumayaMexicoCity,
-    imageCreditTitle: 'Museo Soumaya Mexico City',
-    imageCreditPhoto: 'Photo by Dante Muñoz from Pexels',
-    address: 'Guide focus · Polanco',
+      'Taipei combines a vibrant contemporary art scene with a strong institutional commitment to experimentation. Its museums and independent spaces create a rich dialogue between local perspectives and international practices, making the city an essential destination for contemporary art.',
+    image: TaipeiImg,
+    imageCreditTitle: 'Taipei Fine Arts Museum',
+    imageCreditPhoto: 'Photo by Suzi Kim on Unsplash',
+    address:
+      'No. 181, Section 3, Zhongshan North Road, Zhongshan District, Taipei 10461, Taiwan',
   },
+
 ]
 
 /** @param {string | undefined} slug */
@@ -121,7 +112,7 @@ export function getCityBySlug(slug) {
 /** Homepage — Cities of the Month (ordered) */
 export const citiesOfTheMonth = [
   'berlin',
-  'seoul',
+  'hong-kong',
   'venice',
   'new-york',
   'tokyo',

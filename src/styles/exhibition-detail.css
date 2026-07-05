@@ -1,0 +1,159 @@
+/**
+ * Exhibition detail — catalogue reading experience (white / dark red).
+ */
+
+.site-shell--exhibition-detail {
+  --exhibition-detail-bg: #ffffff;
+  --exhibition-detail-text: #3b0f0b;
+  --exhibition-detail-body: #6b3d38;
+  --exhibition-detail-label: #9a6f6a;
+  --exhibition-detail-border: #e8e0dd;
+  --exhibition-detail-accent: #45130d;
+
+  --color-ink: var(--exhibition-detail-text);
+  --color-canvas: var(--exhibition-detail-bg);
+  --color-line: var(--exhibition-detail-border);
+  --color-surface-muted: #f7f3f2;
+  --color-accent-green: var(--exhibition-detail-accent);
+  --page-bg: var(--exhibition-detail-bg);
+  --page-text: var(--exhibition-detail-text);
+  --page-body: var(--exhibition-detail-body);
+  --page-label: var(--exhibition-detail-label);
+  --page-accent: var(--exhibition-detail-accent);
+  --page-strong: var(--exhibition-detail-text);
+  --page-border: var(--exhibition-detail-border);
+  --page-header-bg: rgb(255 255 255 / 0.94);
+  --page-footer-bg: var(--exhibition-detail-bg);
+}
+
+.site-shell--exhibition-detail {
+  background: var(--exhibition-detail-bg);
+  color: var(--exhibition-detail-text);
+}
+
+.site-shell--exhibition-detail .site-header::before {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--exhibition-detail-accent) 35%, transparent) 0%,
+    transparent 100%
+  );
+}
+
+.site-shell--exhibition-detail .site-header a img {
+  filter: none;
+}
+
+.site-shell--exhibition-detail .site-footer {
+  border-top-color: var(--exhibition-detail-border);
+}
+
+.exhibition-detail {
+  padding-top: 4.5rem;
+  padding-bottom: 5.5rem;
+}
+
+@media (min-width: 768px) {
+  .exhibition-detail {
+    padding-top: 6rem;
+    padding-bottom: 7rem;
+  }
+}
+
+.exhibition-detail__title {
+  margin-top: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.exhibition-detail__meta {
+  margin-top: 3.5rem;
+  border-top: 1px solid var(--exhibition-detail-border);
+}
+
+.exhibition-detail__meta-row {
+  border-bottom-color: var(--exhibition-detail-border);
+}
+
+.exhibition-detail__meta-label {
+  color: var(--exhibition-detail-label);
+}
+
+.exhibition-detail__meta-value {
+  color: var(--exhibition-detail-body);
+}
+
+.exhibition-detail__section {
+  margin-top: 3.5rem;
+  padding-top: 2.75rem;
+  border-top: 1px solid var(--exhibition-detail-border);
+}
+
+.exhibition-detail__prose {
+  margin-top: 1.25rem;
+  max-width: 38rem;
+  color: var(--exhibition-detail-body);
+  line-height: 1.75;
+}
+
+.exhibition-detail__note {
+  margin-top: 3.5rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid color-mix(in srgb, var(--exhibition-detail-accent) 22%, transparent);
+}
+
+.exhibition-detail__note .text-accent-green {
+  color: var(--exhibition-detail-label);
+}
+
+.exhibition-detail__note .exhibition-detail__prose {
+  margin-top: 0.85rem;
+}
+
+.exhibition-detail__tag {
+  border-color: var(--exhibition-detail-border);
+  color: var(--exhibition-detail-body);
+}
+
+.exhibition-detail__link {
+  color: var(--exhibition-detail-accent);
+  text-underline-offset: 0.25em;
+  transition: opacity 0.25s ease;
+}
+
+.exhibition-detail__link:hover {
+  opacity: 0.68;
+}
+
+.exhibition-detail__back {
+  display: inline-block;
+  margin-top: 4.5rem;
+  color: var(--exhibition-detail-accent);
+  letter-spacing: 0.2em;
+  text-underline-offset: 0.3em;
+  transition: opacity 0.25s ease;
+}
+
+.exhibition-detail__back:hover {
+  opacity: 0.68;
+  text-decoration: underline;
+}
+
+.exhibition-detail--empty .exhibition-detail__prose {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.exhibition-detail__cta {
+  margin-top: 2.75rem;
+  border-color: color-mix(in srgb, var(--exhibition-detail-accent) 35%, transparent);
+  color: var(--exhibition-detail-accent);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.exhibition-detail__cta:hover {
+  background-color: var(--exhibition-detail-accent);
+  border-color: var(--exhibition-detail-accent);
+  color: var(--exhibition-detail-bg);
+}

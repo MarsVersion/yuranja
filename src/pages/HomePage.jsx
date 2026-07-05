@@ -30,7 +30,7 @@ const editorialRail = [
 
 const citiesCollage = [
   { slug: 'berlin', opacity: 1, subtitle: true },
-  { slug: 'seoul', opacity: 0.18, subtitle: true },
+  { slug: 'hong-kong', opacity: 0.18, subtitle: true },
   { slug: 'venice', opacity: 0.22, subtitle: true },
   { slug: 'new-york', opacity: 0.1 },
   { slug: 'tokyo', opacity: 0.18, subtitle: true },

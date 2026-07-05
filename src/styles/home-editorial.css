@@ -544,7 +544,7 @@
   top: 0;
 }
 
-.home-mag__city-note--seoul {
+.home-mag__city-note--hong-kong {
   left: 9%;
   top: 14%;
 }
@@ -602,7 +602,7 @@
     order: 1;
   }
 
-  .home-mag__city-note--seoul {
+  .home-mag__city-note--hong-kong {
     align-self: flex-start;
     margin-left: 8%;
     order: 2;
