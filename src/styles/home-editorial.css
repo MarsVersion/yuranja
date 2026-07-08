@@ -131,13 +131,57 @@
   }
 }
 
-.hero > img {
+.hero > img,
+.hero > video {
   height: 100%;
   inset: 0;
   object-fit: cover;
   position: absolute;
   width: 100%;
   z-index: 0;
+}
+
+.hero > video {
+  /* Feather only the outer edge so the frame disappears on matching backgrounds. */
+  --hero-edge-feather: 60px;
+
+  -webkit-mask-image:
+    linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--hero-edge-feather),
+      #000 calc(100% - var(--hero-edge-feather)),
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      #000 var(--hero-edge-feather),
+      #000 calc(100% - var(--hero-edge-feather)),
+      transparent 100%
+    );
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-composite: source-in;
+
+  mask-image:
+    linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--hero-edge-feather),
+      #000 calc(100% - var(--hero-edge-feather)),
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      #000 var(--hero-edge-feather),
+      #000 calc(100% - var(--hero-edge-feather)),
+      transparent 100%
+    );
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  mask-composite: intersect;
 }
 
 .hero-overlay {

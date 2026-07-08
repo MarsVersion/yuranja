@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { citiesOfTheMonth } from '../data/cities'
 import { AESF_DIGITAL_SAFARI_ARTICLE_PATH } from './AesfDigitalSafariArticle'
@@ -5,12 +6,9 @@ import { NEUE_NATIONALGALERIE_ARTICLE_PATH } from './NeueNationalgalerieArticle'
 import { THOMAS_ELLER_PAGE_PATH } from './ThomasEllerPage'
 import { SOYOUNG_YOON_ARTICLE_PATH } from './SoyoungYoonArticle'
 import { aesfYuranja, cattelanExhibition } from '../assets/images.js'
-import heroImg from '../assets/WhitneyParty.jpg'
+import heroVideo from '../assets/Counter.mp4'
 import soyoungYoonImg from '../assets/Soyoung Yoon.png'
 import '../styles/home-editorial.css'
-
-const heroCaption =
-  'Art Party 2025 at the Whitney Museum of American Art. Photos by Deonté Lee / BFA.com'
 
 const editorialRail = [
   {
@@ -41,20 +39,29 @@ const citiesCollage = [
 const cityBySlug = Object.fromEntries(citiesOfTheMonth.map((city) => [city.slug, city]))
 
 export function HomePage() {
+  const heroVideoRef = useRef(null)
+
+  useEffect(() => {
+    const video = heroVideoRef.current
+    if (!video) return
+    video.playbackRate = 0.4
+  }, [])
+
   return (
     <div className="home-mag">
       {/* Section 1 — Hero */}
       <section className="home-mag__hero-block">
         <figure className="hero">
-          <img src={heroImg} alt="" />
-          <div className="hero-overlay">
-            <h1 className="home-mag__hero-title">Yuranja</h1>
-            <p className="home-mag__hero-lede">
-            A guide to art spaces worth the journey.
-            </p>
-          </div>
+          <video
+            ref={heroVideoRef}
+            src={heroVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+          />
         </figure>
-        <p className="hero-caption">{heroCaption}</p>
       </section>
 
       {/* Section 2 — Featured */}
