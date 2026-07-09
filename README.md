@@ -67,4 +67,4 @@ Check Plausible **Realtime** in your dashboard, or use the installation checker 
 npm run build
 ```
 
-Production builds use `base: /yuranja/` (see `vite.config.js`).
+Production builds are served from the domain root (`base: /` in `vite.config.js`). Upload `dist/` contents to your IONOS web folder.

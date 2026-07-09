@@ -2,7 +2,7 @@
   "name": "Yuranja",
   "short_name": "Yuranja",
   "description": "See what matters. A guide to art spaces genuinely worth your time.",
-  "start_url": "/yuranja/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
