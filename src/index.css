@@ -1,5 +1,6 @@
 @import './styles/palette.css';
 @import './styles/page-themes.css';
+@import './styles/detail-pages.css';
 @import './styles/hero-colors.css';
 @import './styles/fonts.css';
 @import 'tailwindcss';

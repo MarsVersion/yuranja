@@ -308,7 +308,8 @@
 
 .site-shell--cities .site-header a img,
 .site-shell--exhibitions .site-header a img,
-.site-shell--about .site-header a img {
+.site-shell--about .site-header a img,
+.site-shell--institution-detail .site-header a img {
   filter: brightness(0) invert(0.95);
 }
 

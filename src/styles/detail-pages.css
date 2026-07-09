@@ -1,0 +1,131 @@
+/**
+ * City & institution detail pages — white body copy, ~10% larger type, comfortable line-height.
+ * Scoped to detail shells so overview pages, captions, metadata, and chrome stay unchanged.
+ */
+
+:root {
+  --detail-body-scale: 1.1;
+  --detail-body-leading: 1.65;
+  --detail-body-leading-tight: 1.6;
+}
+
+/* —— Shared body scale (paragraphs & list copy only) —— */
+
+.site-shell--city-detail .detail-prose :is(p, li).font-sans.text-sm:not(.uppercase):not(.text-caption):not(.text-micro),
+.site-shell--institution-detail .detail-prose :is(p, li).font-sans.text-sm:not(.uppercase):not(.text-caption):not(.text-micro),
+.site-shell--institution-detail .bg-canvas :is(p, li).font-sans.text-sm:not(.uppercase):not(.text-caption):not(.text-micro),
+.site-shell--institution-detail .bg-ink :is(p, li).font-sans.text-sm:not(.uppercase):not(.text-caption):not(.text-micro),
+.site-shell--city-detail header :is(p, li).font-sans.text-sm:not(.uppercase):not(.text-caption):not(.text-micro),
+.site-shell--institution-detail header :is(p, li).font-sans.text-sm:not(.uppercase):not(.text-caption):not(.text-micro) {
+  font-size: calc(0.875rem * var(--detail-body-scale));
+  line-height: var(--detail-body-leading);
+}
+
+.site-shell--city-detail .detail-prose :is(p, li).font-sans.text-base:not(.uppercase),
+.site-shell--institution-detail .detail-prose :is(p, li).font-sans.text-base:not(.uppercase),
+.site-shell--institution-detail .bg-ink :is(p, li).font-sans.text-base:not(.uppercase) {
+  font-size: calc(1rem * var(--detail-body-scale));
+  line-height: var(--detail-body-leading);
+}
+
+.site-shell--city-detail .detail-prose :is(p, li).font-sans.text-lg:not(.uppercase),
+.site-shell--institution-detail .detail-prose :is(p, li).font-sans.text-lg:not(.uppercase) {
+  font-size: calc(1.125rem * var(--detail-body-scale));
+  line-height: var(--detail-body-leading);
+}
+
+.site-shell--city-detail .detail-prose :is(p, li).font-sans.text-xl:not(.uppercase),
+.site-shell--institution-detail .detail-prose :is(p, li).font-sans.text-xl:not(.uppercase) {
+  font-size: calc(1.25rem * var(--detail-body-scale));
+  line-height: var(--detail-body-leading);
+}
+
+@media (min-width: 768px) {
+  .site-shell--city-detail .detail-prose :is(p, li).font-sans.md\:text-lg:not(.uppercase),
+  .site-shell--institution-detail .detail-prose :is(p, li).font-sans.md\:text-lg:not(.uppercase) {
+    font-size: calc(1.125rem * var(--detail-body-scale));
+    line-height: var(--detail-body-leading);
+  }
+
+  .site-shell--city-detail .detail-prose :is(p, li).font-sans.md\:text-2xl:not(.uppercase),
+  .site-shell--institution-detail .detail-prose :is(p, li).font-sans.md\:text-2xl:not(.uppercase) {
+    font-size: calc(1.5rem * var(--detail-body-scale));
+    line-height: var(--detail-body-leading-tight);
+  }
+
+  .site-shell--city-detail header :is(p, li).font-sans.md\:text-base:not(.uppercase),
+  .site-shell--institution-detail header :is(p, li).font-sans.md\:text-base:not(.uppercase) {
+    font-size: calc(1rem * var(--detail-body-scale));
+    line-height: var(--detail-body-leading);
+  }
+}
+
+/* —— Detail prose color —— */
+
+.detail-prose {
+  --color-ink: #ffffff;
+  --page-body: #ffffff;
+  color: #ffffff;
+}
+
+.detail-prose .text-ink {
+  color: #ffffff;
+}
+
+.detail-prose .text-ink\/65 {
+  color: rgb(255 255 255 / 0.65);
+}
+
+.detail-prose .text-ink\/60 {
+  color: rgb(255 255 255 / 0.6);
+}
+
+.detail-prose .text-ink\/50 {
+  color: rgb(255 255 255 / 0.5);
+}
+
+.site-shell--city-detail .site-main > article.detail-prose {
+  --color-ink: #ffffff;
+  --page-body: #ffffff;
+}
+
+/* —— Institution detail — dark shell, light visitor cards —— */
+
+.site-shell--institution-detail {
+  --color-ink: #ffffff;
+  --color-canvas: #ffffff;
+  --color-line: color-mix(in srgb, white 22%, transparent);
+  --color-surface-muted: #f5f5f5;
+  --color-accent-green: #234b3a;
+  --page-bg: var(--cities-charcoal);
+  --page-text: #ffffff;
+  --page-body: #ffffff;
+  --page-label: color-mix(in srgb, white 55%, transparent);
+  --page-accent: var(--cities-blue);
+  --page-strong: #ffffff;
+  --page-border: color-mix(in srgb, white 22%, transparent);
+  --page-header-bg: color-mix(in srgb, var(--cities-charcoal) 92%, transparent);
+  --page-footer-bg: var(--cities-charcoal);
+  background: var(--page-bg);
+  color: var(--page-text);
+}
+
+.site-shell--institution-detail .site-header a img {
+  filter: brightness(0) invert(0.95);
+}
+
+.site-shell--institution-detail .bg-canvas {
+  --color-ink: #000000;
+  --page-body: #333333;
+  color: #000000;
+}
+
+.site-shell--institution-detail .bg-canvas .text-ink,
+.site-shell--institution-detail .bg-canvas p.font-sans,
+.site-shell--institution-detail .bg-canvas span.font-sans {
+  color: #000000;
+}
+
+.site-shell--institution-detail .bg-canvas .text-accent-green {
+  color: var(--color-accent-green);
+}

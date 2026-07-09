@@ -54,7 +54,7 @@ export function InstitutionPage() {
         </div>
       </header>
 
-      <section className="mx-auto max-w-[1440px] px-6 py-20 md:px-20 md:py-28">
+      <section className="detail-prose mx-auto max-w-[1440px] px-6 py-20 md:px-20 md:py-28">
         <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-7">
             <EditorialLabel>The review</EditorialLabel>
@@ -123,7 +123,7 @@ export function InstitutionPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1440px] px-6 py-20 md:px-20 md:py-28">
+      <section className="detail-prose mx-auto max-w-[1440px] px-6 py-20 md:px-20 md:py-28">
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-12 md:gap-8">
           <div className="order-2 md:order-1 md:col-span-5">
             <img

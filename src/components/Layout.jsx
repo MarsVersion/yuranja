@@ -15,6 +15,8 @@ export function Layout() {
   const theme = getPageTheme(pathname)
   const isExhibitionsIndex = pathname === '/exhibitions'
   const isExhibitionDetail = /^\/exhibitions\/[^/]+$/.test(pathname)
+  const isCityDetail = /^\/cities\/[^/]+$/.test(pathname)
+  const isInstitutionDetail = /^\/spaces\/[^/]+$/.test(pathname)
 
   return (
     <div
@@ -24,6 +26,8 @@ export function Layout() {
         'min-h-svh',
         isExhibitionsIndex && 'site-shell--exhibitions-index',
         isExhibitionDetail && 'site-shell--exhibition-detail',
+        isCityDetail && 'site-shell--city-detail',
+        isInstitutionDetail && 'site-shell--institution-detail',
       ]
         .filter(Boolean)
         .join(' ')}

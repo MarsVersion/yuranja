@@ -1,5 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
+import { HotInstitutionRow } from '../components/cards/HotInstitutionRow'
 import { EditorialLabel } from '../components/EditorialLabel'
+import { getHotInstitutionsForCity } from '../data/cityHotInstitutions'
 import { getCityBySlug } from '../data/cities'
 import { institutionsBySlug } from '../data/institutions'
 
@@ -31,6 +33,7 @@ export function CityDetailPage() {
   }
 
   const picks = spacesForCity(city.name)
+  const hotInstitutions = getHotInstitutionsForCity(slug)
 
   return (
     <>
@@ -48,7 +51,7 @@ export function CityDetailPage() {
         </div>
       </header>
 
-      <article className="mx-auto max-w-[1440px] px-6 py-16 md:px-20 md:py-24">
+      <article className="detail-prose mx-auto max-w-[1440px] px-6 py-16 md:px-20 md:py-24">
         <section className="max-w-3xl">
           <EditorialLabel>At a glance</EditorialLabel>
           <p className="mt-5 font-sans text-xl leading-relaxed text-ink md:text-2xl">
@@ -56,6 +59,17 @@ export function CityDetailPage() {
           </p>
           <p className="mt-4 font-sans text-sm text-ink">{city.address}</p>
         </section>
+
+        {hotInstitutions.length > 0 ? (
+          <section className="mt-20 max-w-3xl border-t border-line pt-16">
+            <h2 className="font-serif text-3xl leading-tight md:text-4xl">Hot 5 Art Institutions</h2>
+            <ul className="mt-12">
+              {hotInstitutions.map((institution) => (
+                <HotInstitutionRow key={institution.name} institution={institution} />
+              ))}
+            </ul>
+          </section>
+        ) : null}
 
         <section className="mt-20 max-w-3xl border-t border-line pt-16">
           <EditorialLabel>Why this city matters</EditorialLabel>
