@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 
 const nav = [
@@ -34,33 +34,54 @@ function NavItem({ to, label, end, onNavigate }) {
 }
 
 function AboutNavDropdown({ onNavigate }) {
+  const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
   const isAboutSection =
     pathname === '/about' || pathname.startsWith('/about/')
 
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
+
+  function handleNavigate() {
+    setOpen(false)
+    onNavigate?.()
+  }
+
   return (
     <div className="group relative">
-      <NavLink
-        to="/about"
-        className={({ isActive }) =>
-          [
-            'inline-flex items-center gap-1 font-sans text-caption font-semibold uppercase tracking-[0.2em] transition-colors',
-            isActive || isAboutSection ? 'text-ink' : 'text-ink/50 hover:text-ink',
-          ].join(' ')
-        }
+      <button
+        type="button"
+        className={[
+          'inline-flex items-center gap-1 font-sans text-caption font-semibold uppercase tracking-[0.2em] transition-colors',
+          isAboutSection ? 'text-ink' : 'text-ink/50 hover:text-ink',
+        ].join(' ')}
         aria-haspopup="true"
-        aria-expanded={undefined}
+        aria-expanded={open}
+        onClick={() => setOpen((value) => !value)}
       >
         About
         <span
-          className="material-symbols-outlined text-base leading-none opacity-60 transition-transform group-hover:rotate-180 lg:group-focus-within:rotate-180"
+          className={[
+            'material-symbols-outlined text-base leading-none opacity-60 transition-transform',
+            open ? 'rotate-180' : 'group-hover:rotate-180',
+          ].join(' ')}
           aria-hidden
         >
           expand_more
         </span>
-      </NavLink>
+      </button>
 
-      <div className="pointer-events-none invisible absolute left-1/2 top-full z-50 w-[15rem] -translate-x-1/2 pt-3 opacity-0 transition-[opacity,visibility] duration-150 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100">
+      <div
+        className={[
+          'absolute left-1/2 top-full z-50 w-[15rem] -translate-x-1/2 pt-3 transition-[opacity,visibility] duration-150',
+          open
+            ? 'pointer-events-auto visible opacity-100'
+            : 'pointer-events-none invisible opacity-0',
+          'group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100',
+          'group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100',
+        ].join(' ')}
+      >
         <div className="border border-line bg-canvas py-1 shadow-sm">
           {aboutLinks.map((item) => (
             <NavLink
@@ -68,7 +89,7 @@ function AboutNavDropdown({ onNavigate }) {
               to={item.to}
               end={item.end}
               className={dropdownLinkClass}
-              onClick={onNavigate}
+              onClick={handleNavigate}
             >
               {item.label}
             </NavLink>

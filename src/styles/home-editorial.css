@@ -142,6 +142,13 @@
 }
 
 .hero > video {
+  /* Show top 85% of frame — bottom 15% clipped by .hero overflow */
+  --hero-bottom-crop: 15%;
+  bottom: auto;
+  height: calc(100% / (1 - var(--hero-bottom-crop) / 100));
+  object-position: top center;
+  top: 0;
+
   /* Feather only the outer edge so the frame disappears on matching backgrounds. */
   --hero-edge-feather: 60px;
 
