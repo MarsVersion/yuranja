@@ -1,16 +1,70 @@
-# React + Vite
+# Yuranja
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A static editorial guide to art spaces and exhibitions.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Analytics (Plausible)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Yuranja uses [Plausible Analytics](https://plausible.io) — cookieless, privacy-friendly, and requires no cookie banner.
 
-## Expanding the ESLint configuration
+### Configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Variable | Required | Description |
+| --- | --- | --- |
+| `VITE_PLAUSIBLE_DOMAIN` | Production | Domain registered in your [Plausible dashboard](https://plausible.io/sites). |
+| `VITE_PLAUSIBLE_CAPTURE_LOCALHOST` | No | Set to `true` to enable analytics during `npm run dev`. Off by default. |
+
+**Production** (`.env.production`):
+
+```env
+VITE_PLAUSIBLE_DOMAIN=yuranja.com
+```
+
+**Local verification** (`.env`):
+
+```env
+VITE_PLAUSIBLE_DOMAIN=yuranja.com
+VITE_PLAUSIBLE_CAPTURE_LOCALHOST=true
+```
+
+Copy `.env.example` as a starting point: `cp .env.example .env.production`
+
+### How it works
+
+- The official Plausible script (`script.manual.js`) is injected once via `PlausibleAnalytics` in `src/App.jsx`.
+- React Router navigations are tracked with one explicit `pageview` per route change (manual mode avoids duplicate pageviews).
+- Plausible may also send separate **`engagement`** events when leaving a page — these are not duplicate pageviews.
+- Analytics is **disabled during development** unless `VITE_PLAUSIBLE_CAPTURE_LOCALHOST=true` (uses `script.local.manual.js` when enabled).
+- No cookies, no backend, no third-party ad or tracking SDKs.
+
+### Verification
+
+Automated check (requires `.env` with domain + localhost flag, and `npm run dev`):
+
+```bash
+node scripts/verify-plausible.mjs http://localhost:5173
+```
+
+Manual check:
+
+1. Set `VITE_PLAUSIBLE_DOMAIN` (and `VITE_PLAUSIBLE_CAPTURE_LOCALHOST=true` for local dev).
+2. Run `npm run dev`.
+3. Open DevTools → **Network**, filter by `event`.
+4. Navigate between routes — each change should produce **exactly one `pageview` POST** (status **202**). An `engagement` POST for the previous page is normal.
+5. Do not open `/api/event` in a browser tab (POST-only; returns a harmless 404).
+
+Check Plausible **Realtime** in your dashboard, or use the installation checker in site settings.
+
+## Build
+
+```bash
+npm run build
+```
+
+Production builds use `base: /yuranja/` (see `vite.config.js`).

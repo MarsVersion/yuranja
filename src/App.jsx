@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
+import { PlausibleAnalytics } from './components/PlausibleAnalytics'
 import { HomePage } from './pages/HomePage'
 import { CityGuidePage } from './pages/CityGuidePage'
 import { CityDetailPage } from './pages/CityDetailPage'
@@ -8,7 +9,8 @@ import { ExhibitionsPage } from './pages/ExhibitionsPage'
 import { ExhibitionDetailPage } from './pages/ExhibitionDetailPage'
 import { AboutPage } from './pages/AboutPage'
 import { EditorialBoardPage } from './pages/EditorialBoardPage'
-import { LegalPage } from './pages/LegalPage'
+import { PrivacyPage } from './pages/PrivacyPage'
+import { TermsPage } from './pages/TermsPage'
 import {
   AESF_DIGITAL_SAFARI_ARTICLE_PATH,
   AesfDigitalSafariArticle,
@@ -34,6 +36,7 @@ const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '')
 export default function App() {
   return (
     <BrowserRouter basename={routerBasename || undefined}>
+      <PlausibleAnalytics />
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
@@ -62,24 +65,8 @@ export default function App() {
             path={THOMAS_ELLER_VENICE_CONVERSATION_PATH.slice(1)}
             element={<ThomasEllerVeniceConversation />}
           />
-          <Route
-            path="privacy"
-            element={
-              <LegalPage
-                title="Privacy"
-                body="Yuranja respects your privacy. This demo site does not collect personal data. A production version would describe analytics, newsletters, and account data here in plain language."
-              />
-            }
-          />
-          <Route
-            path="terms"
-            element={
-              <LegalPage
-                title="Terms"
-                body="This preview is provided as-is for design evaluation. Listings, ratings, and exhibition dates are illustrative and must be verified with each institution before visiting."
-              />
-            }
-          />
+          <Route path="privacy" element={<PrivacyPage />} />
+          <Route path="terms" element={<TermsPage />} />
           <Route path="spaces/:slug" element={<InstitutionPage />} />
         </Route>
       </Routes>
