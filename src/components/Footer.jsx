@@ -1,13 +1,48 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { CONTACT_EMAIL } from '../config/contact'
 
 const links = [
   { to: '/about', label: 'About' },
   { to: '/cities', label: 'Cities' },
   { to: '/exhibitions', label: 'Exhibitions' },
+  { to: '/contact', label: 'Contact' },
   { to: '/about#editorial', label: 'Editorial Guide' },
   { to: '/privacy', label: 'Privacy' },
   { to: '/terms', label: 'Terms' },
 ]
+
+function NewsletterSignup() {
+  const [email, setEmail] = useState('')
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    const trimmed = email.trim()
+    if (!trimmed) return
+
+    const subject = encodeURIComponent('Newsletter signup')
+    const body = encodeURIComponent(`Please add me to the Yuranja newsletter:\n\n${trimmed}`)
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="mt-3 flex w-full max-w-xs items-center border-b border-ink py-2 md:ml-auto">
+      <input
+        type="email"
+        name="email"
+        autoComplete="email"
+        required
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+        placeholder="Email address"
+        className="w-full border-0 bg-transparent font-sans text-caption font-semibold uppercase tracking-widest text-ink outline-none placeholder:text-ink focus:ring-0"
+      />
+      <button type="submit" aria-label="Subscribe to newsletter">
+        <span className="material-symbols-outlined">arrow_forward</span>
+      </button>
+    </form>
+  )
+}
 
 export function Footer() {
   return (
@@ -37,16 +72,7 @@ export function Footer() {
             <p className="font-sans text-caption font-semibold uppercase tracking-[0.2em] text-ink">
               Newsletter
             </p>
-            <div className="mt-3 flex w-full max-w-xs items-center border-b border-ink py-2 md:ml-auto">
-              <input
-                type="email"
-                placeholder="Email address"
-                className="w-full border-0 bg-transparent font-sans text-caption font-semibold uppercase tracking-widest text-ink outline-none placeholder:text-ink focus:ring-0"
-              />
-              <button type="button" aria-label="Subscribe">
-                <span className="material-symbols-outlined">arrow_forward</span>
-              </button>
-            </div>
+            <NewsletterSignup />
           </div>
           <p className="font-sans text-micro uppercase tracking-[0.25em] text-ink">
             © {new Date().getFullYear()} Yuranja. All rights reserved.

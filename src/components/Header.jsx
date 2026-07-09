@@ -5,6 +5,7 @@ const nav = [
   { to: '/', label: 'Home', end: true },
   { to: '/cities', label: 'Cities' },
   { to: '/exhibitions', label: 'Exhibitions' },
+  { to: '/contact', label: 'Contact' },
 ]
 
 const aboutLinks = [
