@@ -1,15 +1,14 @@
 /**
- * City & institution detail pages — white body copy, ~10% larger type, comfortable line-height.
+ * City & institution detail pages — readable visitor copy.
  * Scoped to detail shells so overview pages, captions, metadata, and chrome stay unchanged.
  */
 
 :root {
-  --detail-body-scale: 1.1;
   --detail-body-leading: 1.65;
   --detail-body-leading-tight: 1.6;
 }
 
-/* —— Shared body scale (paragraphs & list copy only) —— */
+/* —— Body & practical copy: ≥16px on mobile —— */
 
 .site-shell--city-detail .detail-prose :is(p, li).font-sans.text-sm:not(.uppercase):not(.text-caption):not(.text-micro),
 .site-shell--institution-detail .detail-prose :is(p, li).font-sans.text-sm:not(.uppercase):not(.text-caption):not(.text-micro),
@@ -17,45 +16,49 @@
 .site-shell--institution-detail .bg-ink :is(p, li).font-sans.text-sm:not(.uppercase):not(.text-caption):not(.text-micro),
 .site-shell--city-detail header :is(p, li).font-sans.text-sm:not(.uppercase):not(.text-caption):not(.text-micro),
 .site-shell--institution-detail header :is(p, li).font-sans.text-sm:not(.uppercase):not(.text-caption):not(.text-micro) {
-  font-size: calc(0.875rem * var(--detail-body-scale));
+  font-size: 1rem;
   line-height: var(--detail-body-leading);
+  font-weight: 500;
 }
 
 .site-shell--city-detail .detail-prose :is(p, li).font-sans.text-base:not(.uppercase),
 .site-shell--institution-detail .detail-prose :is(p, li).font-sans.text-base:not(.uppercase),
 .site-shell--institution-detail .bg-ink :is(p, li).font-sans.text-base:not(.uppercase) {
-  font-size: calc(1rem * var(--detail-body-scale));
+  font-size: 1.0625rem;
   line-height: var(--detail-body-leading);
+  font-weight: 500;
 }
 
 .site-shell--city-detail .detail-prose :is(p, li).font-sans.text-lg:not(.uppercase),
 .site-shell--institution-detail .detail-prose :is(p, li).font-sans.text-lg:not(.uppercase) {
-  font-size: calc(1.125rem * var(--detail-body-scale));
+  font-size: 1.125rem;
   line-height: var(--detail-body-leading);
+  font-weight: 500;
 }
 
 .site-shell--city-detail .detail-prose :is(p, li).font-sans.text-xl:not(.uppercase),
 .site-shell--institution-detail .detail-prose :is(p, li).font-sans.text-xl:not(.uppercase) {
-  font-size: calc(1.25rem * var(--detail-body-scale));
+  font-size: 1.25rem;
   line-height: var(--detail-body-leading);
+  font-weight: 500;
 }
 
 @media (min-width: 768px) {
   .site-shell--city-detail .detail-prose :is(p, li).font-sans.md\:text-lg:not(.uppercase),
   .site-shell--institution-detail .detail-prose :is(p, li).font-sans.md\:text-lg:not(.uppercase) {
-    font-size: calc(1.125rem * var(--detail-body-scale));
+    font-size: 1.125rem;
     line-height: var(--detail-body-leading);
   }
 
   .site-shell--city-detail .detail-prose :is(p, li).font-sans.md\:text-2xl:not(.uppercase),
   .site-shell--institution-detail .detail-prose :is(p, li).font-sans.md\:text-2xl:not(.uppercase) {
-    font-size: calc(1.5rem * var(--detail-body-scale));
+    font-size: 1.5rem;
     line-height: var(--detail-body-leading-tight);
   }
 
   .site-shell--city-detail header :is(p, li).font-sans.md\:text-base:not(.uppercase),
   .site-shell--institution-detail header :is(p, li).font-sans.md\:text-base:not(.uppercase) {
-    font-size: calc(1rem * var(--detail-body-scale));
+    font-size: 1.0625rem;
     line-height: var(--detail-body-leading);
   }
 }
@@ -72,21 +75,30 @@
   color: #ffffff;
 }
 
+/* Practical secondary lines (addresses) — stronger than decorative muted */
 .detail-prose .text-ink\/65 {
-  color: rgb(255 255 255 / 0.65);
+  color: rgb(255 255 255 / 0.88);
 }
 
+/* Image credits remain tertiary */
 .detail-prose .text-ink\/60 {
-  color: rgb(255 255 255 / 0.6);
+  color: rgb(255 255 255 / 0.55);
 }
 
 .detail-prose .text-ink\/50 {
-  color: rgb(255 255 255 / 0.5);
+  color: rgb(255 255 255 / 0.68);
 }
 
 .site-shell--city-detail .site-main > article.detail-prose {
   --color-ink: #ffffff;
   --page-body: #ffffff;
+}
+
+/* Space-card ratings / pulse — readable metadata, still subordinate to names */
+.site-shell--city-detail .detail-prose a.group p.font-sans.text-caption:not(.uppercase) {
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 0.82);
+  font-weight: 500;
 }
 
 /* —— Institution detail — dark shell, light visitor cards —— */
@@ -116,7 +128,7 @@
 
 .site-shell--institution-detail .bg-canvas {
   --color-ink: #000000;
-  --page-body: #333333;
+  --page-body: #222222;
   color: #000000;
 }
 

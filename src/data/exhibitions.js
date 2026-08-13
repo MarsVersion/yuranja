@@ -1,4 +1,8 @@
 /**
+ * @typedef {'solo' | 'group'} ExhibitionFormat
+ * @typedef {'media' | 'installation' | 'performance'} ExhibitionCategory
+ * @typedef {'moving-image' | 'sound' | 'digital' | 'interactive' | 'immersive' | 'kinetic'} MediaType
+ *
  * @typedef {Object} ExhibitionRecord
  * @property {string} slug
  * @property {string} title
@@ -12,8 +16,21 @@
  * @property {string} website
  * @property {string} description
  * @property {string} [yuranjaNote]
+ * @property {ExhibitionFormat} [format]
+ * @property {ExhibitionCategory[]} [categories]
+ * @property {MediaType[]} [mediaTypes]
  * @property {string[]} tags
  */
+
+/** Primary filter keys shown in the exhibitions index navigation. */
+export const EXHIBITION_FILTERS = [
+  { id: 'all', label: 'All' },
+  { id: 'solo', label: 'Solo' },
+  { id: 'group', label: 'Group' },
+  { id: 'media', label: 'Media' },
+  { id: 'installation', label: 'Installation' },
+  { id: 'performance', label: 'Performance' },
+]
 
 /** @type {ExhibitionRecord[]} */
 export const exhibitions = [
@@ -35,6 +52,9 @@ export const exhibitions = [
       'The first museum survey of Carol Bove brings together more than twenty-five years of work, from early assemblages and paper collages to monumental painted steel sculptures that transform Frank Lloyd Wright’s iconic rotunda.',
     yuranjaNote:
       'One of the year’s essential sculpture exhibitions, revealing how material, architecture, and perception continuously reshape one another.',
+    format: 'solo',
+    categories: [],
+    mediaTypes: [],
     tags: ['solo show', 'sculpture', 'museum survey'],
   },
   {
@@ -55,6 +75,9 @@ export const exhibitions = [
       'Spanning the nineteenth to the twenty-first centuries, this ambitious exhibition explores fantasy as a driving force in Asian visual culture. Through historical traditions, Surrealism, manga, anime, contemporary art, design, fashion, architecture, and digital media, it reveals how artists have used imagined worlds to respond to shifting social and political realities.',
     yuranjaNote:
       'One of the most anticipated exhibitions of the year, bringing together Asian visual traditions, contemporary art, manga, anime, and digital culture in a compelling cross-cultural narrative.',
+    format: 'group',
+    categories: [],
+    mediaTypes: [],
     tags: [
       'group exhibition',
       'Asian contemporary art',
@@ -82,6 +105,9 @@ export const exhibitions = [
       'A month-long retrospective celebrating one of the French New Wave’s most original filmmakers. Spanning five feature films and a programme of shorts, the season explores Jacques Rozier’s playful, improvisational cinema, where chance encounters, youthful freedom, and the passing of time unfold with remarkable sensitivity.',
     yuranjaNote:
       'A rare opportunity to rediscover an underappreciated master of French cinema through beautifully restored films that remain strikingly fresh and influential.',
+    format: 'solo',
+    categories: ['media'],
+    mediaTypes: ['moving-image'],
     tags: [
       'film',
       'retrospective',
@@ -108,6 +134,9 @@ export const exhibitions = [
       'Featuring around ninety works from the Moderna Museet Collection, this exhibition traces Swedish art from 1945 to 1979. From postwar abstraction and expressive painting to politically engaged installations, it explores four transformative decades shaped by the welfare state, the Cold War, and rapid social change.',
     yuranjaNote:
       'An outstanding introduction to post-war Swedish art, bringing together iconic works that reveal how artists responded to optimism, anxiety, and profound cultural transformation.',
+    format: 'group',
+    categories: [],
+    mediaTypes: [],
     tags: [
       'collection exhibition',
       'post-war art',
@@ -134,6 +163,9 @@ export const exhibitions = [
       'https://www.smb.museum/en/museums-institutions/neue-nationalgalerie/home.html',
     description:
       'Cattelan’s proposal for the prize year is characteristically precise and provocatively plain — a single gesture that reframes the glass pavilion as stage rather than container. Expect lines on weekends; weekdays before noon are calmest.',
+    format: 'solo',
+    categories: ['installation'],
+    mediaTypes: [],
     tags: ['solo show', 'sculpture', 'installation'],
   },
   {
@@ -154,6 +186,9 @@ export const exhibitions = [
       'Marking Swiss Institute’s 40th anniversary, Regift revisits the landmark 2009 exhibition through more than fifty artists whose works explore generosity, exchange, reciprocity, and value. Co-produced with Luma Foundation, the exhibition expands the original premise to consider gift-giving rituals across cultures, from personal celebrations to ancestral offerings and collective futures.',
     yuranjaNote:
       'An ambitious anniversary exhibition that rethinks the gift as both artwork and social practice, bringing together four decades of Swiss Institute’s international artistic network.',
+    format: 'group',
+    categories: [],
+    mediaTypes: [],
     tags: [
       'group exhibition',
       'contemporary art',
@@ -164,6 +199,27 @@ export const exhibitions = [
     ],
   },
 ]
+
+/**
+ * Whether an exhibition matches a primary filter id.
+ * MEDIA matches any exhibition with category "media" (mediaTypes reserved for a future sub-filter).
+ * @param {ExhibitionRecord} exhibition
+ * @param {string} filterId
+ */
+export function exhibitionMatchesFilter(exhibition, filterId) {
+  if (!filterId || filterId === 'all') return true
+
+  const format = exhibition.format
+  const categories = exhibition.categories ?? []
+
+  if (filterId === 'solo') return format === 'solo'
+  if (filterId === 'group') return format === 'group'
+  if (filterId === 'media') return categories.includes('media')
+  if (filterId === 'installation') return categories.includes('installation')
+  if (filterId === 'performance') return categories.includes('performance')
+
+  return true
+}
 
 /** @param {ExhibitionRecord} exhibition */
 export function getExhibitionCategory(exhibition) {

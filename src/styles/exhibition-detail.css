@@ -78,7 +78,16 @@
 }
 
 .exhibition-detail__meta-value {
-  color: var(--exhibition-detail-body);
+  color: var(--exhibition-detail-text);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+@media (min-width: 768px) {
+  .exhibition-detail__meta-value {
+    font-size: 1.0625rem;
+  }
 }
 
 .exhibition-detail__section {
@@ -90,8 +99,21 @@
 .exhibition-detail__prose {
   margin-top: 1.25rem;
   max-width: 38rem;
-  color: var(--exhibition-detail-body);
+  color: color-mix(in srgb, var(--exhibition-detail-text) 78%, var(--exhibition-detail-body));
+  font-size: 1.0625rem;
+  font-weight: 500;
   line-height: 1.75;
+}
+
+@media (min-width: 768px) {
+  .exhibition-detail__prose.font-sans.md\:text-lg,
+  .exhibition-detail__prose {
+    font-size: 1.125rem;
+  }
+}
+
+.exhibition-detail__prose.font-sans.text-sm {
+  font-size: 1rem;
 }
 
 .exhibition-detail__note {

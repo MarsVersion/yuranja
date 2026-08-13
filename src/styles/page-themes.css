@@ -123,6 +123,18 @@
   color: var(--cities-text);
 }
 
+/* Cities index — stronger lede + district metadata without changing palette tokens */
+.site-shell--cities main.page-atmosphere .page-lede {
+  color: rgb(243 238 231 / 0.92);
+  font-weight: 500;
+}
+
+.site-shell--cities main.page-atmosphere a.group p.font-sans.text-caption.uppercase {
+  font-size: 0.875rem;
+  letter-spacing: 0.18em;
+  color: rgb(243 238 231 / 0.9);
+}
+
 /* —— Exhibitions —— */
 
 .site-shell--exhibitions {
