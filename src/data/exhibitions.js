@@ -2,6 +2,16 @@
  * @typedef {'solo' | 'group'} ExhibitionFormat
  * @typedef {'media' | 'installation' | 'performance'} ExhibitionCategory
  * @typedef {'moving-image' | 'sound' | 'digital' | 'interactive' | 'immersive' | 'kinetic'} MediaType
+ * @typedef {'free' | 'paid' | 'included' | 'reservation-required' | 'unknown'} AdmissionStatus
+ *
+ * Concise visitor-facing admission — not a full ticket matrix.
+ * @typedef {Object} ExhibitionAdmission
+ * @property {AdmissionStatus} status
+ * @property {string} display Primary UI string (e.g. "From €14 · Reduced rates available")
+ * @property {string} [fromPrice]
+ * @property {boolean} [reservationRequired]
+ * @property {string} [ticketUrl] Official ticket/admission page only
+ * @property {string} [checkedAt] ISO date YYYY-MM-DD
  *
  * @typedef {Object} ExhibitionRecord
  * @property {string} slug
@@ -19,6 +29,7 @@
  * @property {ExhibitionFormat} [format]
  * @property {ExhibitionCategory[]} [categories]
  * @property {MediaType[]} [mediaTypes]
+ * @property {ExhibitionAdmission} [admission]
  * @property {string[]} tags
  */
 
@@ -55,6 +66,12 @@ export const exhibitions = [
     format: 'solo',
     categories: [],
     mediaTypes: [],
+    admission: {
+      status: 'included',
+      display: 'Included with museum admission',
+      ticketUrl: 'https://www.guggenheim.org/buy-tickets',
+      checkedAt: '2026-08-13',
+    },
     tags: ['solo show', 'sculpture', 'museum survey'],
   },
   {
@@ -78,6 +95,14 @@ export const exhibitions = [
     format: 'group',
     categories: [],
     mediaTypes: [],
+    admission: {
+      status: 'included',
+      display: 'From HK$190 · Reduced rates available',
+      fromPrice: 'HK$190',
+      reservationRequired: true,
+      ticketUrl: 'https://www.mplus.org.hk/en/get-tickets/',
+      checkedAt: '2026-08-13',
+    },
     tags: [
       'group exhibition',
       'Asian contemporary art',
@@ -108,6 +133,13 @@ export const exhibitions = [
     format: 'solo',
     categories: ['media'],
     mediaTypes: ['moving-image'],
+    admission: {
+      status: 'paid',
+      display: 'Paid admission · Reservation required',
+      reservationRequired: true,
+      ticketUrl: 'https://www.ica.art/films/rozier',
+      checkedAt: '2026-08-13',
+    },
     tags: [
       'film',
       'retrospective',
@@ -137,6 +169,13 @@ export const exhibitions = [
     format: 'group',
     categories: [],
     mediaTypes: [],
+    admission: {
+      status: 'included',
+      display: 'From 170 kr · Reduced rates available',
+      fromPrice: '170 kr',
+      ticketUrl: 'https://www.modernamuseet.se/en/stockholm/tickets-and-memberships/',
+      checkedAt: '2026-08-13',
+    },
     tags: [
       'collection exhibition',
       'post-war art',
@@ -166,6 +205,14 @@ export const exhibitions = [
     format: 'solo',
     categories: ['installation'],
     mediaTypes: [],
+    admission: {
+      status: 'included',
+      display: 'From €20 · Reduced rates available',
+      fromPrice: '€20',
+      ticketUrl:
+        'https://www.smb.museum/en/museums-institutions/neue-nationalgalerie/plan-your-visit/prices-tickets/',
+      checkedAt: '2026-08-13',
+    },
     tags: ['solo show', 'sculpture', 'installation'],
   },
   {
@@ -189,6 +236,12 @@ export const exhibitions = [
     format: 'group',
     categories: [],
     mediaTypes: [],
+    admission: {
+      status: 'free',
+      display: 'Free admission',
+      ticketUrl: 'https://luma-westbau.com/en/visit',
+      checkedAt: '2026-08-13',
+    },
     tags: [
       'group exhibition',
       'contemporary art',
@@ -271,4 +324,15 @@ export function formatExhibitionDates(dates, style = 'long') {
 export function formatList(items) {
   if (!items?.length) return ''
   return items.join(', ')
+}
+
+/**
+ * Visitor-facing admission summary. Prefer `display`; never invent prices.
+ * @param {ExhibitionAdmission | undefined} admission
+ */
+export function getAdmissionDisplay(admission) {
+  if (!admission || admission.status === 'unknown' || !admission.display) {
+    return 'Check current admission'
+  }
+  return admission.display
 }

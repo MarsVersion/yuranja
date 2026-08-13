@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { EditorialLabel } from '../components/EditorialLabel'
 import {
+  getAdmissionDisplay,
   formatExhibitionDates,
   formatList,
   getExhibitionBySlug,
@@ -54,6 +55,7 @@ export function ExhibitionDetailPage() {
     address,
     openingHours,
     website,
+    admission,
     description,
     yuranjaNote,
     tags,
@@ -62,6 +64,7 @@ export function ExhibitionDetailPage() {
   const dateLabel = formatExhibitionDates(dates)
   const artistLabel = formatList(artists)
   const curatorLabel = formatList(curators)
+  const admissionDisplay = getAdmissionDisplay(admission)
 
   return (
     <main className="exhibition-detail page-atmosphere mx-auto max-w-[1440px] px-6 md:px-20">
@@ -77,6 +80,22 @@ export function ExhibitionDetailPage() {
           <MetaField label="Dates" value={dateLabel} />
           <MetaField label="Address" value={address} />
           <MetaField label="Opening hours" value={openingHours} />
+          <MetaField label="Admission">
+            <span>{admissionDisplay}</span>
+            {admission?.ticketUrl ? (
+              <>
+                {' '}
+                <a
+                  href={admission.ticketUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="exhibition-detail__link underline"
+                >
+                  View current tickets ↗
+                </a>
+              </>
+            ) : null}
+          </MetaField>
           <MetaField label="Website">
             {website ? (
               <a
