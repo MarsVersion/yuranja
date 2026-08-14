@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { citiesOfTheMonth } from '../data/cities'
 import { AESF_DIGITAL_SAFARI_ARTICLE_PATH } from './AesfDigitalSafariArticle'
@@ -6,7 +5,6 @@ import { NEUE_NATIONALGALERIE_ARTICLE_PATH } from './NeueNationalgalerieArticle'
 import { THOMAS_ELLER_PAGE_PATH } from './ThomasEllerPage'
 import { SOYOUNG_YOON_ARTICLE_PATH } from './SoyoungYoonArticle'
 import { aesfYuranja, cattelanExhibition } from '../assets/images.js'
-import heroVideo from '../assets/Counter.mp4'
 import soyoungYoonImg from '../assets/Soyoung Yoon.png'
 import '../styles/home-editorial.css'
 
@@ -39,29 +37,48 @@ const citiesCollage = [
 const cityBySlug = Object.fromEntries(citiesOfTheMonth.map((city) => [city.slug, city]))
 
 export function HomePage() {
-  const heroVideoRef = useRef(null)
-
-  useEffect(() => {
-    const video = heroVideoRef.current
-    if (!video) return
-    video.playbackRate = 0.4
-  }, [])
-
   return (
     <div className="home-mag">
       {/* Section 1 — Hero */}
       <section className="home-mag__hero-block">
-        <figure className="hero">
-          <video
-            ref={heroVideoRef}
-            src={heroVideo}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-          />
-        </figure>
+        <div className="landing-identity">
+          <h1 className="yuranja-logo font-serif">YURANJA</h1>
+
+          <p className="hero-tagline font-sans">
+            <span>Curated exhibitions. Zero noise.</span>
+          </p>
+
+          <div className="wanderer-logo" aria-hidden="true">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 178 266"
+              width="178"
+              height="266"
+              focusable="false"
+            >
+              <path
+                className="a svg-elem-1"
+                d="m64 37c0.9 13.6 18.5 25.6 29 22 9.2-3.2 16.3-18.8 12-29.6-4.2-10.5-17.6-17.5-28.4-13.2"
+              />
+              <path
+                className="a svg-elem-2"
+                d="m88 72c15 21 18 52 8 82-6 18-16 35-28 51"
+              />
+              <path
+                className="a svg-elem-3"
+                d="m73 71c-6.4-0.2-27.4 9.3-38.6 28.2-11.2 19-9.4 42.1-6.1 47.6"
+              />
+              <path
+                className="a svg-elem-4"
+                d="m71 201c-14 17-27 33-36 44-7 9-1 17 12 13"
+              />
+              <path
+                className="a svg-elem-5"
+                d="m62 159c10.8-1.6 46 52 69 89 7 11 27.9 12.8 30 1"
+              />
+            </svg>
+          </div>
+        </div>
       </section>
 
       {/* Section 2 — Featured */}

@@ -26,20 +26,7 @@ const boardMembers = [
       'In 2026, he serves as co-curator of the Mongolian Pavilion at the Venice Biennale.',
     ],
   },
-  {
-    image: placeholder,
-    name: 'Additional Member',
-    role: 'Curator and writer.',
-    imageAlt: '',
-    biography: ['Additional editorial board members will be announced.'],
-  },
-  {
-    image: placeholder,
-    name: 'Additional Member',
-    role: 'Curator and writer.',
-    imageAlt: '',
-    biography: ['Additional editorial board members will be announced.'],
-  },
+ 
 ]
 
 export function EditorialBoardPage() {
