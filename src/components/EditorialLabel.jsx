@@ -14,7 +14,7 @@ export function EditorialLabel({ children, variant = 'default', className = '' }
 
   return (
     <p
-      className={`font-sans text-caption font-semibold uppercase tracking-[0.28em] ${tone} ${className}`}
+      className={`editorial-label font-sans text-caption font-bold uppercase tracking-[0.28em] ${tone} ${className}`}
     >
       {children}
     </p>

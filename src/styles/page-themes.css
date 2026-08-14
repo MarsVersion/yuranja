@@ -190,6 +190,12 @@
   backdrop-filter: blur(8px);
 }
 
+.site-header :is(a, button).font-sans.text-caption,
+.editorial-label {
+  font-size: calc(0.7rem * 1.1);
+  font-weight: 700;
+}
+
 .site-footer {
   background: var(--page-footer-bg);
   border-top: 1px solid var(--page-border);
@@ -339,4 +345,10 @@
 
 .page-atmosphere article.flex h-full .space-y-4 p {
   color: var(--page-body);
+}
+
+.site-shell--cities .page-atmosphere p.editorial-label.editorial-kicker-on-dark {
+  color: #ffffff;
+  font-size: calc(0.875rem * 1.1);
+  font-weight: 700;
 }

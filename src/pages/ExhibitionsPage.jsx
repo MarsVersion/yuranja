@@ -41,7 +41,9 @@ export function ExhibitionsPage() {
 
       <div className="exhibitions-index__content mx-auto max-w-[1440px] px-6 md:px-20">
         <section className="exhibitions-index__hero">
-          <EditorialLabel variant="onDark">The guide</EditorialLabel>
+          <EditorialLabel variant="onDark" className="editorial-kicker-on-dark">
+            The guide
+          </EditorialLabel>
           <h1 className="mt-4 font-serif text-5xl text-white md:text-7xl">Exhibitions</h1>
           <p className="mt-8 max-w-3xl font-sans text-lg leading-relaxed text-white/88">
             Selected exhibitions, museums, galleries, and project spaces worth seeing — chosen for

@@ -133,6 +133,12 @@
   font-weight: 500;
 }
 
+.exhibitions-index__hero p.editorial-label.editorial-kicker-on-dark {
+  color: #ffffff;
+  font-size: calc(0.875rem * 1.1);
+  font-weight: 600;
+}
+
 @media (min-width: 768px) {
   .exhibitions-index__hero {
     margin-bottom: 10rem;

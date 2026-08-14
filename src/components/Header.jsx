@@ -15,13 +15,13 @@ const aboutLinks = [
 
 const navLinkClass = ({ isActive }) =>
   [
-    'font-sans text-caption font-semibold uppercase tracking-[0.2em] transition-colors',
+    'font-sans text-caption font-bold uppercase tracking-[0.2em] transition-colors',
     isActive ? 'text-ink' : 'text-ink/50 hover:text-ink',
   ].join(' ')
 
 const dropdownLinkClass = ({ isActive }) =>
   [
-    'block px-5 py-3 font-sans text-caption font-semibold uppercase tracking-[0.2em] transition-colors',
+    'block px-5 py-3 font-sans text-caption font-bold uppercase tracking-[0.2em] transition-colors',
     isActive ? 'bg-surface-muted/60 text-ink' : 'text-ink hover:bg-surface-muted/40',
   ].join(' ')
 
@@ -53,7 +53,7 @@ function AboutNavDropdown({ onNavigate }) {
       <button
         type="button"
         className={[
-          'inline-flex items-center gap-1 font-sans text-caption font-semibold uppercase tracking-[0.2em] transition-colors',
+          'inline-flex items-center gap-1 font-sans text-caption font-bold uppercase tracking-[0.2em] transition-colors',
           isAboutSection ? 'text-ink' : 'text-ink/50 hover:text-ink',
         ].join(' ')}
         aria-haspopup="true"
@@ -158,7 +158,7 @@ export function Header() {
             <button
               type="button"
               className={[
-                'flex w-full items-center justify-between font-sans text-caption font-semibold uppercase tracking-[0.2em] transition-colors',
+                'flex w-full items-center justify-between font-sans text-caption font-bold uppercase tracking-[0.2em] transition-colors',
                 isAboutSection ? 'text-ink' : 'text-ink/50',
               ].join(' ')}
               aria-expanded={aboutMobileOpen}

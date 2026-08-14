@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { EditorialBoardMemberCard } from '../components/EditorialBoardMemberCard'
-import { jungMeChai, placeholder, thomasEller } from '../assets/people/images.js'
+import { jungMeChai, thomasEller } from '../assets/people/images.js'
 
 const linkClass =
   'page-link underline underline-offset-4 transition-opacity hover:opacity-75'
@@ -26,7 +26,6 @@ const boardMembers = [
       'In 2026, he serves as co-curator of the Mongolian Pavilion at the Venice Biennale.',
     ],
   },
- 
 ]
 
 export function EditorialBoardPage() {
