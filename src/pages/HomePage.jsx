@@ -4,9 +4,13 @@ import { AESF_DIGITAL_SAFARI_ARTICLE_PATH } from './AesfDigitalSafariArticle'
 import { NEUE_NATIONALGALERIE_ARTICLE_PATH } from './NeueNationalgalerieArticle'
 import { THOMAS_ELLER_PAGE_PATH } from './ThomasEllerPage'
 import { SOYOUNG_YOON_ARTICLE_PATH } from './SoyoungYoonArticle'
+import { WHOSE_HOME_IS_IT_ARTICLE_PATH } from './WhoseHomeIsItArticle'
 import { aesfYuranja, cattelanExhibition } from '../assets/images.js'
 import soyoungYoonImg from '../assets/Soyoung Yoon.png'
 import '../styles/home-editorial.css'
+
+const JOURNAL_FEATURE_IMAGE = `${import.meta.env.BASE_URL}images/journal/honey.png`
+const WHY_GO_IMAGE = cattelanExhibition
 
 const editorialRail = [
   {
@@ -85,29 +89,70 @@ export function HomePage() {
       <section id="featured" className="home-mag__section">
         <div className="home-mag__wrap">
           <div className="home-mag__featured">
-            <Link to={NEUE_NATIONALGALERIE_ARTICLE_PATH} className="home-mag__feature-main">
-              <p className="home-mag__label">Why go</p>
-              <div className="home-mag__feature-main-image">
-                <img src={cattelanExhibition} alt="" />
+            <Link to={WHOSE_HOME_IS_IT_ARTICLE_PATH} className="home-mag__feature-main">
+              <p className="home-mag__label">Journal</p>
+              <div className="home-mag__feature-main-image home-mag__feature-main-image--journal">
+                <img
+                  src={JOURNAL_FEATURE_IMAGE}
+                  alt="Wonwoo Lee, HONEY I’M HOME (2026), at Frieze Seoul"
+                  width={900}
+                  height={1125}
+                  decoding="async"
+                />
               </div>
-              <h2 className="home-mag__feature-main-title">
-                Maurizio Cattelan Receives the Preis der Nationalgalerie 2026
-              </h2>
-              <p className="home-mag__feature-main-sub">
-                Italian artist Maurizio Cattelan has been awarded the Preis der Nationalgalerie 2026
-                and will present his first major solo exhibition in Germany at the Neue
-                Nationalgalerie during Berlin Art Week in September 2026.
+              <h2 className="home-mag__feature-main-title">Whose Home Is It?</h2>
+              <p className="home-mag__feature-main-sub">Frieze Seoul 2026</p>
+              <p className="home-mag__feature-main-teaser">
+                Photography was scarce, painting was everywhere — and some of the most memorable
+                works questioned the fair itself.
               </p>
+              <span className="home-mag__link home-mag__read">Read →</span>
             </Link>
 
             <div className="home-mag__feature-rail">
+              <article className="home-mag__fragment">
+                <p className="home-mag__label">Why go</p>
+                <Link
+                  to={NEUE_NATIONALGALERIE_ARTICLE_PATH}
+                  className="home-mag__fragment-image"
+                >
+                  <img
+                    src={WHY_GO_IMAGE}
+                    alt="Maurizio Cattelan at Neue Nationalgalerie"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </Link>
+                <Link
+                  to={NEUE_NATIONALGALERIE_ARTICLE_PATH}
+                  className="home-mag__fragment-title-link"
+                >
+                  <h3 className="home-mag__fragment-title">
+                    Maurizio Cattelan Receives the Preis der Nationalgalerie 2026
+                  </h3>
+                </Link>
+                <p className="home-mag__fragment-sub">
+                  Italian artist Maurizio Cattelan has been awarded the Preis der Nationalgalerie 2026
+                  and will present his first major solo exhibition in Germany at the Neue
+                  Nationalgalerie during Berlin Art Week in September 2026.
+                </p>
+                <Link
+                  to={NEUE_NATIONALGALERIE_ARTICLE_PATH}
+                  className="home-mag__link home-mag__read"
+                >
+                  Read →
+                </Link>
+              </article>
+
+              <div className="home-mag__fragment-spacer home-mag__fragment-spacer--compact" aria-hidden />
+
               <article className="home-mag__fragment">
                 <p className="home-mag__label">News</p>
                 <Link
                   to={SOYOUNG_YOON_ARTICLE_PATH}
                   className="home-mag__fragment-image home-mag__fragment-image--contain"
                 >
-                  <img src={soyoungYoonImg} alt="Soyoung Yoon" />
+                  <img src={soyoungYoonImg} alt="Soyoung Yoon" loading="lazy" decoding="async" />
                 </Link>
                 <Link to={SOYOUNG_YOON_ARTICLE_PATH} className="home-mag__fragment-title-link">
                   <h3 className="home-mag__fragment-title">
@@ -126,26 +171,28 @@ export function HomePage() {
                   Read →
                 </Link>
               </article>
+            </div>
+          </div>
 
-              <div className="home-mag__fragment-spacer" aria-hidden />
-
-              <article className="home-mag__fragment home-mag__fragment--overlap home-mag__fragment--aesf">
-                <p className="home-mag__label">Worth seeing</p>
-                <Link
-                  to={AESF_DIGITAL_SAFARI_ARTICLE_PATH}
-                  className="home-mag__fragment-image"
-                >
-                  <img src={aesfYuranja} alt="" />
-                </Link>
+          <article className="home-mag__worth-seeing">
+            <p className="home-mag__label">Worth seeing</p>
+            <div className="home-mag__worth-seeing-grid">
+              <Link
+                to={AESF_DIGITAL_SAFARI_ARTICLE_PATH}
+                className="home-mag__worth-seeing-image"
+              >
+                <img src={aesfYuranja} alt="" loading="lazy" decoding="async" />
+              </Link>
+              <div className="home-mag__worth-seeing-copy">
                 <Link
                   to={AESF_DIGITAL_SAFARI_ARTICLE_PATH}
                   className="home-mag__fragment-title-link"
                 >
-                  <h3 className="home-mag__fragment-title">
+                  <h3 className="home-mag__worth-seeing-title">
                     Auditorium Santa Margherita — Emanuele Severino
                   </h3>
                 </Link>
-                <p className="home-mag__fragment-sub">
+                <p className="home-mag__worth-seeing-sub">
                   {`AES+F:\nDigital Safari —\nFables of the Jungle`}
                 </p>
                 <Link
@@ -154,9 +201,9 @@ export function HomePage() {
                 >
                   Read →
                 </Link>
-              </article>
+              </div>
             </div>
-          </div>
+          </article>
         </div>
       </section>
 

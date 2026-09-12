@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "dev:clean": "rm -rf node_modules/.vite && vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/generate-visibility-layer.mjs",
+    "visibility": "node scripts/generate-visibility-layer.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

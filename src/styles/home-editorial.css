@@ -238,7 +238,7 @@
   }
 }
 
-/* —— Featured 7 / 3 —— */
+/* —— Featured 60 / 40 —— */
 
 .home-mag__featured {
   display: grid;
@@ -249,7 +249,7 @@
   .home-mag__featured {
     align-items: start;
     gap: 0 3rem;
-    grid-template-columns: 6.5fr 3.5fr;
+    grid-template-columns: 3fr 2fr;
   }
 }
 
@@ -272,6 +272,10 @@
   width: 100%;
 }
 
+.home-mag__feature-main-image--journal img {
+  object-position: center 35%;
+}
+
 .home-mag__feature-main-title {
   border-top: 1px solid var(--mag-ink);
   font-family: var(--mag-serif);
@@ -292,6 +296,20 @@
   margin-top: 1rem;
   max-width: 26rem;
   white-space: pre-line;
+}
+
+.home-mag__feature-main-teaser {
+  color: var(--mag-muted);
+  font-family: var(--mag-sans);
+  font-size: clamp(1rem, 0.975rem + 0.25vw, 1.125rem);
+  line-height: 1.55;
+  margin-top: 1rem;
+  max-width: 28rem;
+}
+
+.home-mag__feature-main .home-mag__read {
+  display: inline-block;
+  margin-top: 1.25rem;
 }
 
 .home-mag__feature-rail {
@@ -354,8 +372,8 @@
   height: 5rem;
 }
 
-.home-mag__fragment--overlap {
-  margin-top: 0;
+.home-mag__fragment-spacer--compact {
+  height: 2.5rem;
 }
 
 @media (min-width: 900px) {
@@ -363,17 +381,73 @@
     height: 5rem;
   }
 
-  .home-mag__fragment--overlap {
-    background: color-mix(in srgb, var(--mag-card-warm) 55%, var(--mag-bg));
-    margin: top 0.7rem;
-    padding: 1.25rem;
+  .home-mag__fragment-spacer--compact {
+    height: 2.75rem;
   }
 }
 
-.home-mag__fragment--aesf .home-mag__fragment-title {
-  font-size: clamp(1.5rem, 1.6vw, 1.35rem);
+/* —— Worth Seeing (full-width recommendation) —— */
+
+.home-mag__worth-seeing {
+  border-top: 1px solid var(--mag-line);
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+}
+
+.home-mag__worth-seeing-grid {
+  display: grid;
+  gap: 1.75rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .home-mag__worth-seeing {
+    margin-top: 3.5rem;
+  }
+
+  .home-mag__worth-seeing-grid {
+    align-items: center;
+    gap: 3rem;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  }
+}
+
+.home-mag__worth-seeing-image {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+
+.home-mag__worth-seeing-image img {
+  aspect-ratio: 4 / 3;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+.home-mag__worth-seeing-title {
+  font-family: var(--mag-serif);
+  font-size: clamp(1.5rem, 1.6vw, 1.85rem);
+  font-weight: 600;
   letter-spacing: 0.03em;
+  line-height: 1.2;
+  margin: 0;
   text-transform: uppercase;
+}
+
+.home-mag__worth-seeing-sub {
+  color: var(--mag-muted);
+  font-family: var(--mag-sans);
+  font-size: clamp(1rem, 0.975rem + 0.25vw, 1.125rem);
+  line-height: 1.55;
+  margin-top: 1rem;
+  white-space: pre-line;
+}
+
+.home-mag__worth-seeing-copy .home-mag__read {
+  display: inline-block;
+  margin-top: 1.25rem;
 }
 
 /* —— Journal —— */
@@ -646,13 +720,16 @@
     order: 7;
   }
 
-  .home-mag__fragment--overlap {
-    background: color-mix(in srgb, var(--mag-card-warm) 45%, var(--mag-bg));
-    margin-top: 2rem;
-    padding: 1.25rem;
-  }
-
   .home-mag__fragment-spacer {
     height: 2.5rem;
+  }
+
+  .home-mag__fragment-spacer--compact {
+    height: 2rem;
+  }
+
+  .home-mag__worth-seeing {
+    margin-top: 3rem;
+    padding-top: 2rem;
   }
 }

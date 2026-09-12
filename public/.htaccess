@@ -2,6 +2,9 @@
   RewriteEngine On
   RewriteBase /
 
+  # Prefer directory index files generated for crawlable routes
+  DirectoryIndex index.html
+
   # If the request is not a file or directory, serve index.html (SPA fallback)
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d

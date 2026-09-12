@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { DocumentMeta } from './components/DocumentMeta'
 import { Layout } from './components/Layout'
 import { PlausibleAnalytics } from './components/PlausibleAnalytics'
 import { HomePage } from './pages/HomePage'
@@ -31,12 +32,17 @@ import {
   SOYOUNG_YOON_ARTICLE_PATH,
   SoyoungYoonArticle,
 } from './pages/SoyoungYoonArticle'
+import {
+  WHOSE_HOME_IS_IT_ARTICLE_PATH,
+  WhoseHomeIsItArticle,
+} from './pages/WhoseHomeIsItArticle'
 
 const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '')
 
 export default function App() {
   return (
     <BrowserRouter basename={routerBasename || undefined}>
+      <DocumentMeta />
       <PlausibleAnalytics />
       <Routes>
         <Route element={<Layout />}>
@@ -49,6 +55,10 @@ export default function App() {
           <Route path="about/editorial-board" element={<EditorialBoardPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path={SOYOUNG_YOON_ARTICLE_PATH.slice(1)} element={<SoyoungYoonArticle />} />
+          <Route
+            path={WHOSE_HOME_IS_IT_ARTICLE_PATH.slice(1)}
+            element={<WhoseHomeIsItArticle />}
+          />
           <Route
             path={AESF_DIGITAL_SAFARI_ARTICLE_PATH.slice(1)}
             element={<AesfDigitalSafariArticle />}
