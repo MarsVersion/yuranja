@@ -5,6 +5,7 @@
 
 import { absoluteUrl } from '../../config/site.js'
 import { articleToSummaryHtml, blockToHtml, escapeHtml } from './blocks.js'
+import { hello90Document } from './hello90.js'
 import { whoseHomeIsItDocument } from './whoseHomeIsIt.js'
 
 /** @type {import('./blocks.js').EditorialBlock[]} */
@@ -234,6 +235,7 @@ const editorialBoardIntroBlocks = [
 ]
 
 export const editorialDocuments = [
+  hello90Document,
   whoseHomeIsItDocument,
   {
     id: 'soyoung-yoon-isp',

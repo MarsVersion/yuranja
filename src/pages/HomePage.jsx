@@ -4,12 +4,14 @@ import { AESF_DIGITAL_SAFARI_ARTICLE_PATH } from './AesfDigitalSafariArticle'
 import { NEUE_NATIONALGALERIE_ARTICLE_PATH } from './NeueNationalgalerieArticle'
 import { THOMAS_ELLER_PAGE_PATH } from './ThomasEllerPage'
 import { SOYOUNG_YOON_ARTICLE_PATH } from './SoyoungYoonArticle'
+import { HELLO_90_ARTICLE_PATH } from './Hello90Article'
 import { WHOSE_HOME_IS_IT_ARTICLE_PATH } from './WhoseHomeIsItArticle'
 import { aesfYuranja, cattelanExhibition } from '../assets/images.js'
 import soyoungYoonImg from '../assets/Soyoung Yoon.png'
 import '../styles/home-editorial.css'
 
 const JOURNAL_FEATURE_IMAGE = `${import.meta.env.BASE_URL}images/journal/honey.png`
+const HELLO_90_LANDING_IMAGE = `${import.meta.env.BASE_URL}images/journal/02-Hello90 90 deg.jpg`
 const WHY_GO_IMAGE = cattelanExhibition
 
 const editorialRail = [
@@ -56,8 +58,8 @@ export function HomePage() {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 178 266"
-              width="178"
-              height="266"
+              width="89"
+              height="133"
               focusable="false"
             >
               <path
@@ -88,6 +90,29 @@ export function HomePage() {
       {/* Section 2 — Featured */}
       <section id="featured" className="home-mag__section">
         <div className="home-mag__wrap">
+          <Link to={HELLO_90_ARTICLE_PATH} className="home-mag__journal-entry">
+            <p className="home-mag__label">Journal</p>
+            <div className="home-mag__journal-entry-image">
+              <img
+                src={HELLO_90_LANDING_IMAGE}
+                alt="Hojun Song, Hello 90, 2014"
+                decoding="async"
+              />
+            </div>
+            <h2 className="home-mag__journal-entry-title">
+              Hojun Song, <em>Hello 90</em>
+            </h2>
+            <p className="home-mag__journal-entry-sub">
+              Interactive video installation, 2014
+            </p>
+            <p className="home-mag__journal-entry-intro">
+              A ninety-degree bow can signal respect, discipline, obedience—or something more
+              unsettling. Hojun Song’s <em>Hello 90</em> takes a familiar collective gesture apart,
+              one body at a time.
+            </p>
+            <span className="home-mag__link home-mag__read">Read →</span>
+          </Link>
+
           <div className="home-mag__featured">
             <Link to={WHOSE_HOME_IS_IT_ARTICLE_PATH} className="home-mag__feature-main">
               <p className="home-mag__label">Journal</p>

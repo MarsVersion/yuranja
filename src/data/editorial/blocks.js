@@ -25,6 +25,7 @@
  * @property {InlinePart[]} [captionParts]
  * @property {string} [credit]
  * @property {boolean} [eager]
+ * @property {boolean} [fullWidth]
  */
 
 export function escapeHtml(value) {

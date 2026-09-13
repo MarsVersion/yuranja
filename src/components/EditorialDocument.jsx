@@ -200,7 +200,11 @@ function BlockKey({ block }) {
   }
   if (block.type === 'figure') {
     return (
-      <figure className="!mt-12 !mb-4 max-w-[730px]">
+      <figure
+        className={`!mb-4 ${
+          block.fullWidth ? 'w-full max-w-none !mt-8' : 'max-w-[730px] !mt-12'
+        }`}
+      >
         {block.src ? (
           <img
             src={block.src}
@@ -210,7 +214,7 @@ function BlockKey({ block }) {
           />
         ) : null}
         {block.captionParts?.length || block.caption || block.credit ? (
-          <figcaption className="mt-3 font-sans text-sm leading-snug text-ink/70">
+          <figcaption className="mt-3 whitespace-pre-line font-sans text-sm leading-snug text-ink/70">
             {block.captionParts?.length ? <InlineParts parts={block.captionParts} /> : block.caption}
             {block.credit ? (
               <>
