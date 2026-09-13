@@ -58,8 +58,8 @@ export function HomePage() {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 178 266"
-              width="89"
-              height="133"
+              width="71"
+              height="106"
               focusable="false"
             >
               <path
