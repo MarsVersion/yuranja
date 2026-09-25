@@ -475,6 +475,18 @@
   width: 100%;
 }
 
+/* Landing crop: hide left brown edge of Pollux’s Mirror; keep natural proportions */
+.home-mag__journal-entry-image--pollux {
+  overflow: hidden;
+}
+
+.home-mag__journal-entry-image--pollux img {
+  /* show from ~16% from the left through the right edge */
+  margin-left: -19.05%;
+  max-width: none;
+  width: 119.05%;
+}
+
 .home-mag__journal-entry-title {
   font-family: var(--mag-serif);
   font-size: clamp(1.75rem, 3vw, 2.25rem);
@@ -507,6 +519,12 @@
 .home-mag__journal-entry .home-mag__read {
   display: inline-block;
   margin-top: 1.25rem;
+}
+
+.home-mag__journal-entry + .home-mag__journal-entry {
+  border-top: 1px solid var(--mag-line);
+  margin-top: 4rem;
+  padding-top: 3.5rem;
 }
 
 .home-mag__journal-entry + .home-mag__featured {

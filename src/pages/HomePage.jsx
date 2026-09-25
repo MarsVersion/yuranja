@@ -5,6 +5,7 @@ import { NEUE_NATIONALGALERIE_ARTICLE_PATH } from './NeueNationalgalerieArticle'
 import { THOMAS_ELLER_PAGE_PATH } from './ThomasEllerPage'
 import { SOYOUNG_YOON_ARTICLE_PATH } from './SoyoungYoonArticle'
 import { HELLO_90_ARTICLE_PATH } from './Hello90Article'
+import { THE_MEASURE_OF_AN_ERROR_ARTICLE_PATH } from './TheMeasureOfAnErrorArticle'
 import { WHOSE_HOME_IS_IT_ARTICLE_PATH } from './WhoseHomeIsItArticle'
 import { aesfYuranja, cattelanExhibition } from '../assets/images.js'
 import soyoungYoonImg from '../assets/Soyoung Yoon.png'
@@ -12,6 +13,7 @@ import '../styles/home-editorial.css'
 
 const JOURNAL_FEATURE_IMAGE = `${import.meta.env.BASE_URL}images/journal/honey.png`
 const HELLO_90_LANDING_IMAGE = `${import.meta.env.BASE_URL}images/journal/02-Hello90 90 deg.jpg`
+const MEASURE_OF_AN_ERROR_LANDING_IMAGE = `${import.meta.env.BASE_URL}images/journal/seo-young-chang-polluxs-mirror.jpeg`
 const WHY_GO_IMAGE = cattelanExhibition
 
 const editorialRail = [
@@ -90,12 +92,32 @@ export function HomePage() {
       {/* Section 2 — Featured */}
       <section id="featured" className="home-mag__section">
         <div className="home-mag__wrap">
+          <Link to={THE_MEASURE_OF_AN_ERROR_ARTICLE_PATH} className="home-mag__journal-entry">
+            <p className="home-mag__label">Journal</p>
+            <div className="home-mag__journal-entry-image home-mag__journal-entry-image--pollux">
+              <img
+                src={MEASURE_OF_AN_ERROR_LANDING_IMAGE}
+                alt="Seo Young Chang, Pollux’s Mirror, at Buk-Seoul Museum of Art"
+                decoding="async"
+              />
+            </div>
+            <h2 className="home-mag__journal-entry-title">The Measure of an Error</h2>
+            <p className="home-mag__journal-entry-sub">
+              Inhwan Oh vs. Seo Young Chang: Human Error
+            </p>
+            <p className="home-mag__journal-entry-intro">
+              If human beings are already prone to error, what else could “human error” mean?
+            </p>
+            <span className="home-mag__link home-mag__read">Read →</span>
+          </Link>
+
           <Link to={HELLO_90_ARTICLE_PATH} className="home-mag__journal-entry">
             <p className="home-mag__label">Journal</p>
             <div className="home-mag__journal-entry-image">
               <img
                 src={HELLO_90_LANDING_IMAGE}
                 alt="Hojun Song, Hello 90, 2014"
+                loading="lazy"
                 decoding="async"
               />
             </div>

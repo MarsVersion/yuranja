@@ -26,6 +26,8 @@
  * @property {string} [credit]
  * @property {boolean} [eager]
  * @property {boolean} [fullWidth]
+ * @property {boolean} [compact]
+ * @property {number} [cropLeft]
  */
 
 export function escapeHtml(value) {

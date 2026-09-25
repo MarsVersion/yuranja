@@ -168,6 +168,10 @@ export function getVisibilityPages() {
         <p>Selective guide to exhibitions, cities, art spaces, people, and editorial stories.</p>
         <ul>
           <li>
+            <a href="/journal/the-measure-of-an-error">The Measure of an Error</a>
+            — Inhwan Oh vs. Seo Young Chang: Human Error
+          </li>
+          <li>
             <a href="/journal/hello-90">Hojun Song, Hello 90</a>
             — Interactive video installation, 2014
           </li>

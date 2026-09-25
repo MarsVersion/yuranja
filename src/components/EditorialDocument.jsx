@@ -199,6 +199,10 @@ function BlockKey({ block }) {
     )
   }
   if (block.type === 'figure') {
+    const cropLeft = typeof block.cropLeft === 'number' ? block.cropLeft : 0
+    const imageWidthPct = cropLeft > 0 ? 100 / (1 - cropLeft / 100) : 100
+    const imageShiftPct = cropLeft > 0 ? -cropLeft / (1 - cropLeft / 100) : 0
+
     return (
       <figure
         className={`!mb-4 ${
@@ -206,12 +210,27 @@ function BlockKey({ block }) {
         }`}
       >
         {block.src ? (
-          <img
-            src={block.src}
-            alt={block.alt ?? ''}
-            className="h-auto w-full object-contain"
-            loading={block.eager ? 'eager' : 'lazy'}
-          />
+          cropLeft > 0 ? (
+            <div className="w-full overflow-hidden">
+              <img
+                src={block.src}
+                alt={block.alt ?? ''}
+                className="h-auto max-w-none object-contain"
+                style={{
+                  width: `${imageWidthPct}%`,
+                  marginLeft: `${imageShiftPct}%`,
+                }}
+                loading={block.eager ? 'eager' : 'lazy'}
+              />
+            </div>
+          ) : (
+            <img
+              src={block.src}
+              alt={block.alt ?? ''}
+              className="h-auto w-full object-contain"
+              loading={block.eager ? 'eager' : 'lazy'}
+            />
+          )
         ) : null}
         {block.captionParts?.length || block.caption || block.credit ? (
           <figcaption className="mt-3 whitespace-pre-line font-sans text-sm leading-snug text-ink/70">
@@ -229,10 +248,14 @@ function BlockKey({ block }) {
   }
   if (block.parts?.length) {
     return (
-      <p>
+      <p className={block.compact ? '!mt-10 whitespace-pre-line leading-snug' : undefined}>
         <InlineParts parts={block.parts} />
       </p>
     )
   }
-  return <p>{block.text}</p>
+  return (
+    <p className={block.compact ? '!mt-10 whitespace-pre-line leading-snug' : undefined}>
+      {block.text}
+    </p>
+  )
 }

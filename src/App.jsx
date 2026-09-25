@@ -37,6 +37,10 @@ import {
   Hello90Article,
 } from './pages/Hello90Article'
 import {
+  THE_MEASURE_OF_AN_ERROR_ARTICLE_PATH,
+  TheMeasureOfAnErrorArticle,
+} from './pages/TheMeasureOfAnErrorArticle'
+import {
   WHOSE_HOME_IS_IT_ARTICLE_PATH,
   WhoseHomeIsItArticle,
 } from './pages/WhoseHomeIsItArticle'
@@ -59,6 +63,10 @@ export default function App() {
           <Route path="about/editorial-board" element={<EditorialBoardPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path={SOYOUNG_YOON_ARTICLE_PATH.slice(1)} element={<SoyoungYoonArticle />} />
+          <Route
+            path={THE_MEASURE_OF_AN_ERROR_ARTICLE_PATH.slice(1)}
+            element={<TheMeasureOfAnErrorArticle />}
+          />
           <Route path={HELLO_90_ARTICLE_PATH.slice(1)} element={<Hello90Article />} />
           <Route
             path={WHOSE_HOME_IS_IT_ARTICLE_PATH.slice(1)}
