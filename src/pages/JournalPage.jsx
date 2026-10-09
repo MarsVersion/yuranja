@@ -41,7 +41,7 @@ export function JournalPage() {
                 className="group grid gap-6 py-12 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-12 md:py-16"
               >
                 {image ? (
-                  <div className="overflow-hidden bg-surface-muted">
+                  <div className="self-start overflow-hidden bg-surface-muted">
                     <img
                       src={image.src}
                       alt={image.alt}
