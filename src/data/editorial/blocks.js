@@ -114,6 +114,7 @@ export function blockToHtml(block) {
  * @param {string} article.title
  * @param {string} [article.subtitle]
  * @param {string} [article.label]
+ * @param {string} [article.author]
  * @param {{ src?: string, alt?: string, caption?: string, credit?: string }} [article.figure]
  * @param {EditorialBlock[]} article.blocks
  * @param {{ label: string, href: string }[]} [article.related]
@@ -140,6 +141,7 @@ export function articleToSummaryHtml(article) {
       ${article.label ? `<p>${escapeHtml(article.label)}</p>` : ''}
       <h1>${escapeHtml(article.title)}</h1>
       ${article.subtitle ? `<p>${escapeHtml(article.subtitle)}</p>` : ''}
+      ${article.author ? `<p>By ${escapeHtml(article.author)}</p>` : ''}
     </header>
   `
 

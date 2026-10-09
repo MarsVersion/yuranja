@@ -6,6 +6,7 @@ const links = [
   { to: '/about', label: 'About' },
   { to: '/cities', label: 'Cities' },
   { to: '/exhibitions', label: 'Exhibitions' },
+  { to: '/journal', label: 'Journal' },
   { to: '/contact', label: 'Contact' },
   { to: '/about#editorial', label: 'Editorial Guide' },
   { to: '/privacy', label: 'Privacy' },

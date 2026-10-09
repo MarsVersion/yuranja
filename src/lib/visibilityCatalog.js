@@ -8,7 +8,13 @@ import {
   editorialJsonLd,
   editorialSummaryHtml,
   getEditorialDocuments,
+  getExhibitionArticleDocuments,
+  getJournalDocuments,
 } from '../data/editorial/documents.js'
+import {
+  getHotInstitutionsForCity,
+  getNearbyInstitutionsForCity,
+} from '../data/cityHotInstitutions'
 import { exhibitions, formatExhibitionDates, formatList } from '../data/exhibitions'
 import { institutionsBySlug } from '../data/institutions'
 
@@ -96,6 +102,25 @@ export function exhibitionJsonLd(exhibition) {
   return data
 }
 
+/**
+ * @param {string} heading
+ * @param {import('../data/cityHotInstitutions').HotInstitution[]} venues
+ */
+function venueListHtml(heading, venues) {
+  if (!venues.length) return ''
+  const items = venues
+    .map(
+      (v) => `<li>
+            <h3><a href="${escapeAttr(v.website)}">${escapeHtml(v.name)}</a></h3>
+            <p>${escapeHtml(v.address)}</p>
+            <p>${escapeHtml(v.description)}</p>
+            ${v.notice ? `<p><strong>Visitor notice:</strong> ${escapeHtml(v.notice)}</p>` : ''}
+          </li>`,
+    )
+    .join('\n')
+  return `<h2>${escapeHtml(heading)}</h2><ul>${items}</ul>`
+}
+
 /** @param {typeof featuredCities[number]} city */
 export function cityMeta(city) {
   return {
@@ -168,6 +193,10 @@ export function getVisibilityPages() {
         <p>Selective guide to exhibitions, cities, art spaces, people, and editorial stories.</p>
         <ul>
           <li>
+            <a href="/journal/taking-time-to-listen">Taking Time to Listen</a>
+            — Shilpa Gupta’s “What Still Holds” at Hamburger Bahnhof, Berlin
+          </li>
+          <li>
             <a href="/journal/the-measure-of-an-error">The Measure of an Error</a>
             — Inhwan Oh vs. Seo Young Chang: Human Error
           </li>
@@ -191,6 +220,7 @@ export function getVisibilityPages() {
             <a href="/journal/aes-f-digital-safari">AES+F: Digital Safari — Fables of the Jungle</a>
             — Worth seeing
           </li>
+          <li><a href="/journal">Journal</a></li>
           <li><a href="/exhibitions">Exhibitions</a></li>
           <li><a href="/cities">Cities</a></li>
           <li><a href="/people">People</a></li>
@@ -206,11 +236,39 @@ export function getVisibilityPages() {
       summaryHtml: `
         <h1>Exhibitions</h1>
         <p>Current and forthcoming exhibitions selected by YRJ editors.</p>
+        <h2>Exhibition articles</h2>
+        <ul>
+          ${getExhibitionArticleDocuments()
+            .map(
+              (doc) =>
+                `<li><a href="${escapeAttr(doc.path)}">${escapeHtml(doc.title)}</a> — ${escapeHtml(doc.exhibition.venue)}, ${escapeHtml(doc.exhibition.city)}</li>`,
+            )
+            .join('\n')}
+        </ul>
+        <h2>Exhibitions</h2>
         <ul>
           ${exhibitions
             .map(
               (e) =>
                 `<li><a href="/exhibitions/${e.slug}">${escapeHtml(e.title)}</a> — ${escapeHtml(e.venue)}, ${escapeHtml(e.city)}</li>`,
+            )
+            .join('\n')}
+        </ul>
+      `,
+    },
+    {
+      path: '/journal',
+      title: pageTitle('Journal'),
+      description: 'Essays, artist projects and news from the Yuranja editors.',
+      type: 'CollectionPage',
+      summaryHtml: `
+        <h1>Journal</h1>
+        <p>Essays, artist projects and news from the Yuranja editors.</p>
+        <ul>
+          ${getJournalDocuments()
+            .map(
+              (doc) =>
+                `<li><a href="${escapeAttr(doc.path)}">${escapeHtml(doc.title)}</a>${doc.subtitle ? ` — ${escapeHtml(doc.subtitle)}` : ''}${doc.author ? ` (by ${escapeHtml(doc.author)})` : ''}</li>`,
             )
             .join('\n')}
         </ul>
@@ -281,8 +339,14 @@ export function getVisibilityPages() {
         <article>
           <h1>${escapeHtml(city.name)}</h1>
           <p>${escapeHtml(city.district)}</p>
-          <p>${escapeHtml(city.intro)}</p>
-          <p>${escapeHtml(city.whyItMatters)}</p>
+          ${city.intro ? `<p>${escapeHtml(city.intro)}</p>` : ''}
+          ${city.whyItMatters ? `<p>${escapeHtml(city.whyItMatters)}</p>` : ''}
+          ${venueListHtml('Art institutions', getHotInstitutionsForCity(city.slug))}
+          ${(() => {
+            const nearby = getNearbyInstitutionsForCity(city.slug)
+            return nearby ? venueListHtml(nearby.title, nearby.institutions) : ''
+          })()}
+          ${city.imageCreditPhoto ? `<p><small>${escapeHtml(city.imageCreditPhoto)}</small></p>` : ''}
           <p><a href="/cities">All cities</a></p>
         </article>
       `,
@@ -383,8 +447,8 @@ export function getCitiesFeed() {
     district: city.district,
     url: absoluteUrl(`/cities/${city.slug}`),
     blurb: city.blurb,
-    intro: city.intro,
-    whyItMatters: city.whyItMatters,
+    intro: city.intro ?? null,
+    whyItMatters: city.whyItMatters ?? null,
   }))
 }
 

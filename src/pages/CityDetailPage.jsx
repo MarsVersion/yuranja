@@ -1,7 +1,10 @@
 import { Link, useParams } from 'react-router-dom'
 import { HotInstitutionRow } from '../components/cards/HotInstitutionRow'
 import { EditorialLabel } from '../components/EditorialLabel'
-import { getHotInstitutionsForCity } from '../data/cityHotInstitutions'
+import {
+  getHotInstitutionsForCity,
+  getNearbyInstitutionsForCity,
+} from '../data/cityHotInstitutions'
 import { getCityBySlug } from '../data/cities'
 import { institutionsBySlug } from '../data/institutions'
 
@@ -34,11 +37,17 @@ export function CityDetailPage() {
 
   const picks = spacesForCity(city.name)
   const hotInstitutions = getHotInstitutionsForCity(slug)
+  const nearby = getNearbyInstitutionsForCity(slug)
+  const hasIntro = Boolean(city.intro || city.address)
 
   return (
     <>
       <header className="relative h-[55vh] min-h-[360px] w-full overflow-hidden md:h-[70vh]">
-        <img src={city.image} alt="" className="h-full w-full object-cover grayscale" />
+        <img
+          src={city.image}
+          alt={city.imageAlt ?? ''}
+          className="h-full w-full object-cover grayscale"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-6 md:p-20">
           <div className="mx-auto max-w-[1440px] text-white">
@@ -52,17 +61,27 @@ export function CityDetailPage() {
       </header>
 
       <article className="detail-prose mx-auto max-w-[1440px] px-6 py-16 md:px-20 md:py-24">
-        <section className="max-w-3xl">
-          <EditorialLabel>At a glance</EditorialLabel>
-          <p className="mt-5 font-sans text-xl leading-relaxed text-ink md:text-2xl">
-            {city.intro}
-          </p>
-          <p className="mt-4 font-sans text-sm text-ink">{city.address}</p>
-        </section>
+        {hasIntro ? (
+          <section className="mb-20 max-w-3xl">
+            <EditorialLabel>At a glance</EditorialLabel>
+            {city.intro ? (
+              <p className="mt-5 font-sans text-xl leading-relaxed text-ink md:text-2xl">
+                {city.intro}
+              </p>
+            ) : null}
+            {city.address ? (
+              <p className="mt-4 font-sans text-sm text-ink">{city.address}</p>
+            ) : null}
+          </section>
+        ) : null}
 
         {hotInstitutions.length > 0 ? (
-          <section className="mt-20 max-w-3xl border-t border-line pt-16">
-            <h2 className="font-serif text-3xl leading-tight md:text-4xl">Hot 5 Art Institutions</h2>
+          <section
+            className={`max-w-3xl ${hasIntro ? 'border-t border-line pt-16' : ''}`}
+          >
+            <h2 className="font-serif text-3xl leading-tight md:text-4xl">
+              {hotInstitutions.length === 5 ? 'Hot 5 Art Institutions' : 'Art Institutions'}
+            </h2>
             <ul className="mt-12">
               {hotInstitutions.map((institution) => (
                 <HotInstitutionRow key={institution.name} institution={institution} />
@@ -71,15 +90,28 @@ export function CityDetailPage() {
           </section>
         ) : null}
 
-        <section className="mt-20 max-w-3xl border-t border-line pt-16">
-          <EditorialLabel>Why this city matters</EditorialLabel>
-          <h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">
-            A note from the editors
-          </h2>
-          <p className="mt-6 font-sans text-base leading-relaxed text-ink md:text-lg">
-            {city.whyItMatters}
-          </p>
-        </section>
+        {nearby ? (
+          <section className="mt-20 max-w-3xl border-t border-line pt-16">
+            <h2 className="font-serif text-3xl leading-tight md:text-4xl">{nearby.title}</h2>
+            <ul className="mt-12">
+              {nearby.institutions.map((institution) => (
+                <HotInstitutionRow key={institution.name} institution={institution} />
+              ))}
+            </ul>
+          </section>
+        ) : null}
+
+        {city.whyItMatters ? (
+          <section className="mt-20 max-w-3xl border-t border-line pt-16">
+            <EditorialLabel>Why this city matters</EditorialLabel>
+            <h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">
+              A note from the editors
+            </h2>
+            <p className="mt-6 font-sans text-base leading-relaxed text-ink md:text-lg">
+              {city.whyItMatters}
+            </p>
+          </section>
+        ) : null}
 
         <section className="mt-20 border-t border-line pt-16">
           <EditorialLabel>For your visit</EditorialLabel>
@@ -157,10 +189,21 @@ export function CityDetailPage() {
 
         {city.imageCreditTitle ? (
           <footer className="mt-20 max-w-3xl border-t border-line pt-6">
-            <p className="font-sans text-micro leading-snug text-ink/60">{city.imageCreditTitle}</p>
+            <p className="font-sans text-sm leading-snug text-ink/85">{city.imageCreditTitle}</p>
             {city.imageCreditPhoto ? (
-              <p className="mt-1 font-sans text-micro leading-snug text-ink/60">
-                {city.imageCreditPhoto}
+              <p className="mt-1 font-sans text-sm leading-snug text-ink/85">
+                {city.imageCreditUrl ? (
+                  <a
+                    href={city.imageCreditUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline underline-offset-2 hover:text-ink"
+                  >
+                    {city.imageCreditPhoto}
+                  </a>
+                ) : (
+                  city.imageCreditPhoto
+                )}
               </p>
             ) : null}
           </footer>

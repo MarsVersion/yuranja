@@ -2,7 +2,7 @@
  * @param {{ institution: import('../data/cityHotInstitutions').HotInstitution }} props
  */
 export function HotInstitutionRow({ institution }) {
-  const { name, category, website, address, description } = institution
+  const { name, category, website, address, description, notice } = institution
 
   return (
     <li>
@@ -18,6 +18,11 @@ export function HotInstitutionRow({ institution }) {
         <h3 className="mt-3 font-serif text-2xl leading-tight md:text-[1.625rem]">{name}</h3>
         <p className="mt-2 font-sans text-sm text-ink/65">{address}</p>
         <p className="mt-4 max-w-2xl font-sans text-sm leading-relaxed text-ink">{description}</p>
+        {notice ? (
+          <p className="mt-4 max-w-2xl border-l-2 border-ink/60 pl-4 font-sans text-sm font-semibold leading-relaxed text-ink">
+            Visitor notice: {notice}
+          </p>
+        ) : null}
         <span className="mt-5 inline-block font-sans text-caption font-semibold uppercase tracking-[0.2em] text-ink/50 transition-colors group-hover:text-ink">
           Official website
         </span>

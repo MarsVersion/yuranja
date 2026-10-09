@@ -352,3 +352,19 @@
   font-size: calc(0.875rem * 1.1);
   font-weight: 700;
 }
+
+/* —— Journal index —— */
+
+.site-shell--journal-index {
+  --color-canvas: #bebdb8;
+  --color-line: rgb(0 0 0 / 0.22);
+  --color-surface-muted: #c9c8c4;
+  --page-bg: #818380;
+  --page-body: #111111;
+  --page-label: #1f1f1f;
+  --page-border: rgb(0 0 0 / 0.22);
+  --page-header-bg: rgb(190 189 184 / 0.95);
+  --page-footer-bg: #bebdb8;
+
+  background: var(--page-bg);
+}

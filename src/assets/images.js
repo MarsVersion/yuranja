@@ -9,3 +9,5 @@ export { default as nationalArtCenterTokyo } from './national-art-center-tokyo.j
 export { default as tateModernLondon } from './tate-modern-london.jpg'
 export { default as museoSoumayaMexicoCity } from './museo-soumaya-mexico-city.jpg'
 export { default as TaipeiImg } from './Taipei Fine Arts Museum.jpg'
+export { default as seoulZeedoo } from './zeedoo-seoul-4580205_1280.jpg'
+export { default as stockholmMemorycatcher } from './memorycatcher-statue-6717547_1280.jpg'

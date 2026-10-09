@@ -17,6 +17,7 @@ export function Layout() {
   const isExhibitionDetail = /^\/exhibitions\/[^/]+$/.test(pathname)
   const isCityDetail = /^\/cities\/[^/]+$/.test(pathname)
   const isInstitutionDetail = /^\/spaces\/[^/]+$/.test(pathname)
+  const isJournalIndex = pathname === '/journal'
 
   return (
     <div
@@ -28,6 +29,7 @@ export function Layout() {
         isExhibitionDetail && 'site-shell--exhibition-detail',
         isCityDetail && 'site-shell--city-detail',
         isInstitutionDetail && 'site-shell--institution-detail',
+        isJournalIndex && 'site-shell--journal-index',
       ]
         .filter(Boolean)
         .join(' ')}

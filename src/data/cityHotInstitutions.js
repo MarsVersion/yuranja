@@ -1,10 +1,89 @@
 /**
  * Curated "Hot 5" institutions per city — editorial shortlists for city guides.
- * @typedef {{ name: string, category: string, website: string, address: string, description: string }} HotInstitution
+ * @typedef {{ name: string, category: string, website: string, address: string, description: string, notice?: string }} HotInstitution
  */
 
 /** @type {Record<string, HotInstitution[]>} */
 export const cityHotInstitutions = {
+  seoul: [
+    {
+      name: 'MMCA Seoul — National Museum of Modern and Contemporary Art',
+      category: 'Museum',
+      website: 'https://www.mmca.go.kr/eng/',
+      address: '30 Samcheong-ro, Jongno-gu, Seoul',
+      description:
+        'The Seoul branch of South Korea’s national museum of modern and contemporary art. Located near Gyeongbokgung Palace, it presents Korean and international exhibitions across galleries, courtyards and other project spaces.',
+    },
+    {
+      name: 'Buk-Seoul Museum of Art — SeMA',
+      category: 'Museum',
+      website: 'https://sema.seoul.go.kr/en/visit/bukseoul',
+      address: '1238 Dongil-ro, Nowon-gu, Seoul',
+      description:
+        'A branch of the Seoul Museum of Art set within a public park in northern Seoul. Its programme includes contemporary art, exhibitions for children and projects connecting the museum with its surrounding community.',
+    },
+    {
+      name: 'Leeum Museum of Art',
+      category: 'Museum',
+      website: 'https://www.leeumhoam.org/',
+      address: '60-16 Itaewon-ro 55-gil, Yongsan-gu, Seoul',
+      description:
+        'A private museum bringing together traditional Korean art and modern and contemporary works. Its buildings were designed by Mario Botta, Jean Nouvel and Rem Koolhaas.',
+    },
+    {
+      name: 'Art Sonje Center',
+      category: 'Contemporary Art Centre',
+      website: 'https://artsonje.org/en/',
+      address: '87 Yulgok-ro 3-gil, Jongno-gu, Seoul',
+      description:
+        'A non-profit contemporary art centre in Samcheong-dong, presenting exhibitions, performances and experimental projects by Korean and international artists.',
+    },
+    {
+      name: 'Atelier Hermès — Maison Hermès Dosan Park',
+      category: 'Gallery',
+      website: 'https://www.fondationdentreprisehermes.org/en/node/450',
+      address: 'B1F, 7 Dosan-daero 45-gil, Gangnam-gu, Seoul',
+      description:
+        'A contemporary art gallery within Maison Hermès Dosan Park, presenting exhibitions and commissioned projects with a focus on experimental artistic practices.',
+      notice: 'Temporarily closed for renovation from 10 April 2026 until May 2027.',
+    },
+  ],
+  stockholm: [
+    {
+      name: 'Moderna Museet',
+      category: 'Museum',
+      website: 'https://www.modernamuseet.se/',
+      address: 'Exercisplan 4, 111 49 Stockholm',
+      description:
+        'Sweden’s national museum of modern and contemporary art, located on Skeppsholmen island. Its collection spans the twentieth century to the present, alongside temporary exhibitions of Swedish and international art.',
+    },
+    {
+      name: 'Magasin III Museum for Contemporary Art',
+      category: 'Contemporary Art Centre',
+      website: 'https://www.magasin3.com/',
+      address: 'Frihamnsgatan 28, 115 56 Stockholm',
+      description:
+        'An independent contemporary art institution in a former warehouse in Stockholm’s free-port district, known for commissioning installations and presenting international artists.',
+      notice:
+        'Closed until further notice: Magasin III ended its exhibition activities in Stockholm on 31 December 2024.',
+    },
+    {
+      name: 'Bonniers Konsthall',
+      category: 'Kunsthalle',
+      website: 'https://bonnierskonsthall.se/',
+      address: 'Torsgatan 19, 113 21 Stockholm',
+      description:
+        'A contemporary art institution in a distinctive glass building in central Stockholm, presenting exhibitions by emerging and established Swedish and international artists.',
+    },
+    {
+      name: 'Färgfabriken',
+      category: 'Exhibition Space',
+      website: 'https://fargfabriken.se/',
+      address: 'Lövholmsbrinken 1, 117 65 Stockholm',
+      description:
+        'An exhibition space in a former paint factory, bringing together contemporary art, architecture and questions about urban life.',
+    },
+  ],
   berlin: [
     {
       name: 'Hamburger Bahnhof',
@@ -259,8 +338,34 @@ export const cityHotInstitutions = {
   ],
 }
 
+/**
+ * Venues outside the city itself, listed as a separate group on its guide.
+ * @type {Record<string, { title: string, institutions: HotInstitution[] }>}
+ */
+export const cityNearbyInstitutions = {
+  stockholm: {
+    title: 'Elsewhere in Sweden',
+    institutions: [
+      {
+        name: 'Malmö Konsthall',
+        category: 'Kunsthalle',
+        website: 'https://malmokonsthall.se/',
+        address: 'S:t Johannesgatan 7, 211 46 Malmö',
+        description:
+          'A large contemporary art exhibition space known for its flexible, light-filled architecture, designed by Klas Anshelm.',
+      },
+    ],
+  },
+}
+
 /** @param {string | undefined} slug */
 export function getHotInstitutionsForCity(slug) {
   if (!slug) return []
   return cityHotInstitutions[slug] ?? []
+}
+
+/** @param {string | undefined} slug */
+export function getNearbyInstitutionsForCity(slug) {
+  if (!slug) return null
+  return cityNearbyInstitutions[slug] ?? null
 }

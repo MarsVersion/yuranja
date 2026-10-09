@@ -1,11 +1,7 @@
-import { useState } from 'react'
 import { ExhibitionRow } from '../components/cards'
 import { EditorialLabel } from '../components/EditorialLabel'
-import {
-  EXHIBITION_FILTERS,
-  exhibitionMatchesFilter,
-  exhibitions,
-} from '../data/exhibitions'
+import { exhibitions } from '../data/exhibitions'
+import { getExhibitionArticleDocuments } from '../data/editorial/documents.js'
 import { useBackgroundVideo } from '../hooks/useBackgroundVideo'
 import '../styles/exhibitions-index.css'
 
@@ -13,11 +9,7 @@ const EXHIBITIONS_VIDEO_SRC = `${import.meta.env.BASE_URL}videos/red-woman.mp4`
 
 export function ExhibitionsPage() {
   const videoRef = useBackgroundVideo(EXHIBITIONS_VIDEO_SRC, 0.5)
-  const [activeFilter, setActiveFilter] = useState('all')
-
-  const visibleExhibitions = exhibitions.filter((exhibition) =>
-    exhibitionMatchesFilter(exhibition, activeFilter),
-  )
+  const exhibitionArticles = getExhibitionArticleDocuments()
 
   return (
     <div className="exhibitions-index">
@@ -51,40 +43,38 @@ export function ExhibitionsPage() {
           </p>
         </section>
 
-        <nav className="exhibitions-index__filters" aria-label="Filter exhibitions">
-          <div className="exhibitions-index__filters-track">
-            {EXHIBITION_FILTERS.map((filter) => {
-              const isActive = activeFilter === filter.id
-              return (
-                <button
-                  key={filter.id}
-                  type="button"
-                  className={[
-                    'exhibitions-index__filter',
-                    isActive ? 'exhibitions-index__filter--active' : '',
-                  ]
-                    .filter(Boolean)
-                    .join(' ')}
-                  aria-pressed={isActive}
-                  onClick={() => setActiveFilter(filter.id)}
-                >
-                  {filter.label}
-                </button>
-              )
-            })}
-          </div>
-        </nav>
+        {exhibitionArticles.length > 0 ? (
+          <section
+            className="exhibitions-index__journal"
+            aria-labelledby="exhibitions-articles-heading"
+          >
+            <EditorialLabel variant="onDark" className="editorial-kicker-on-dark">
+              Articles
+            </EditorialLabel>
+            <h2
+              id="exhibitions-articles-heading"
+              className="mt-4 font-serif text-4xl text-white md:text-5xl"
+            >
+              Exhibition articles
+            </h2>
+            <div className="exhibitions-index__list mt-10">
+              {exhibitionArticles.map((doc) => (
+                <ExhibitionRow
+                  key={doc.id}
+                  to={doc.path}
+                  category={doc.exhibition.category ?? 'Review'}
+                  subtitle={doc.subtitle}
+                  exhibition={{ ...doc.exhibition, title: doc.title }}
+                />
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <section className="exhibitions-index__list" aria-label="Exhibition index">
-          {visibleExhibitions.length > 0 ? (
-            visibleExhibitions.map((exhibition) => (
-              <ExhibitionRow key={exhibition.slug} exhibition={exhibition} />
-            ))
-          ) : (
-            <p className="exhibitions-index__empty font-sans text-base leading-relaxed text-white/78">
-              No exhibitions in this category yet.
-            </p>
-          )}
+          {exhibitions.map((exhibition) => (
+            <ExhibitionRow key={exhibition.slug} exhibition={exhibition} />
+          ))}
         </section>
       </div>
     </div>

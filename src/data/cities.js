@@ -7,12 +7,37 @@ import {
   museoSoumayaMexicoCity,
   nationalArtCenterTokyo,
   neueNationalgalerieBerlin,
+  seoulZeedoo,
+  stockholmMemorycatcher,
   TaipeiImg,
   tateModernLondon,
 } from '../assets/images.js'
 
 /** Shared editorial imagery from the original layout (architecture / spaces). */
 export const featuredCities = [
+  {
+    slug: 'seoul',
+    name: 'Seoul',
+    district: 'Samcheong-dong',
+    blurb: 'National and city museums, private collections and non-profit centres across the city.',
+    image: seoulZeedoo,
+    imageAlt:
+      'Black-and-white photograph of a narrow paved alley in Seoul at night, lined with illuminated restaurant and pub signs, two people walking away from the camera',
+    imageCreditTitle: 'Seoul',
+    imageCreditPhoto: 'Image by Jose Eduardo Camargo from Pixabay.',
+  },
+  {
+    slug: 'stockholm',
+    name: 'Stockholm',
+    district: 'Skeppsholmen & Liljeholmen',
+    blurb: 'A national modern art museum, a glass-walled kunsthall and a former paint factory.',
+    image: stockholmMemorycatcher,
+    imageAlt:
+      'Black-and-white photograph of a bronze equestrian statue with a raised arm on a stone plinth in central Stockholm, a church clock tower and a palace facade behind it',
+    imageCreditTitle: 'Stockholm',
+    imageCreditPhoto: 'Image by Siggy Nowak from Pixabay.',
+    imageCreditUrl: 'https://pixabay.com/de/users/memorycatcher-168384/',
+  },
   {
     slug: 'berlin',
     name: 'Berlin',

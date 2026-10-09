@@ -4,10 +4,14 @@
  */
 
 import { absoluteUrl } from '../../config/site.js'
+import { getExhibitionBySlug } from '../exhibitions.js'
 import { articleToSummaryHtml, blockToHtml, escapeHtml } from './blocks.js'
 import { hello90Document } from './hello90.js'
 import { measureOfAnErrorDocument } from './measureOfAnError.js'
+import { takingTimeToListenDocument } from './takingTimeToListen.js'
 import { whoseHomeIsItDocument } from './whoseHomeIsIt.js'
+
+const preisDerNationalgalerie = getExhibitionBySlug('preis-der-nationalgalerie-2026')
 
 /** @type {import('./blocks.js').EditorialBlock[]} */
 const soyoungBlocks = [
@@ -236,6 +240,7 @@ const editorialBoardIntroBlocks = [
 ]
 
 export const editorialDocuments = [
+  takingTimeToListenDocument,
   measureOfAnErrorDocument,
   hello90Document,
   whoseHomeIsItDocument,
@@ -277,6 +282,13 @@ export const editorialDocuments = [
       'Maurizio Cattelan receives the Preis der Nationalgalerie 2026 and will present a major solo exhibition at Neue Nationalgalerie during Berlin Art Week.',
     schemaType: 'Article',
     about: ['Maurizio Cattelan', 'Neue Nationalgalerie', 'Preis der Nationalgalerie 2026'],
+    exhibition: {
+      category: 'Why go',
+      title: preisDerNationalgalerie.title,
+      venue: preisDerNationalgalerie.venue,
+      city: preisDerNationalgalerie.city,
+      dates: preisDerNationalgalerie.dates,
+    },
     figure: {
       alt: 'Maurizio Cattelan at Neue Nationalgalerie, Berlin',
       caption: 'Maurizio Cattelan, Neue Nationalgalerie, Berlin, © Peter Rigaud, 2025',
@@ -400,9 +412,10 @@ export const editorialDocuments = [
         ],
         links: [
           { href: 'https://hybridcurator.com', label: 'HybridCurator' },
+          { href: 'https://hmmtp.com/', label: 'Hmm, thinking practice' },
+          { href: 'https://neoslow.com/', label: 'Neo Slow' },
           { href: 'https://www.busymars.com', label: 'Busy Mars' },
           { href: 'https://www.discursus.info/', label: 'DISKURS Berlin' },
-          { href: 'https://neoslow.com/', label: 'Neo Slow' },
         ],
       },
     ],
@@ -447,6 +460,33 @@ export function getEditorialDocuments() {
   return editorialDocuments
 }
 
+/** Articles listed on /journal, in display order. */
+export const JOURNAL_ARTICLE_PATHS = [
+  '/journal/hello-90',
+  '/journal/whose-home-is-it',
+  '/journal/soyoung-yoon-independent-study-program',
+  '/journal/aes-f-digital-safari',
+]
+
+/** Articles listed on /exhibitions, in display order. Each needs `exhibition` metadata. */
+export const EXHIBITION_ARTICLE_PATHS = [
+  '/journal/taking-time-to-listen',
+  '/journal/the-measure-of-an-error',
+  '/spaces/neue-nationalgalerie',
+]
+
+function documentsForPaths(paths) {
+  return paths.map((path) => getEditorialByPath(path)).filter(Boolean)
+}
+
+export function getJournalDocuments() {
+  return documentsForPaths(JOURNAL_ARTICLE_PATHS)
+}
+
+export function getExhibitionArticleDocuments() {
+  return documentsForPaths(EXHIBITION_ARTICLE_PATHS).filter((doc) => doc.exhibition)
+}
+
 /** @param {typeof editorialDocuments[number]} doc */
 export function editorialJsonLd(doc) {
   const url = absoluteUrl(doc.path)
@@ -474,6 +514,10 @@ export function editorialJsonLd(doc) {
       alternateName: 'YRJ',
       url: absoluteUrl('/'),
     },
+  }
+
+  if (doc.author) {
+    data.author = { '@type': 'Person', name: doc.author }
   }
 
   if (doc.about?.length) {

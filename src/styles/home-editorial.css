@@ -109,17 +109,21 @@
 
 /* —— Hero — identity landing —— */
 
+.site-shell--home .site-main {
+  padding-top: calc(72px * 0.85);
+}
+
 .home-mag__hero-block {
   align-items: center;
   background: transparent;
   display: flex;
   justify-content: center;
-  min-height: calc((100svh - 72px) * 0.56);
-  padding: 0.96rem var(--mag-gutter);
+  min-height: calc((100svh - 72px) * 0.532);
+  padding: 0.816rem var(--mag-gutter);
 }
 
 .home-mag__hero-block + .home-mag__section {
-  padding-top: clamp(2.4rem, 5.04vw, 4.2rem);
+  padding-top: clamp(2.04rem, 4.284vw, 3.57rem);
 }
 
 .landing-identity {
@@ -475,16 +479,30 @@
   width: 100%;
 }
 
-/* Landing crop: hide left brown edge of Pollux’s Mirror; keep natural proportions */
-.home-mag__journal-entry-image--pollux {
-  overflow: hidden;
+.home-mag__journal-entry-image--pollux img {
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
 }
 
-.home-mag__journal-entry-image--pollux img {
-  /* show from ~16% from the left through the right edge */
-  margin-left: -19.05%;
-  max-width: none;
-  width: 119.05%;
+@media (min-width: 768px) {
+  .home-mag__journal-entry-image--pollux img {
+    height: 550px;
+  }
+}
+
+.home-mag__journal-entry-image--compact img {
+  height: 360px;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .home-mag__journal-entry-image--compact img {
+    height: 540px;
+  }
 }
 
 .home-mag__journal-entry-title {

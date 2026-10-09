@@ -11,7 +11,7 @@ export function CityCard({ city, staggerClass = '', variant = 'home' }) {
       <div className={`mb-6 overflow-hidden bg-surface-muted ${aspectClass}`}>
         <img
           src={city.image}
-          alt=""
+          alt={city.imageAlt ?? ''}
           className="h-full w-full object-cover grayscale transition-transform duration-1000 group-hover:scale-110"
         />
       </div>

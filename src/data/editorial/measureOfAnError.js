@@ -101,6 +101,13 @@ export const measureOfAnErrorDocument = {
     'Buk-Seoul Museum of Art',
   ],
   socialImage: POLLUX_MIRROR_IMAGE,
+  exhibition: {
+    category: 'Review',
+    title: '2026 Title Match: Inhwan Oh vs. Seo Young Chang: Human Error',
+    venue: 'Buk-Seoul Museum of Art',
+    city: 'Seoul',
+    dates: { start: '2026-08-13', end: '2026-10-25' },
+  },
   backLink: { to: '/', label: '← Back to home' },
   blocks: measureOfAnErrorBlocks,
 }

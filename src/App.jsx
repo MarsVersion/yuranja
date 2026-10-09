@@ -44,6 +44,11 @@ import {
   WHOSE_HOME_IS_IT_ARTICLE_PATH,
   WhoseHomeIsItArticle,
 } from './pages/WhoseHomeIsItArticle'
+import {
+  TAKING_TIME_TO_LISTEN_ARTICLE_PATH,
+  TakingTimeToListenArticle,
+} from './pages/TakingTimeToListenArticle'
+import { JOURNAL_PATH, JournalPage } from './pages/JournalPage'
 
 const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '')
 
@@ -62,6 +67,11 @@ export default function App() {
           <Route path="about" element={<AboutPage />} />
           <Route path="about/editorial-board" element={<EditorialBoardPage />} />
           <Route path="contact" element={<ContactPage />} />
+          <Route path={JOURNAL_PATH.slice(1)} element={<JournalPage />} />
+          <Route
+            path={TAKING_TIME_TO_LISTEN_ARTICLE_PATH.slice(1)}
+            element={<TakingTimeToListenArticle />}
+          />
           <Route path={SOYOUNG_YOON_ARTICLE_PATH.slice(1)} element={<SoyoungYoonArticle />} />
           <Route
             path={THE_MEASURE_OF_AN_ERROR_ARTICLE_PATH.slice(1)}

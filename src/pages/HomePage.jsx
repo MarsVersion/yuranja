@@ -6,6 +6,7 @@ import { THOMAS_ELLER_PAGE_PATH } from './ThomasEllerPage'
 import { SOYOUNG_YOON_ARTICLE_PATH } from './SoyoungYoonArticle'
 import { HELLO_90_ARTICLE_PATH } from './Hello90Article'
 import { THE_MEASURE_OF_AN_ERROR_ARTICLE_PATH } from './TheMeasureOfAnErrorArticle'
+import { TAKING_TIME_TO_LISTEN_ARTICLE_PATH } from './TakingTimeToListenArticle'
 import { WHOSE_HOME_IS_IT_ARTICLE_PATH } from './WhoseHomeIsItArticle'
 import { aesfYuranja, cattelanExhibition } from '../assets/images.js'
 import soyoungYoonImg from '../assets/Soyoung Yoon.png'
@@ -13,6 +14,7 @@ import '../styles/home-editorial.css'
 
 const JOURNAL_FEATURE_IMAGE = `${import.meta.env.BASE_URL}images/journal/honey.png`
 const HELLO_90_LANDING_IMAGE = `${import.meta.env.BASE_URL}images/journal/02-Hello90 90 deg.jpg`
+const GUPTA_LANDING_IMAGE = `${import.meta.env.BASE_URL}images/journal/shilpa-gupta-dont-see-dont-hear-dont-speak.jpg`
 const MEASURE_OF_AN_ERROR_LANDING_IMAGE = `${import.meta.env.BASE_URL}images/journal/seo-young-chang-polluxs-mirror.jpeg`
 const WHY_GO_IMAGE = cattelanExhibition
 
@@ -92,12 +94,33 @@ export function HomePage() {
       {/* Section 2 — Featured */}
       <section id="featured" className="home-mag__section">
         <div className="home-mag__wrap">
+          <Link to={TAKING_TIME_TO_LISTEN_ARTICLE_PATH} className="home-mag__journal-entry">
+            <p className="home-mag__label">Exhibitions</p>
+            <div className="home-mag__journal-entry-image home-mag__journal-entry-image--compact">
+              <img
+                src={GUPTA_LANDING_IMAGE}
+                alt="Shilpa Gupta, Untitled (Don’t See, Don’t Hear, Don’t Speak): a pale stone bust on a column, its hands covering its eyes and mouth, Hamburger Bahnhof"
+                decoding="async"
+              />
+            </div>
+            <h2 className="home-mag__journal-entry-title">Taking Time to Listen</h2>
+            <p className="home-mag__journal-entry-sub">
+              Shilpa Gupta’s “What Still Holds” at Hamburger Bahnhof, Berlin
+            </p>
+            <p className="home-mag__journal-entry-intro">
+              In a dark room, microphones hang from the ceiling at different heights. Songs drift
+              between them.
+            </p>
+            <span className="home-mag__link home-mag__read">Read →</span>
+          </Link>
+
           <Link to={THE_MEASURE_OF_AN_ERROR_ARTICLE_PATH} className="home-mag__journal-entry">
-            <p className="home-mag__label">Journal</p>
+            <p className="home-mag__label">Exhibitions</p>
             <div className="home-mag__journal-entry-image home-mag__journal-entry-image--pollux">
               <img
                 src={MEASURE_OF_AN_ERROR_LANDING_IMAGE}
                 alt="Seo Young Chang, Pollux’s Mirror, at Buk-Seoul Museum of Art"
+                loading="lazy"
                 decoding="async"
               />
             </div>
@@ -158,7 +181,7 @@ export function HomePage() {
 
             <div className="home-mag__feature-rail">
               <article className="home-mag__fragment">
-                <p className="home-mag__label">Why go</p>
+                <p className="home-mag__label">Exhibitions</p>
                 <Link
                   to={NEUE_NATIONALGALERIE_ARTICLE_PATH}
                   className="home-mag__fragment-image"
@@ -194,7 +217,7 @@ export function HomePage() {
               <div className="home-mag__fragment-spacer home-mag__fragment-spacer--compact" aria-hidden />
 
               <article className="home-mag__fragment">
-                <p className="home-mag__label">News</p>
+                <p className="home-mag__label">Journal</p>
                 <Link
                   to={SOYOUNG_YOON_ARTICLE_PATH}
                   className="home-mag__fragment-image home-mag__fragment-image--contain"
@@ -222,7 +245,7 @@ export function HomePage() {
           </div>
 
           <article className="home-mag__worth-seeing">
-            <p className="home-mag__label">Worth seeing</p>
+            <p className="home-mag__label">Journal</p>
             <div className="home-mag__worth-seeing-grid">
               <Link
                 to={AESF_DIGITAL_SAFARI_ARTICLE_PATH}

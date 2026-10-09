@@ -13,10 +13,26 @@ import { EditorialLabel } from './EditorialLabel'
  */
 export function EditorialDocument({ document: doc, imageSrc, imageClassName = 'w-1/2' }) {
   const heroSrc = imageSrc || doc.figure?.src
+  const compactImages = Boolean(doc.compactImages)
 
   return (
     <article className="page-atmosphere mx-auto max-w-[1440px] px-6 py-16 pb-32 md:px-20 md:py-24 md:pb-40">
-      {heroSrc && doc.figure ? (
+      {heroSrc && doc.figure && compactImages ? (
+        <div className="max-w-[730px]">
+          <figure className="editorial-figure--compact">
+            <img
+              src={heroSrc}
+              alt={doc.figure.alt ?? doc.title}
+              loading={doc.figure.eager === false ? 'lazy' : 'eager'}
+            />
+            {doc.figure.caption ? (
+              <figcaption className="font-sans text-sm leading-snug text-ink/70">
+                {doc.figure.caption}
+              </figcaption>
+            ) : null}
+          </figure>
+        </div>
+      ) : heroSrc && doc.figure ? (
         <figure className={`${imageClassName} overflow-hidden bg-surface-muted`}>
           <img
             src={heroSrc}
@@ -66,6 +82,12 @@ export function EditorialDocument({ document: doc, imageSrc, imageClassName = 'w
         <p className="mt-3 max-w-4xl font-serif text-2xl leading-snug md:text-3xl">{doc.subtitle}</p>
       ) : null}
 
+      {doc.author ? (
+        <p className="mt-6 font-sans text-caption font-semibold uppercase tracking-[0.2em]">
+          By {doc.author}
+        </p>
+      ) : null}
+
       <div
         className={`mt-10 max-w-[730px] space-y-6 font-sans text-base leading-[1.77] md:text-lg ${
           doc.path === '/people' || doc.path === '/about/editorial-board'
@@ -74,7 +96,7 @@ export function EditorialDocument({ document: doc, imageSrc, imageClassName = 'w
         } ${doc.path === '/journal/soyoung-yoon-independent-study-program' ? 'max-w-3xl' : ''}`}
       >
         {doc.blocks.map((block, index) => (
-          <BlockKey key={`${doc.id}-${index}`} block={block} />
+          <BlockKey key={`${doc.id}-${index}`} block={block} compactImages={compactImages} />
         ))}
       </div>
 
@@ -131,7 +153,7 @@ function InlineParts({ parts }) {
   })
 }
 
-function BlockKey({ block }) {
+function BlockKey({ block, compactImages = false }) {
   if (block.type === 'h2') {
     return (
       <h2 className="!mt-12 font-serif text-2xl leading-snug md:text-3xl first:!mt-0">{block.text}</h2>
@@ -196,6 +218,24 @@ function BlockKey({ block }) {
           </tbody>
         </table>
       </div>
+    )
+  }
+  if (block.type === 'figure' && compactImages && block.src) {
+    return (
+      <figure className="editorial-figure--compact !mb-4 !mt-8">
+        <img src={block.src} alt={block.alt ?? ''} loading={block.eager ? 'eager' : 'lazy'} />
+        {block.captionParts?.length || block.caption || block.credit ? (
+          <figcaption className="whitespace-pre-line font-sans text-sm leading-snug text-ink/70">
+            {block.captionParts?.length ? <InlineParts parts={block.captionParts} /> : block.caption}
+            {block.credit ? (
+              <>
+                {(block.captionParts?.length || block.caption) && ' '}
+                {block.credit}
+              </>
+            ) : null}
+          </figcaption>
+        ) : null}
+      </figure>
     )
   }
   if (block.type === 'figure') {
